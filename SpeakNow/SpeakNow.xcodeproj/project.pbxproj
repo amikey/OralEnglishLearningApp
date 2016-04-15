@@ -1,0 +1,617 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0927ED931CC0A7D7000AB5C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0927ED921CC0A7D7000AB5C3 /* AppDelegate.swift */; };
+		0927ED951CC0A7D7000AB5C3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0927ED941CC0A7D7000AB5C3 /* LoginViewController.swift */; };
+		0927ED981CC0A7D7000AB5C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0927ED961CC0A7D7000AB5C3 /* Main.storyboard */; };
+		0927ED9B1CC0A7D7000AB5C3 /* SpeakNow.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0927ED991CC0A7D7000AB5C3 /* SpeakNow.xcdatamodeld */; };
+		0927ED9D1CC0A7D7000AB5C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0927ED9C1CC0A7D7000AB5C3 /* Assets.xcassets */; };
+		0927EDA01CC0A7D7000AB5C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0927ED9E1CC0A7D7000AB5C3 /* LaunchScreen.storyboard */; };
+		0927EDAB1CC0A7D7000AB5C3 /* SpeakNowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0927EDAA1CC0A7D7000AB5C3 /* SpeakNowTests.swift */; };
+		0927EDB61CC0A7D7000AB5C3 /* SpeakNowUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0927EDB51CC0A7D7000AB5C3 /* SpeakNowUITests.swift */; };
+		0946B5071CC0E67200B69970 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0946B5061CC0E67200B69970 /* RegisterViewController.swift */; };
+		3A20CCB6B10FB699C4337C9D /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B314C847AB64C9C343400349 /* Pods.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0927EDA71CC0A7D7000AB5C3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0927ED871CC0A7D7000AB5C3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0927ED8E1CC0A7D7000AB5C3;
+			remoteInfo = SpeakNow;
+		};
+		0927EDB21CC0A7D7000AB5C3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0927ED871CC0A7D7000AB5C3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0927ED8E1CC0A7D7000AB5C3;
+			remoteInfo = SpeakNow;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0927ED8F1CC0A7D7000AB5C3 /* SpeakNow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeakNow.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0927ED921CC0A7D7000AB5C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		0927ED941CC0A7D7000AB5C3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		0927ED971CC0A7D7000AB5C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0927ED9A1CC0A7D7000AB5C3 /* SpeakNow.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SpeakNow.xcdatamodel; sourceTree = "<group>"; };
+		0927ED9C1CC0A7D7000AB5C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0927ED9F1CC0A7D7000AB5C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		0927EDA11CC0A7D7000AB5C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0927EDA61CC0A7D7000AB5C3 /* SpeakNowTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpeakNowTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0927EDAA1CC0A7D7000AB5C3 /* SpeakNowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakNowTests.swift; sourceTree = "<group>"; };
+		0927EDAC1CC0A7D7000AB5C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0927EDB11CC0A7D7000AB5C3 /* SpeakNowUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpeakNowUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0927EDB51CC0A7D7000AB5C3 /* SpeakNowUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakNowUITests.swift; sourceTree = "<group>"; };
+		0927EDB71CC0A7D7000AB5C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0946B5061CC0E67200B69970 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		4C5439C363579C9403C3A464 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		B314C847AB64C9C343400349 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD27051A0BC3B3DAB9802AD8 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0927ED8C1CC0A7D7000AB5C3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A20CCB6B10FB699C4337C9D /* Pods.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0927EDA31CC0A7D7000AB5C3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0927EDAE1CC0A7D7000AB5C3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0927ED861CC0A7D7000AB5C3 = {
+			isa = PBXGroup;
+			children = (
+				0927ED911CC0A7D7000AB5C3 /* SpeakNow */,
+				0927EDA91CC0A7D7000AB5C3 /* SpeakNowTests */,
+				0927EDB41CC0A7D7000AB5C3 /* SpeakNowUITests */,
+				0927ED901CC0A7D7000AB5C3 /* Products */,
+				9699923E01B476B8BA6D5FF6 /* Pods */,
+				0C87E4AB275F4A6C07548E37 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		0927ED901CC0A7D7000AB5C3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0927ED8F1CC0A7D7000AB5C3 /* SpeakNow.app */,
+				0927EDA61CC0A7D7000AB5C3 /* SpeakNowTests.xctest */,
+				0927EDB11CC0A7D7000AB5C3 /* SpeakNowUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0927ED911CC0A7D7000AB5C3 /* SpeakNow */ = {
+			isa = PBXGroup;
+			children = (
+				0927ED921CC0A7D7000AB5C3 /* AppDelegate.swift */,
+				0946B5051CC0E50D00B69970 /* Login */,
+				0927ED961CC0A7D7000AB5C3 /* Main.storyboard */,
+				0927ED9C1CC0A7D7000AB5C3 /* Assets.xcassets */,
+				0927ED9E1CC0A7D7000AB5C3 /* LaunchScreen.storyboard */,
+				0927EDA11CC0A7D7000AB5C3 /* Info.plist */,
+				0927ED991CC0A7D7000AB5C3 /* SpeakNow.xcdatamodeld */,
+			);
+			path = SpeakNow;
+			sourceTree = "<group>";
+		};
+		0927EDA91CC0A7D7000AB5C3 /* SpeakNowTests */ = {
+			isa = PBXGroup;
+			children = (
+				0927EDAA1CC0A7D7000AB5C3 /* SpeakNowTests.swift */,
+				0927EDAC1CC0A7D7000AB5C3 /* Info.plist */,
+			);
+			path = SpeakNowTests;
+			sourceTree = "<group>";
+		};
+		0927EDB41CC0A7D7000AB5C3 /* SpeakNowUITests */ = {
+			isa = PBXGroup;
+			children = (
+				0927EDB51CC0A7D7000AB5C3 /* SpeakNowUITests.swift */,
+				0927EDB71CC0A7D7000AB5C3 /* Info.plist */,
+			);
+			path = SpeakNowUITests;
+			sourceTree = "<group>";
+		};
+		0946B5051CC0E50D00B69970 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				0927ED941CC0A7D7000AB5C3 /* LoginViewController.swift */,
+				0946B5061CC0E67200B69970 /* RegisterViewController.swift */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		0C87E4AB275F4A6C07548E37 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B314C847AB64C9C343400349 /* Pods.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9699923E01B476B8BA6D5FF6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DD27051A0BC3B3DAB9802AD8 /* Pods.debug.xcconfig */,
+				4C5439C363579C9403C3A464 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0927ED8E1CC0A7D7000AB5C3 /* SpeakNow */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0927EDBA1CC0A7D7000AB5C3 /* Build configuration list for PBXNativeTarget "SpeakNow" */;
+			buildPhases = (
+				3CE06959418573D1D65DFEB8 /* Check Pods Manifest.lock */,
+				0927ED8B1CC0A7D7000AB5C3 /* Sources */,
+				0927ED8C1CC0A7D7000AB5C3 /* Frameworks */,
+				0927ED8D1CC0A7D7000AB5C3 /* Resources */,
+				253A72F98985244C5A4D4090 /* Embed Pods Frameworks */,
+				67718DF1072A760190753D04 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SpeakNow;
+			productName = SpeakNow;
+			productReference = 0927ED8F1CC0A7D7000AB5C3 /* SpeakNow.app */;
+			productType = "com.apple.product-type.application";
+		};
+		0927EDA51CC0A7D7000AB5C3 /* SpeakNowTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0927EDBD1CC0A7D7000AB5C3 /* Build configuration list for PBXNativeTarget "SpeakNowTests" */;
+			buildPhases = (
+				0927EDA21CC0A7D7000AB5C3 /* Sources */,
+				0927EDA31CC0A7D7000AB5C3 /* Frameworks */,
+				0927EDA41CC0A7D7000AB5C3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0927EDA81CC0A7D7000AB5C3 /* PBXTargetDependency */,
+			);
+			name = SpeakNowTests;
+			productName = SpeakNowTests;
+			productReference = 0927EDA61CC0A7D7000AB5C3 /* SpeakNowTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		0927EDB01CC0A7D7000AB5C3 /* SpeakNowUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0927EDC01CC0A7D7000AB5C3 /* Build configuration list for PBXNativeTarget "SpeakNowUITests" */;
+			buildPhases = (
+				0927EDAD1CC0A7D7000AB5C3 /* Sources */,
+				0927EDAE1CC0A7D7000AB5C3 /* Frameworks */,
+				0927EDAF1CC0A7D7000AB5C3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0927EDB31CC0A7D7000AB5C3 /* PBXTargetDependency */,
+			);
+			name = SpeakNowUITests;
+			productName = SpeakNowUITests;
+			productReference = 0927EDB11CC0A7D7000AB5C3 /* SpeakNowUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0927ED871CC0A7D7000AB5C3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = cccfl;
+				TargetAttributes = {
+					0927ED8E1CC0A7D7000AB5C3 = {
+						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = PLN78VXB7A;
+					};
+					0927EDA51CC0A7D7000AB5C3 = {
+						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = PLN78VXB7A;
+						TestTargetID = 0927ED8E1CC0A7D7000AB5C3;
+					};
+					0927EDB01CC0A7D7000AB5C3 = {
+						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = PLN78VXB7A;
+						TestTargetID = 0927ED8E1CC0A7D7000AB5C3;
+					};
+				};
+			};
+			buildConfigurationList = 0927ED8A1CC0A7D7000AB5C3 /* Build configuration list for PBXProject "SpeakNow" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0927ED861CC0A7D7000AB5C3;
+			productRefGroup = 0927ED901CC0A7D7000AB5C3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0927ED8E1CC0A7D7000AB5C3 /* SpeakNow */,
+				0927EDA51CC0A7D7000AB5C3 /* SpeakNowTests */,
+				0927EDB01CC0A7D7000AB5C3 /* SpeakNowUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0927ED8D1CC0A7D7000AB5C3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0927EDA01CC0A7D7000AB5C3 /* LaunchScreen.storyboard in Resources */,
+				0927ED9D1CC0A7D7000AB5C3 /* Assets.xcassets in Resources */,
+				0927ED981CC0A7D7000AB5C3 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0927EDA41CC0A7D7000AB5C3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0927EDAF1CC0A7D7000AB5C3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		253A72F98985244C5A4D4090 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3CE06959418573D1D65DFEB8 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		67718DF1072A760190753D04 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0927ED8B1CC0A7D7000AB5C3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0927ED951CC0A7D7000AB5C3 /* LoginViewController.swift in Sources */,
+				0927ED931CC0A7D7000AB5C3 /* AppDelegate.swift in Sources */,
+				0927ED9B1CC0A7D7000AB5C3 /* SpeakNow.xcdatamodeld in Sources */,
+				0946B5071CC0E67200B69970 /* RegisterViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0927EDA21CC0A7D7000AB5C3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0927EDAB1CC0A7D7000AB5C3 /* SpeakNowTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0927EDAD1CC0A7D7000AB5C3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0927EDB61CC0A7D7000AB5C3 /* SpeakNowUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0927EDA81CC0A7D7000AB5C3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0927ED8E1CC0A7D7000AB5C3 /* SpeakNow */;
+			targetProxy = 0927EDA71CC0A7D7000AB5C3 /* PBXContainerItemProxy */;
+		};
+		0927EDB31CC0A7D7000AB5C3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0927ED8E1CC0A7D7000AB5C3 /* SpeakNow */;
+			targetProxy = 0927EDB21CC0A7D7000AB5C3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		0927ED961CC0A7D7000AB5C3 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0927ED971CC0A7D7000AB5C3 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		0927ED9E1CC0A7D7000AB5C3 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0927ED9F1CC0A7D7000AB5C3 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0927EDB81CC0A7D7000AB5C3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		0927EDB91CC0A7D7000AB5C3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0927EDBB1CC0A7D7000AB5C3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DD27051A0BC3B3DAB9802AD8 /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = SpeakNow/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cccfl.SpeakNow;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		0927EDBC1CC0A7D7000AB5C3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4C5439C363579C9403C3A464 /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = SpeakNow/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cccfl.SpeakNow;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		0927EDBE1CC0A7D7000AB5C3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = SpeakNowTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cccfl.SpeakNowTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpeakNow.app/SpeakNow";
+			};
+			name = Debug;
+		};
+		0927EDBF1CC0A7D7000AB5C3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = SpeakNowTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cccfl.SpeakNowTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpeakNow.app/SpeakNow";
+			};
+			name = Release;
+		};
+		0927EDC11CC0A7D7000AB5C3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = SpeakNowUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cccfl.SpeakNowUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = SpeakNow;
+			};
+			name = Debug;
+		};
+		0927EDC21CC0A7D7000AB5C3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = SpeakNowUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cccfl.SpeakNowUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = SpeakNow;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0927ED8A1CC0A7D7000AB5C3 /* Build configuration list for PBXProject "SpeakNow" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0927EDB81CC0A7D7000AB5C3 /* Debug */,
+				0927EDB91CC0A7D7000AB5C3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0927EDBA1CC0A7D7000AB5C3 /* Build configuration list for PBXNativeTarget "SpeakNow" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0927EDBB1CC0A7D7000AB5C3 /* Debug */,
+				0927EDBC1CC0A7D7000AB5C3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0927EDBD1CC0A7D7000AB5C3 /* Build configuration list for PBXNativeTarget "SpeakNowTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0927EDBE1CC0A7D7000AB5C3 /* Debug */,
+				0927EDBF1CC0A7D7000AB5C3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0927EDC01CC0A7D7000AB5C3 /* Build configuration list for PBXNativeTarget "SpeakNowUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0927EDC11CC0A7D7000AB5C3 /* Debug */,
+				0927EDC21CC0A7D7000AB5C3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		0927ED991CC0A7D7000AB5C3 /* SpeakNow.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0927ED9A1CC0A7D7000AB5C3 /* SpeakNow.xcdatamodel */,
+			);
+			currentVersion = 0927ED9A1CC0A7D7000AB5C3 /* SpeakNow.xcdatamodel */;
+			path = SpeakNow.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 0927ED871CC0A7D7000AB5C3 /* Project object */;
+}
