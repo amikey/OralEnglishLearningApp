@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		091875BA1CC2218C0084F9B4 /* Information.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091875B91CC2218C0084F9B4 /* Information.swift */; };
+		091875BD1CC2235F0084F9B4 /* ListeningPracticeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091875BC1CC2235F0084F9B4 /* ListeningPracticeVC.swift */; };
 		0927ED931CC0A7D7000AB5C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0927ED921CC0A7D7000AB5C3 /* AppDelegate.swift */; };
 		0927ED951CC0A7D7000AB5C3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0927ED941CC0A7D7000AB5C3 /* LoginViewController.swift */; };
 		0927ED981CC0A7D7000AB5C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0927ED961CC0A7D7000AB5C3 /* Main.storyboard */; };
@@ -16,6 +18,9 @@
 		0927EDAB1CC0A7D7000AB5C3 /* SpeakNowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0927EDAA1CC0A7D7000AB5C3 /* SpeakNowTests.swift */; };
 		0927EDB61CC0A7D7000AB5C3 /* SpeakNowUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0927EDB51CC0A7D7000AB5C3 /* SpeakNowUITests.swift */; };
 		0946B5071CC0E67200B69970 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0946B5061CC0E67200B69970 /* RegisterViewController.swift */; };
+		0965D4A11CC2323C0046AD15 /* PracticeExpandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0965D4A01CC2323C0046AD15 /* PracticeExpandCell.swift */; };
+		0965D4A31CC232840046AD15 /* PracticeExpandCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0965D4A21CC232840046AD15 /* PracticeExpandCell.xib */; };
+		0965D4A51CC242660046AD15 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0965D4A41CC242660046AD15 /* Extensions.swift */; };
 		3A20CCB6B10FB699C4337C9D /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B314C847AB64C9C343400349 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		091875B91CC2218C0084F9B4 /* Information.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Information.swift; sourceTree = "<group>"; };
+		091875BC1CC2235F0084F9B4 /* ListeningPracticeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListeningPracticeVC.swift; path = Prctice/ListeningPracticeVC.swift; sourceTree = "<group>"; };
 		0927ED8F1CC0A7D7000AB5C3 /* SpeakNow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeakNow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0927ED921CC0A7D7000AB5C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0927ED941CC0A7D7000AB5C3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -52,6 +59,9 @@
 		0927EDB51CC0A7D7000AB5C3 /* SpeakNowUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakNowUITests.swift; sourceTree = "<group>"; };
 		0927EDB71CC0A7D7000AB5C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0946B5061CC0E67200B69970 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		0965D4A01CC2323C0046AD15 /* PracticeExpandCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PracticeExpandCell.swift; path = Prctice/PracticeExpandCell.swift; sourceTree = "<group>"; };
+		0965D4A21CC232840046AD15 /* PracticeExpandCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PracticeExpandCell.xib; path = Prctice/PracticeExpandCell.xib; sourceTree = "<group>"; };
+		0965D4A41CC242660046AD15 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		4C5439C363579C9403C3A464 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B314C847AB64C9C343400349 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD27051A0BC3B3DAB9802AD8 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -83,6 +93,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		091875B81CC220E30084F9B4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				091875B91CC2218C0084F9B4 /* Information.swift */,
+				0965D4A41CC242660046AD15 /* Extensions.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		091875BB1CC2231E0084F9B4 /* Practice */ = {
+			isa = PBXGroup;
+			children = (
+				091875BC1CC2235F0084F9B4 /* ListeningPracticeVC.swift */,
+				0965D4A01CC2323C0046AD15 /* PracticeExpandCell.swift */,
+				0965D4A21CC232840046AD15 /* PracticeExpandCell.xib */,
+			);
+			name = Practice;
+			sourceTree = "<group>";
+		};
 		0927ED861CC0A7D7000AB5C3 = {
 			isa = PBXGroup;
 			children = (
@@ -108,6 +137,8 @@
 		0927ED911CC0A7D7000AB5C3 /* SpeakNow */ = {
 			isa = PBXGroup;
 			children = (
+				091875BB1CC2231E0084F9B4 /* Practice */,
+				091875B81CC220E30084F9B4 /* Model */,
 				0927ED921CC0A7D7000AB5C3 /* AppDelegate.swift */,
 				0946B5051CC0E50D00B69970 /* Login */,
 				0927ED961CC0A7D7000AB5C3 /* Main.storyboard */,
@@ -275,6 +306,7 @@
 			files = (
 				0927EDA01CC0A7D7000AB5C3 /* LaunchScreen.storyboard in Resources */,
 				0927ED9D1CC0A7D7000AB5C3 /* Assets.xcassets in Resources */,
+				0965D4A31CC232840046AD15 /* PracticeExpandCell.xib in Resources */,
 				0927ED981CC0A7D7000AB5C3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -349,8 +381,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0927ED951CC0A7D7000AB5C3 /* LoginViewController.swift in Sources */,
+				091875BD1CC2235F0084F9B4 /* ListeningPracticeVC.swift in Sources */,
 				0927ED931CC0A7D7000AB5C3 /* AppDelegate.swift in Sources */,
+				0965D4A51CC242660046AD15 /* Extensions.swift in Sources */,
+				0965D4A11CC2323C0046AD15 /* PracticeExpandCell.swift in Sources */,
 				0927ED9B1CC0A7D7000AB5C3 /* SpeakNow.xcdatamodeld in Sources */,
+				091875BA1CC2218C0084F9B4 /* Information.swift in Sources */,
 				0946B5071CC0E67200B69970 /* RegisterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
