@@ -23,6 +23,7 @@ class ListeningPracticeVC: UIViewController ,FlexibleTableViewDelegate,UISearchR
         let nib = UINib(nibName: "PracticeExpandCell", bundle: nil)
         tableView.registerNib(nib, forCellReuseIdentifier: "PracticeExpandCell")
         self.tableView.tableFooterView = UIView()
+        tableView.backgroundColor = UIColor.clearColor()
         view.addSubview(tableView)
 
         searchController = UISearchController(searchResultsController: nil)
@@ -52,6 +53,8 @@ class ListeningPracticeVC: UIViewController ,FlexibleTableViewDelegate,UISearchR
     }
     func tableView(tableView: FlexibleTableView, cellForSubRowAtIndexPath indexPath: FlexibleIndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCellWithIdentifier("PracticeExpandCell") as! PracticeExpandCell
+        cell.backgroundColor = UIColor.clearColor()
+//        cell.contentView.alpha = 0.5;
         return cell
     }
     func tableView(tableView: FlexibleTableView, heightForSubRowAtIndexPath indexPath: NSIndexPath) -> CGFloat{
