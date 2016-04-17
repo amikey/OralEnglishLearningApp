@@ -19,7 +19,6 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -35,6 +34,25 @@ class LoginViewController: UIViewController {
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         userLabel.resignFirstResponder()
         passwdLabel.resignFirstResponder()
+        down()
+    }
+
+
+    
+    @IBAction func up(sender: UIView) {
+        let dis = sHeight - Button.frame.origin.y-Button.frame.size.height-216.0-10
+        if dis<0.0{
+            UIView.animateWithDuration(0.3){
+                self.view.frame=CGRect(x: 0,y: dis,width: sWidth,height: sHeight)
+            }
+        }
+
+    }
+
+    func down() {
+        UIView.animateWithDuration(0.3){
+            self.view.frame=CGRect(x: 0,y: 0,width: sWidth,height: sHeight)
+        }
     }
 
 }
