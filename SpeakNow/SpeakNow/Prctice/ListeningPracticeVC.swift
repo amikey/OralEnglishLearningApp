@@ -9,11 +9,12 @@
 import UIKit
 import FlexibleTableView
 
-class ListeningPracticeVC: UIViewController ,FlexibleTableViewDelegate {
+class ListeningPracticeVC: UIViewController ,FlexibleTableViewDelegate,UISearchResultsUpdating {
 
 
 
     var tableView: FlexibleTableView!
+    var searchController:UISearchController!
 
 
     override func viewDidLoad() {
@@ -23,6 +24,15 @@ class ListeningPracticeVC: UIViewController ,FlexibleTableViewDelegate {
         tableView.registerNib(nib, forCellReuseIdentifier: "PracticeExpandCell")
         self.tableView.tableFooterView = UIView()
         view.addSubview(tableView)
+
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        tableView.tableHeaderView = searchController.searchBar
+        self.tableView.contentOffset = CGPoint(x: 0.0, y: searchController.searchBar.frame.size.height)
+
+
     }
 
 
@@ -47,6 +57,11 @@ class ListeningPracticeVC: UIViewController ,FlexibleTableViewDelegate {
     func tableView(tableView: FlexibleTableView, heightForSubRowAtIndexPath indexPath: NSIndexPath) -> CGFloat{
         return 100
     }
+
+    func updateSearchResultsForSearchController(searchController: UISearchController){
+
+    }
+
 
 
 }
