@@ -22,3 +22,10 @@ extension UIColor {
         self.init(red:(Hex >> 16) & 0xff, green:(Hex >> 8) & 0xff, blue:Hex & 0xff)
     }
 }
+
+
+func getVC(x:String)->UIViewController{
+    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    let VC = storyboard.instantiateViewControllerWithIdentifier(x)
+    return VC
+}

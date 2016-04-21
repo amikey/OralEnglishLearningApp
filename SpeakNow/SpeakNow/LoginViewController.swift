@@ -7,13 +7,13 @@
 //
 
 import UIKit
-import TextFieldEffects
+import KVNProgress
 
 
 class LoginViewController: UIViewController {
 
-    @IBOutlet weak var userLabel: HoshiTextField!
-    @IBOutlet weak var passwdLabel: HoshiTextField!
+    @IBOutlet weak var userLabel: UITextField!
+    @IBOutlet weak var passwdLabel: UITextField!
     @IBOutlet weak var Button: UIButton!
 
     override func viewDidLoad() {
@@ -28,7 +28,17 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func LoginTap(sender: AnyObject) {
+//        KVNProgress.showWithStatus("登录中")
+        inf.login(userLabel.text!,password:passwdLabel.text!){
+            inf.getProfile(){
+                inf.username = self.userLabel.text!
+                inf.pwd = self.passwdLabel.text!
+                inf.save()
+//                KVNProgress.dismiss()
+                (UIApplication.sharedApplication().delegate as! AppDelegate).changeRootVC(getVC("mainTabVC"))
 
+            }
+        }
     }
 
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
