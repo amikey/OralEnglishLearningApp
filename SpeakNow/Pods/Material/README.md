@@ -57,9 +57,9 @@ Material is a growing project and will encounter changes throughout its developm
 
 To help template your project, checkout our latest addition, Material Sticker Sheet.
 
-![MaterialStickerSheet](http://www.materialkit.io/material/images/stickers/material_iso_1.png)
+![MaterialStickerSheet](http://www.cosmicmind.io/MK/material_iso_1.png)
 
-[Purchase the Sticker Sheet](http://www.materialup.com/posts/material-design-sticker-sheets)
+[Get the Sticker Sheet](http://www.materialup.com/posts/material-design-sticker-sheets)
 
 ## Quick Access  
 
@@ -139,14 +139,14 @@ To help template your project, checkout our latest addition, Material Sticker Sh
 <a name="materialcolor"></a>
 #### MaterialColor
 
-MaterialColor is a complete Material Design color library. It uses base color values that expand to a range of lighter and darker shades, with the addition of accents.
+MaterialColor is a complete Material Design color library available within Material. To help with color choices, visit [MaterialColor.io](http://www.materialcolor.io).
 
 ![MaterialMaterialColorPalette](http://www.cosmicmind.io/MK/MaterialMaterialColorPalette.png)
 
 <a name="materialicon"></a>
 #### MaterialIcon
 
-MaterialIcon is a library of Google and CosmicMind icons that are available for use within your iOS applications.
+MaterialIcon is a library of Google and CosmicMind icons that are available for use within your iOS applications. To help with icon choices, visit [MaterialIcon.io](http://www.materialicon.io).
 
 ![MaterialMaterialIcon](http://www.cosmicmind.io/MK/MaterialMaterialIcon.png)
 
@@ -396,6 +396,7 @@ Add a new dimension of interactivity with CaptureView. CaptureView is a fully fu
 * Bottom Sheets
 * Dialogs
 * Collapsing Toolbar
+* Pull to Refresh
 * RTL Support
 * Advanced Camera / Audio Toolset & Views
 * More Examples

@@ -96,6 +96,6 @@
         </view>
     </objects>
     <resources>
-        <image name="login_button" width="200" height="200"/>
+        <image name="login_button" width="201" height="200"/>
     </resources>
 </document>

@@ -69,6 +69,7 @@ public class BottomNavigationController : UITabBarController, UITabBarController
 	*/
 	public required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
+		prepareView()
 	}
 	
 	/**
@@ -78,6 +79,7 @@ public class BottomNavigationController : UITabBarController, UITabBarController
 	*/
 	public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
 		super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+		prepareView()
 	}
 	
 	public init() {
@@ -141,8 +143,9 @@ public class BottomNavigationController : UITabBarController, UITabBarController
 	/// Prepares the tabBar.
 	private func prepareTabBar() {
 		tabBar.depth = .Depth1
+		let image: UIImage? = UIImage.imageWithColor(MaterialColor.clear, size: CGSizeMake(1, 1))
+		tabBar.shadowImage = image
+		tabBar.backgroundImage = image
 		tabBar.backgroundColor = MaterialColor.white
-		tabBar.shadowImage = UIImage.imageWithColor(MaterialColor.clear, size: CGSizeMake(1, 1))
-		tabBar.backgroundImage = UIImage()
 	}
 }

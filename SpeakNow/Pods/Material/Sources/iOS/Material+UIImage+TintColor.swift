@@ -30,20 +30,29 @@
 
 import UIKit
 
-public class RaisedButton : MaterialButton {
+public extension UIImage {
 	/**
-	Prepares the view instance when intialized. When subclassing,
-	it is recommended to override the prepareView method
-	to initialize property values and other setup operations.
-	The super.prepareView method should always be called immediately
-	when subclassing.
+	Creates a new image with the passed in color.
+	- Parameter color: The UIColor to create the image from.
+	- Returns: A UIImage that is the color passed in.
 	*/
-	public override func prepareView() {
-		super.prepareView()
-		depth = .Depth1
-		cornerRadiusPreset = .Radius1
-		contentEdgeInsetsPreset = .WideRectangle3
-		backgroundColor = MaterialColor.white
-		pulseColor = MaterialColor.blue.accent3
+	public func tintWithColor(color: UIColor) -> UIImage {
+		UIGraphicsBeginImageContextWithOptions(size, false, MaterialDevice.scale)
+		let context = UIGraphicsGetCurrentContext()
+
+		CGContextScaleCTM(context, 1.0, -1.0)
+		CGContextTranslateCTM(context, 0.0, -size.height)
+		
+		CGContextSetBlendMode(context, .Multiply)
+		
+		let rect = CGRectMake(0, 0, size.width, size.height)
+		CGContextClipToMask(context, rect, CGImage)
+		color.setFill()
+		CGContextFillRect(context, rect)
+		
+		let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()
+		UIGraphicsEndImageContext()
+		return image
 	}
+	
 }

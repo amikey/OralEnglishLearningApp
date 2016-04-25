@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 import Alamofire
 import KeychainSwift
-import PKHUD
 import KVNProgress
 
 
@@ -73,6 +72,12 @@ class Information:NSObject{
             self.nickname = res["nickname"]as!String
             completionHandler?()
         }
+    }
+
+    func logout(){
+        keychain.clear()
+        (UIApplication.sharedApplication().delegate as! AppDelegate).changeRootVC(getVC("LoginNav"))
+    
     }
 
     func save(){

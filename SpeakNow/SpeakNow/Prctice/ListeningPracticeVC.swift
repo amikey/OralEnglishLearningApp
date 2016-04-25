@@ -16,6 +16,10 @@ class ListeningPracticeVC: UIViewController ,FlexibleTableViewDelegate,UISearchR
     var tableView: FlexibleTableView!
     var searchController:UISearchController!
 
+    @IBAction func logout(sender: AnyObject) {
+
+        inf.logout()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

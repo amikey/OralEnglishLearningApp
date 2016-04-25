@@ -11,7 +11,7 @@ import Material
 import Alamofire
 import KVNProgress
 
-class RegisterViewController: UIViewController {
+class RegisterViewController: UIViewController ,TextFieldDelegate{
 
     @IBOutlet weak var username: TextField!
     @IBOutlet weak var pwd: TextField!
@@ -23,6 +23,16 @@ class RegisterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setErrorNotice()
+    }
+
+    func setErrorNotice(){
+        username.set_detailLabel("用户名长度不得少于3位")
+        pwd.set_detailLabel("密码不得少于6位")
+        doubleped.set_detailLabel("两次密码输入不一致")
+        nickname.set_detailLabel("昵称不合法")
+        mail.set_detailLabel("邮箱不合法")
+
     }
 
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -65,10 +75,11 @@ class RegisterViewController: UIViewController {
         KVNProgress.showWithStatus("请稍后")
 
         request(req).responseJSON(){
-            s in guard let res = s.result.value else{return}
+            s in guard let res = s.result.value else{KVNProgress.showError();return}
             if res["message"]as!String == "注册成功"{
                 inf.reflashHeader(res["token"]as!String)
-                self.presentViewController(getVC("mainTabVC"), animated: true, completion: nil)
+                KVNProgress.dismiss()
+                (UIApplication.sharedApplication().delegate as!AppDelegate).changeRootVC(getVC("mainTabVC"))
             }else{
                 KVNProgress.showErrorWithStatus(res["message"]as!String)
                 print(res["message"]as!String)
@@ -77,6 +88,53 @@ class RegisterViewController: UIViewController {
         }
     }
 
+    @IBAction func textfieldVauleChange(sender: AnyObject) {
+        (sender as! TextField).detailLabelHidden = check(sender as! UITextField)
+    }
+
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        let res = check(textField)
+        (textField as! TextField).detailLabelHidden = res
+        if res{
+            switch textField.tag {
+            case 1:pwd.becomeFirstResponder()
+            case 2:doubleped.becomeFirstResponder()
+            case 3:nickname.becomeFirstResponder()
+            case 4:mail.becomeFirstResponder()
+            default:break
+            }
+        }
+        return true
+    }
 
 
+
+    func check(textField: UITextField)->Bool{
+        switch textField.tag {
+        case 1:
+            return textField.text?.characters.count > 3
+        case 2:
+            return textField.text?.characters.count >= 6
+        case 3:
+            return textField.text == pwd.text
+        case 4:
+            return textField.text?.characters.count > 3
+        case 5:
+            return (textField.text?.isEmail())!
+        default:
+            return false
+        }
+    }
+
+
+}
+
+
+extension TextField{
+    func set_detailLabel(x:String){
+        self.detailLabel.text = x
+        self.detailLabelActiveColor = MaterialColor.red.accent3
+        self.detailLabel.font = RobotoFont.regularWithSize(10)
+        self.detailLabelAutoHideEnabled = false
+    }
 }
