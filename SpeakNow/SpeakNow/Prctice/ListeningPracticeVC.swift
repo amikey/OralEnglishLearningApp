@@ -61,9 +61,22 @@ class ListeningPracticeVC: UIViewController ,FlexibleTableViewDelegate,UISearchR
 //        cell.contentView.alpha = 0.5;
         return cell
     }
+
+
     func tableView(tableView: FlexibleTableView, heightForSubRowAtIndexPath indexPath: NSIndexPath) -> CGFloat{
         return 100
     }
+
+
+    func tableView(tableView: FlexibleTableView, didSelectSubRowAtIndexPath indexPath: NSIndexPath){
+        let vc = getVC("selectTogo")
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(getVC("selectTogo"), animated: true)
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+
+
+
 
     func updateSearchResultsForSearchController(searchController: UISearchController){
 
