@@ -57,8 +57,6 @@ class ListeningPracticeVC: UIViewController ,FlexibleTableViewDelegate,UISearchR
     }
     func tableView(tableView: FlexibleTableView, cellForSubRowAtIndexPath indexPath: FlexibleIndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCellWithIdentifier("PracticeExpandCell") as! PracticeExpandCell
-        cell.backgroundColor = UIColor.clearColor()
-//        cell.contentView.alpha = 0.5;
         return cell
     }
 
@@ -69,8 +67,9 @@ class ListeningPracticeVC: UIViewController ,FlexibleTableViewDelegate,UISearchR
 
 
     func tableView(tableView: FlexibleTableView, didSelectSubRowAtIndexPath indexPath: NSIndexPath){
-        let vc = getVC("selectTogo")
-        vc.hidesBottomBarWhenPushed = true
+        let backItem = UIBarButtonItem()
+        backItem.title = ""
+        navigationItem.backBarButtonItem = backItem
         navigationController?.pushViewController(getVC("selectTogo"), animated: true)
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
