@@ -89,6 +89,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods/KVNProgress.framework"
   install_framework "Pods/KeychainSwift.framework"
   install_framework "Pods/Material.framework"
+  install_framework "Pods/SwiftyJSON.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/Alamofire.framework"
@@ -96,4 +97,5 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/KVNProgress.framework"
   install_framework "Pods/KeychainSwift.framework"
   install_framework "Pods/Material.framework"
+  install_framework "Pods/SwiftyJSON.framework"
 fi

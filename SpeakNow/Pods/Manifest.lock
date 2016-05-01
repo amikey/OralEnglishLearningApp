@@ -4,6 +4,7 @@ PODS:
   - KeychainSwift (3.0.13)
   - KVNProgress (2.2.4)
   - Material (1.39.17)
+  - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
   - Alamofire (~> 3.0)
@@ -11,6 +12,7 @@ DEPENDENCIES:
   - KeychainSwift (~> 3.0)
   - KVNProgress
   - Material (~> 1.0)
+  - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
@@ -18,5 +20,6 @@ SPEC CHECKSUMS:
   KeychainSwift: 3bda518adb1ab386da0a9a1de93b561ee2c9322b
   KVNProgress: 541edcea5a1fef592aceac8d791a410d38cb499d
   Material: eccc5afdac89e10aa7a635ad34d6c3564387bfd3
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
 COCOAPODS: 0.39.0
