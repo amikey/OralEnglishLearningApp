@@ -8,6 +8,8 @@
 
 import UIKit
 import FlexibleTableView
+import SwiftyJSON
+import Alamofire
 
 class ListeningPracticeVC: UIViewController ,FlexibleTableViewDelegate,UISearchResultsUpdating {
 
@@ -15,12 +17,15 @@ class ListeningPracticeVC: UIViewController ,FlexibleTableViewDelegate,UISearchR
 
     var tableView: FlexibleTableView!
     var searchController:UISearchController!
+    
+    var data:[JSON] = [JSON]()
 
     @IBAction func logout(sender: AnyObject) {
 
         inf.logout()
     }
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView = FlexibleTableView(frame:  CGRect(x: 0, y: 64, width: sWidth, height: sHeight-64-tabBarController!.tabBar.bounds.size.height), delegate: self)
@@ -40,6 +45,10 @@ class ListeningPracticeVC: UIViewController ,FlexibleTableViewDelegate,UISearchR
 
     }
 
+    func getData(){
+        request(.GET, <#T##URLString: URLStringConvertible##URLStringConvertible#>)
+        
+    }
 
 
     func tableView(tableView: FlexibleTableView, numberOfRowsInSection section: Int) -> Int{

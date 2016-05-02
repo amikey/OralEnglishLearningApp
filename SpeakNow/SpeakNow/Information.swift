@@ -84,6 +84,11 @@ class Information:NSObject{
         keychain.set(username, forKey: "username")
         keychain.set(pwd, forKey: "password")
     }
+    
+    
+    func requestWithHeader(method: Alamofire.Method, URLString: URLStringConvertible, parameters: [String : AnyObject]?) -> Request {
+        return request(method, URLString,headers: headers,parameters:parameters)
+    }
 
 }
 
