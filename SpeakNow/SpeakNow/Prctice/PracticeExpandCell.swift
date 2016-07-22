@@ -12,6 +12,8 @@ class PracticeExpandCell:UITableViewCell{
 
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var detail: UILabel!
+    @IBOutlet weak var download: UILabel!
+    @IBOutlet weak var favorite: UILabel!
 
 
     

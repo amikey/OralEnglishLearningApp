@@ -17,7 +17,7 @@ import UIKit
     optional func tableView(tableView: FlexibleTableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
     optional func tableView(tableView: FlexibleTableView, heightForSubRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
     optional func tableView(tableView: FlexibleTableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
-    optional func tableView(tableView: FlexibleTableView, didSelectSubRowAtIndexPath indexPath: NSIndexPath)
+    optional func tableView(tableView: FlexibleTableView, didSelectSubRowAtIndexPath indexPath: FlexibleIndexPath)
     optional func tableView(tableView: FlexibleTableView, heightForHeaderInSection section: Int) -> CGFloat
     optional func tableView(tableView: FlexibleTableView, heightForFooterInSection section: Int) -> CGFloat
     optional func tableView(tableView: FlexibleTableView, titleForHeaderInSection section: Int) -> String?
@@ -122,7 +122,7 @@ public class FlexibleTableView : UITableView, UITableViewDelegate, UITableViewDa
                 if (correspondingIndexPath.subRow == 0) {
                     flexibleTableViewDelegate.tableView!(self, didSelectRowAtIndexPath:correspondingIndexPath.ns)
                 } else {
-                    flexibleTableViewDelegate.tableView!(self, didSelectSubRowAtIndexPath:correspondingIndexPath.ns)
+                    flexibleTableViewDelegate.tableView!(self, didSelectSubRowAtIndexPath:correspondingIndexPath)
                 }
             }
             
@@ -132,7 +132,7 @@ public class FlexibleTableView : UITableView, UITableViewDelegate, UITableViewDa
             if flexibleTableViewDelegate.respondsToSelector("tableView:didSelectSubRowAtIndexPath:"){
                 let correspondingIndexPath = correspondingIndexPathForRowAtIndexPath(indexPath)
                 
-                flexibleTableViewDelegate.tableView!(self, didSelectSubRowAtIndexPath:correspondingIndexPath.ns)
+                flexibleTableViewDelegate.tableView!(self, didSelectSubRowAtIndexPath:correspondingIndexPath)
             }
         }
     }

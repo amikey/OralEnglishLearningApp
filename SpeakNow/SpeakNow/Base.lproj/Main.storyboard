@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="rqq-0B-rdy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="rqq-0B-rdy">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -238,6 +238,99 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E5l-bY-uGi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1111.5" y="395.5"/>
+        </scene>
+        <!--Listening View Controller-->
+        <scene sceneID="CRc-Fl-Mg8">
+            <objects>
+                <viewController id="R2r-XM-rfp" customClass="ListeningViewController" customModule="SpeakNow" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="FF2-D7-Jsx"/>
+                        <viewControllerLayoutGuide type="bottom" id="9bu-v3-nir"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hM8-LN-Xfz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="NMr-6y-b2a">
+                                <rect key="frame" x="30" y="629" width="317" height="31"/>
+                                <color key="minimumTrackTintColor" red="0.96862745100000003" green="0.39607843139999999" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="silder_move:" destination="R2r-XM-rfp" eventType="valueChanged" id="peY-6l-RjW"/>
+                                </connections>
+                            </slider>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="orn-NG-erg">
+                                <rect key="frame" x="0.0" y="620" width="375" height="1"/>
+                                <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cm_audio_white_2x.png" translatesAutoresizingMaskIntoConstraints="NO" id="Jh2-63-9Z7">
+                                <rect key="frame" x="5" y="630" width="24" height="27"/>
+                                <color key="backgroundColor" red="0.96862745100000003" green="0.39607843139999999" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cm_audio_white_2x.png" translatesAutoresizingMaskIntoConstraints="NO" id="lPC-r0-Hge">
+                                <rect key="frame" x="346" y="630" width="24" height="27"/>
+                                <color key="backgroundColor" red="0.97254901959999995" green="0.47058823529999999" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="224" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vqV-4A-RTC">
+                                <rect key="frame" x="0.0" y="64" width="375" height="557"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="224" id="oiw-RY-cu0">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="224"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oiw-RY-cu0" id="dM4-Uz-iPZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="223"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GKN-Qs-ayK">
+                                                    <rect key="frame" x="8" y="8" width="359" height="207"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b9b-Ll-u9X">
+                                                            <rect key="frame" x="8" y="8" width="338" height="191"/>
+                                                            <string key="text">1.  Today’s program is all about eyes. When it comes to relationships, people’s eyes can be a window into their hearts. This means that their eyes can tell a lot about how they feel. We will tell a story about a man and woman who are teachers at the same school. The woman is interested in the man. She uses many methods to catch his eye, or get him to notice her. Once he sets eyes on her, or sees her, she might try to get him interested in her .</string>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <navigationBar contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="0Nh-uA-RYW">
+                                <rect key="frame" x="-4" y="0.0" width="383" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="MWh-dH-8D0"/>
+                                </constraints>
+                                <color key="barTintColor" red="1" green="0.40000000000000002" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="textShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Title" id="eWb-NF-cGJ"/>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="0Nh-uA-RYW" firstAttribute="top" secondItem="hM8-LN-Xfz" secondAttribute="topMargin" id="7M3-nb-1dA"/>
+                            <constraint firstItem="0Nh-uA-RYW" firstAttribute="leading" secondItem="hM8-LN-Xfz" secondAttribute="leadingMargin" constant="-20" id="IXe-TG-nlQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0Nh-uA-RYW" secondAttribute="trailing" constant="-20" id="l2p-Cz-Tb1"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="silder" destination="NMr-6y-b2a" id="xzW-Vd-xWp"/>
+                        <outlet property="tableview" destination="vqV-4A-RTC" id="385-sm-qZi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TvH-oa-I8T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3006.5" y="1240.5"/>
         </scene>
         <!--资料详情-->
         <scene sceneID="NEm-6G-opI">
@@ -549,6 +642,7 @@
     </scenes>
     <resources>
         <image name="cet4" width="400" height="666"/>
+        <image name="cm_audio_white_2x.png" width="48" height="48"/>
         <image name="download-house" width="284" height="284"/>
         <image name="listen_bg" width="365" height="146"/>
         <image name="login_bg" width="369" height="656"/>

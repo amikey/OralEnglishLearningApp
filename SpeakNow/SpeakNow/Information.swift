@@ -11,6 +11,7 @@ import UIKit
 import Alamofire
 import KeychainSwift
 import KVNProgress
+import SwiftyJSON
 
 
 let inf=Information()
@@ -36,6 +37,7 @@ class Information:NSObject{
     var nickname:String = ""
 
     func reflashHeader(token:String){
+        print(token)
         self.headers = ["Authorization": "Bearer \(token)"]
     }
 
@@ -47,7 +49,7 @@ class Information:NSObject{
 
     func login(username:String,password:String,completionHandler:(()->())?=nil) {
         let data = ["username":username,"password":password,]
-        let req = NSMutableURLRequest(URL: NSURL(string: "http://115.28.241.122/api/login")!)
+        let req = NSMutableURLRequest(URL: NSURL(string: "http://tx.razord.top/api/login")!)
         req.HTTPMethod = "POST"
         req.setValue("application/json", forHTTPHeaderField: "Content-Type")
         req.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(data, options: [])
@@ -65,7 +67,7 @@ class Information:NSObject{
     }
 
     func getProfile(completionHandler:(()->())?=nil){
-        request(.GET, "http://115.28.241.122/api/profile",headers: headers).responseJSON{
+        request(.GET, "http://tx.razord.top/api/profile",headers: headers).responseJSON{
             s in guard let res = s.result.value else{return}
             self.uid = res["id"]as!String
             self.email = res["email"]as!String
@@ -86,8 +88,20 @@ class Information:NSObject{
     }
     
     
-    func requestWithHeader(method: Alamofire.Method, URLString: URLStringConvertible, parameters: [String : AnyObject]?) -> Request {
-        return request(method, URLString,headers: headers,parameters:parameters)
+    func requestWithHeader(method: Alamofire.Method, URLString: String, parameters: [String : AnyObject]?=nil,handler:((JSON)->())? = nil ) {
+        let url = "http://tx.razord.top/api"+URLString
+        print(url)
+        request(method, url,headers: headers,parameters:parameters).responseJSON{
+            s in guard let res = s.result.value else{KVNProgress.showError();return}
+            if s.response?.statusCode == 401{
+                self.login(){
+                    self.requestWithHeader(method, URLString: URLString,parameters: parameters,handler: handler)
+                }
+                return
+            }
+            let s = JSON(res)
+            handler?(s)
+        }
     }
 
 }

@@ -18,6 +18,7 @@
 		0927EDAB1CC0A7D7000AB5C3 /* SpeakNowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0927EDAA1CC0A7D7000AB5C3 /* SpeakNowTests.swift */; };
 		0927EDB61CC0A7D7000AB5C3 /* SpeakNowUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0927EDB51CC0A7D7000AB5C3 /* SpeakNowUITests.swift */; };
 		0946B5071CC0E67200B69970 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0946B5061CC0E67200B69970 /* RegisterViewController.swift */; };
+		09603A931D38BBBF0083C3C6 /* ListeningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09603A921D38BBBF0083C3C6 /* ListeningViewController.swift */; };
 		0965D4A11CC2323C0046AD15 /* PracticeExpandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0965D4A01CC2323C0046AD15 /* PracticeExpandCell.swift */; };
 		0965D4A31CC232840046AD15 /* PracticeExpandCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0965D4A21CC232840046AD15 /* PracticeExpandCell.xib */; };
 		0965D4A51CC242660046AD15 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0965D4A41CC242660046AD15 /* Extensions.swift */; };
@@ -61,6 +62,7 @@
 		0927EDB51CC0A7D7000AB5C3 /* SpeakNowUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakNowUITests.swift; sourceTree = "<group>"; };
 		0927EDB71CC0A7D7000AB5C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0946B5061CC0E67200B69970 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		09603A921D38BBBF0083C3C6 /* ListeningViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListeningViewController.swift; sourceTree = "<group>"; };
 		0965D4A01CC2323C0046AD15 /* PracticeExpandCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PracticeExpandCell.swift; path = Prctice/PracticeExpandCell.swift; sourceTree = "<group>"; };
 		0965D4A21CC232840046AD15 /* PracticeExpandCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PracticeExpandCell.xib; path = Prctice/PracticeExpandCell.xib; sourceTree = "<group>"; };
 		0965D4A41CC242660046AD15 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				0965D4A21CC232840046AD15 /* PracticeExpandCell.xib */,
 				09CAB9421CCFB1D60077FBE3 /* ListenDataDetailViewController.swift */,
 				09CAB9441CCFB4950077FBE3 /* ListenTabBar.swift */,
+				09603A921D38BBBF0083C3C6 /* ListeningViewController.swift */,
 			);
 			name = Practice;
 			sourceTree = "<group>";
@@ -395,6 +398,7 @@
 				09CAB9451CCFB4950077FBE3 /* ListenTabBar.swift in Sources */,
 				091875BA1CC2218C0084F9B4 /* Information.swift in Sources */,
 				09CAB9431CCFB1D60077FBE3 /* ListenDataDetailViewController.swift in Sources */,
+				09603A931D38BBBF0083C3C6 /* ListeningViewController.swift in Sources */,
 				0946B5071CC0E67200B69970 /* RegisterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

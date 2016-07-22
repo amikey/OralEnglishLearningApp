@@ -10,6 +10,7 @@ import UIKit
 import FlexibleTableView
 import SwiftyJSON
 import Alamofire
+import KVNProgress
 
 class ListeningPracticeVC: UIViewController ,FlexibleTableViewDelegate,UISearchResultsUpdating {
 
@@ -18,7 +19,7 @@ class ListeningPracticeVC: UIViewController ,FlexibleTableViewDelegate,UISearchR
     var tableView: FlexibleTableView!
     var searchController:UISearchController!
     
-    var data:[JSON] = [JSON]()
+    var data:JSON = JSON("")
 
     @IBAction func logout(sender: AnyObject) {
 
@@ -42,30 +43,44 @@ class ListeningPracticeVC: UIViewController ,FlexibleTableViewDelegate,UISearchR
         tableView.tableHeaderView = searchController.searchBar
         self.tableView.contentOffset = CGPoint(x: 0.0, y: searchController.searchBar.frame.size.height)
 
+        getData()
+
 
     }
 
     func getData(){
-        request(.GET, <#T##URLString: URLStringConvertible##URLStringConvertible#>)
+        KVNProgress.showWithStatus("loading")
+        inf.requestWithHeader(.GET, URLString: "/audios"){
+            res in
+            self.data = res
+            KVNProgress.dismiss()
+            self.tableView.refreshData()
+            print(res)
+        }
         
     }
 
 
     func tableView(tableView: FlexibleTableView, numberOfRowsInSection section: Int) -> Int{
-        return 4
+        return data.dictionaryValue.count
+
     }
     func tableView(tableView: FlexibleTableView, numberOfSubRowsAtIndexPath indexPath: NSIndexPath) -> Int{
-        return 6
+//        let row = indexPath.row
+        return data["college"].arrayValue.count
     }
     func tableView(tableView: FlexibleTableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> FlexibleTableViewCell{
         let cell = FlexibleTableViewCell()
-        cell.textLabel?.text = "2019年全国1卷"
+        cell.textLabel?.text = "大学"
         cell.backgroundColor = UIColor(red: 250, green: 250, blue: 250, alpha: 1.0)
         cell.expandable = true
         return cell
     }
     func tableView(tableView: FlexibleTableView, cellForSubRowAtIndexPath indexPath: FlexibleIndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCellWithIdentifier("PracticeExpandCell") as! PracticeExpandCell
+        cell.title.text = data["college"][indexPath.subRow-1]["name"].stringValue
+        cell.download.text = "\(data["college"][indexPath.subRow-1]["download"].intValue)"
+        cell.favorite.text = "\(data["college"][indexPath.subRow-1]["favorites"].intValue)"
         return cell
     }
 
@@ -75,12 +90,15 @@ class ListeningPracticeVC: UIViewController ,FlexibleTableViewDelegate,UISearchR
     }
 
 
-    func tableView(tableView: FlexibleTableView, didSelectSubRowAtIndexPath indexPath: NSIndexPath){
+    func tableView(tableView: FlexibleTableView, didSelectSubRowAtIndexPath indexPath: FlexibleIndexPath){
         let backItem = UIBarButtonItem()
         backItem.title = ""
         navigationItem.backBarButtonItem = backItem
-        navigationController?.pushViewController(getVC("selectTogo"), animated: true)
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        let vc = getVC("selectTogo") as! ListenDataDetailViewController
+        vc.listen_id = data["college"][indexPath.subRow-1]["id"].stringValue
+        navigationController?.pushViewController(vc, animated: true)
+
+//        tableView.deselectRowAtIndexPath(indexPath., animated: true)
     }
 
 
