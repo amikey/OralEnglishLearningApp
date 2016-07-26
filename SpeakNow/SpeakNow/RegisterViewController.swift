@@ -76,8 +76,7 @@ class RegisterViewController: UIViewController ,TextFieldDelegate{
 
         request(req).responseJSON(){
             s in guard let res = s.result.value else{KVNProgress.showError();return}
-            print(res)
-            if res["message"]as!String == "注册成功"{
+            if  s.response?.statusCode == 401{
                 inf.reflashHeader(res["token"]as!String)
                 KVNProgress.dismiss()
                 (UIApplication.sharedApplication().delegate as!AppDelegate).changeRootVC(getVC("mainTabVC"))

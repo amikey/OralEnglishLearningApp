@@ -8,3 +8,5 @@ pod "FlexibleTableView"
 pod 'Material', '~> 1.0'
 pod 'KVNProgress'
 pod 'SwiftyJSON'
+pod 'MJRefresh'
+pod 'Kingfisher', '~> 2.0'

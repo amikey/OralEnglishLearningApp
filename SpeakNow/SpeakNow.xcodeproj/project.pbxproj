@@ -22,6 +22,7 @@
 		0965D4A11CC2323C0046AD15 /* PracticeExpandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0965D4A01CC2323C0046AD15 /* PracticeExpandCell.swift */; };
 		0965D4A31CC232840046AD15 /* PracticeExpandCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0965D4A21CC232840046AD15 /* PracticeExpandCell.xib */; };
 		0965D4A51CC242660046AD15 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0965D4A41CC242660046AD15 /* Extensions.swift */; };
+		09852B8E1D470CFC00B0E749 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09852B8D1D470CFC00B0E749 /* SettingViewController.swift */; };
 		09CAB9431CCFB1D60077FBE3 /* ListenDataDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAB9421CCFB1D60077FBE3 /* ListenDataDetailViewController.swift */; };
 		09CAB9451CCFB4950077FBE3 /* ListenTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAB9441CCFB4950077FBE3 /* ListenTabBar.swift */; };
 		3A20CCB6B10FB699C4337C9D /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B314C847AB64C9C343400349 /* Pods.framework */; };
@@ -66,6 +67,7 @@
 		0965D4A01CC2323C0046AD15 /* PracticeExpandCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PracticeExpandCell.swift; path = Prctice/PracticeExpandCell.swift; sourceTree = "<group>"; };
 		0965D4A21CC232840046AD15 /* PracticeExpandCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PracticeExpandCell.xib; path = Prctice/PracticeExpandCell.xib; sourceTree = "<group>"; };
 		0965D4A41CC242660046AD15 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		09852B8D1D470CFC00B0E749 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingViewController.swift; path = setting/SettingViewController.swift; sourceTree = "<group>"; };
 		09CAB9421CCFB1D60077FBE3 /* ListenDataDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListenDataDetailViewController.swift; path = Pratice/ListenDataDetailViewController.swift; sourceTree = "<group>"; };
 		09CAB9441CCFB4950077FBE3 /* ListenTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListenTabBar.swift; path = Prctice/ListenTabBar.swift; sourceTree = "<group>"; };
 		4C5439C363579C9403C3A464 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 		0927ED911CC0A7D7000AB5C3 /* SpeakNow */ = {
 			isa = PBXGroup;
 			children = (
+				09852B8C1D470CDE00B0E749 /* Setting */,
 				091875BB1CC2231E0084F9B4 /* Practice */,
 				091875B81CC220E30084F9B4 /* Model */,
 				0927ED921CC0A7D7000AB5C3 /* AppDelegate.swift */,
@@ -184,6 +187,14 @@
 				0946B5061CC0E67200B69970 /* RegisterViewController.swift */,
 			);
 			name = Login;
+			sourceTree = "<group>";
+		};
+		09852B8C1D470CDE00B0E749 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				09852B8D1D470CFC00B0E749 /* SettingViewController.swift */,
+			);
+			name = Setting;
 			sourceTree = "<group>";
 		};
 		0C87E4AB275F4A6C07548E37 /* Frameworks */ = {
@@ -400,6 +411,7 @@
 				09CAB9431CCFB1D60077FBE3 /* ListenDataDetailViewController.swift in Sources */,
 				09603A931D38BBBF0083C3C6 /* ListeningViewController.swift in Sources */,
 				0946B5071CC0E67200B69970 /* RegisterViewController.swift in Sources */,
+				09852B8E1D470CFC00B0E749 /* SettingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
