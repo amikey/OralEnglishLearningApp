@@ -50,7 +50,7 @@ class ListeningPracticeVC: UIViewController ,FlexibleTableViewDelegate,UISearchR
 
     func getData(){
         KVNProgress.showWithStatus("loading")
-        inf.requestWithHeader(.GET, URLString: "/audios"){
+        inf.requestWithHeader(.GET, URLString: "/audiocates"){
             res in
             self.data = res
             KVNProgress.dismiss()
@@ -62,12 +62,12 @@ class ListeningPracticeVC: UIViewController ,FlexibleTableViewDelegate,UISearchR
 
 
     func tableView(tableView: FlexibleTableView, numberOfRowsInSection section: Int) -> Int{
-        return data.dictionaryValue.count
+        return 1
 
     }
     func tableView(tableView: FlexibleTableView, numberOfSubRowsAtIndexPath indexPath: NSIndexPath) -> Int{
 //        let row = indexPath.row
-        return data["college"].arrayValue.count
+        return data["categories"].arrayValue.count
     }
     func tableView(tableView: FlexibleTableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> FlexibleTableViewCell{
         let cell = FlexibleTableViewCell()
@@ -78,12 +78,11 @@ class ListeningPracticeVC: UIViewController ,FlexibleTableViewDelegate,UISearchR
     }
     func tableView(tableView: FlexibleTableView, cellForSubRowAtIndexPath indexPath: FlexibleIndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCellWithIdentifier("PracticeExpandCell") as! PracticeExpandCell
-        cell.title.text = data["college"][indexPath.subRow-1]["name"].stringValue
-        cell.download.text = "\(data["college"][indexPath.subRow-1]["download"].intValue)"
-        cell.favorite.text = "\(data["college"][indexPath.subRow-1]["favorites"].intValue)"
+        cell.title.text = data["categories"][indexPath.subRow-1]["catename"].stringValue
+//        cell.download.text = "\(data["categories"][indexPath.subRow-1]["download"].intValue)"
+//        cell.favorite.text = "\(data["categories"][indexPath.subRow-1]["favorites"].intValue)"
         return cell
     }
-
 
     func tableView(tableView: FlexibleTableView, heightForSubRowAtIndexPath indexPath: NSIndexPath) -> CGFloat{
         return 100
@@ -95,7 +94,7 @@ class ListeningPracticeVC: UIViewController ,FlexibleTableViewDelegate,UISearchR
         backItem.title = ""
         navigationItem.backBarButtonItem = backItem
         let vc = getVC("selectTogo") as! ListenDataDetailViewController
-        vc.listen_id = data["college"][indexPath.subRow-1]["id"].stringValue
+        vc.listen_id = data["categories"][indexPath.subRow-1]["id"].stringValue
         navigationController?.pushViewController(vc, animated: true)
 
 //        tableView.deselectRowAtIndexPath(indexPath., animated: true)

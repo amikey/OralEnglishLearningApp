@@ -153,7 +153,7 @@ public class FlexibleTableView : UITableView, UITableViewDelegate, UITableViewDa
         return flexibleTableViewDelegate.tableView(self, numberOfSubRowsAtIndexPath:indexPath)
     }
     
-    func correspondingIndexPathForRowAtIndexPath(indexPath: NSIndexPath) -> FlexibleIndexPath {
+    public func correspondingIndexPathForRowAtIndexPath(indexPath: NSIndexPath) -> FlexibleIndexPath {
         var expandedSubrows = 0;
         
         let rows = self.expandableCells[indexPath.section] as! NSArray

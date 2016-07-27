@@ -15,28 +15,36 @@ class ListeningViewController: UIViewController,UITableViewDelegate,UITableViewD
 
     @IBOutlet weak var silder: UISlider!
 
-    let player:AVAudioPlayer = AVAudioPlayer()
+    var url:String!
+    var player:AVPlayer = AVPlayer()
     var timer:NSTimer?
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: #selector(ListeningViewController.update), userInfo: nil, repeats: true)
-        timer?.fire()
-        player.delegate = self
+//        timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: #selector(ListeningViewController.update), userInfo: nil, repeats: true)
+//        timer?.fire()
+//        player.delegate = self
+//        player.dele
+        let path = NSURL(string: "http://tx.razord.top"+url)!
+//        let soundData = NSData(contentsOfURL:path)!
+        print(path)
+        player = AVPlayer(URL: path)
+        player.play()
+
 
 
     }
 
     func update(){
         let current = player.currentTime
-        let total = player.duration
-        let progress = Float((current/total))
-        self.silder.value = progress
+//        let total = player.
+//        let progress = Float((current/total))
+//        self.silder.value = progress
 
-        let indexpath = NSIndexPath(forRow: 0, inSection: 0)
+//        let indexpath = NSIndexPath(forRow: 0, inSection: 0)
 
-        tableview.selectRowAtIndexPath(indexpath, animated: true, scrollPosition: .Middle)
+//        tableview.selectRowAtIndexPath(indexpath, animated: true, scrollPosition: .Middle)
     }
 
 
