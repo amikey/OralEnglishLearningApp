@@ -17,11 +17,16 @@ class SettingViewController: UITableViewController {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.translucent = false
-navigationController?.navigationBar.barTintColor = UIColor(red: 246.0/255, green: 88.0/255, blue: 64.0/255, alpha: 1)
+        navigationController?.navigationBar.barTintColor = UIColor(red: 246.0/255, green: 88.0/255, blue: 64.0/255, alpha: 1)
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        print(inf.avatar)
-
         self.avastar.addPicFromUrl(inf.avatar)
-
     }
+
+    override func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let footer = view as! UITableViewHeaderFooterView
+        footer.textLabel?.textColor = UIColor.grayColor()
+    }
+
+
+
 }

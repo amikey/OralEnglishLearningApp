@@ -79,6 +79,8 @@ class ListeningPracticeVC: UIViewController ,FlexibleTableViewDelegate,UISearchR
     func tableView(tableView: FlexibleTableView, cellForSubRowAtIndexPath indexPath: FlexibleIndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCellWithIdentifier("PracticeExpandCell") as! PracticeExpandCell
         cell.title.text = data["categories"][indexPath.subRow-1]["catename"].stringValue
+        cell.backgroundColor = UIColor.clearColor()
+
 //        cell.download.text = "\(data["categories"][indexPath.subRow-1]["download"].intValue)"
 //        cell.favorite.text = "\(data["categories"][indexPath.subRow-1]["favorites"].intValue)"
         return cell
@@ -88,11 +90,16 @@ class ListeningPracticeVC: UIViewController ,FlexibleTableViewDelegate,UISearchR
         return 100
     }
 
+    func tableView(tableView: FlexibleTableView, shouldExpandSubRowsOfCellAtIndexPath indexPath: NSIndexPath) -> Bool {
+        if indexPath.row == 0{return true}
+        return false
+    }
+
 
     func tableView(tableView: FlexibleTableView, didSelectSubRowAtIndexPath indexPath: FlexibleIndexPath){
-        let backItem = UIBarButtonItem()
-        backItem.title = ""
-        navigationItem.backBarButtonItem = backItem
+//        let backItem = UIBarButtonItem()
+//        backItem.title = ""
+//        navigationItem.backBarButtonItem = backItem
         let vc = getVC("selectTogo") as! ListenDataDetailViewController
         vc.listen_id = data["categories"][indexPath.subRow-1]["id"].stringValue
         navigationController?.pushViewController(vc, animated: true)

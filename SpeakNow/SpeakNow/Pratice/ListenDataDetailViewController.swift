@@ -9,7 +9,7 @@
 import UIKit
 import SwiftyJSON
 
-class ListenDataDetailViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class ListenDataDetailViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UIGestureRecognizerDelegate {
 
     var listen_id:String!
 
@@ -18,7 +18,6 @@ class ListenDataDetailViewController: UIViewController,UITableViewDelegate,UITab
         super.viewDidLoad()
         self.automaticallyAdjustsScrollViewInsets = false
         print(listen_id)
-        customNav()
         getdata()
 
     }
@@ -36,17 +35,26 @@ class ListenDataDetailViewController: UIViewController,UITableViewDelegate,UITab
     }
 
     override func viewWillAppear(animated: Bool) {
-
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
+
     override func viewWillDisappear(animated: Bool) {
-        navigationController?.navigationBar.setBackgroundImage(nil, forBarMetrics: .Default)
-        navigationController?.navigationBar.shadowImage=nil
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+//        如果遇到崩溃把这句话放到delloc里去
+        navigationController?.interactivePopGestureRecognizer?.delegate = nil
+
+
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
+        if(navigationController!.viewControllers.count > 1){
+            return true
+        }
+        return false
     }
+
+
 
     func customNav(){
         navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
