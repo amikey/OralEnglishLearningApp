@@ -43,46 +43,50 @@ class ListeningPracticeVC: UIViewController ,FlexibleTableViewDelegate,UISearchR
         tableView.tableHeaderView = searchController.searchBar
         self.tableView.contentOffset = CGPoint(x: 0.0, y: searchController.searchBar.frame.size.height)
 
-        getData()
+        inf.login(){
+            self.getData()
+        }
 
 
     }
 
     func getData(){
         KVNProgress.showWithStatus("loading")
-        inf.requestWithHeader(.GET, URLString: "/audiocates"){
-            res in
+        print(api+"categories")
+        request(.GET, api+"categories").responseJSON{
+            s in guard let vaule = s.result.value else{return}
+            let res = JSON(vaule)
             self.data = res
+            print(res)
             KVNProgress.dismiss()
             self.tableView.refreshData()
-            print(res)
         }
         
     }
 
 
     func tableView(tableView: FlexibleTableView, numberOfRowsInSection section: Int) -> Int{
-        return 1
+        return 4
 
     }
     func tableView(tableView: FlexibleTableView, numberOfSubRowsAtIndexPath indexPath: NSIndexPath) -> Int{
 //        let row = indexPath.row
-        return data["categories"].arrayValue.count
+        return data["categories"][indexPath.row]["array"].count
     }
     func tableView(tableView: FlexibleTableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> FlexibleTableViewCell{
         let cell = FlexibleTableViewCell()
-        cell.textLabel?.text = "大学"
+        cell.textLabel?.text = data["categories"][indexPath.row]["name"].stringValue
         cell.backgroundColor = UIColor(red: 250, green: 250, blue: 250, alpha: 1.0)
         cell.expandable = true
         return cell
     }
     func tableView(tableView: FlexibleTableView, cellForSubRowAtIndexPath indexPath: FlexibleIndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCellWithIdentifier("PracticeExpandCell") as! PracticeExpandCell
-        cell.title.text = data["categories"][indexPath.subRow-1]["catename"].stringValue
+        cell.title.text = data["categories"][indexPath.row]["array"][indexPath.subRow-1]["catename"].stringValue
         cell.backgroundColor = UIColor.clearColor()
 
-//        cell.download.text = "\(data["categories"][indexPath.subRow-1]["download"].intValue)"
-//        cell.favorite.text = "\(data["categories"][indexPath.subRow-1]["favorites"].intValue)"
+        cell.download.text = "\(data["categories"][indexPath.row]["array"][indexPath.subRow-1]["download"].intValue)"
+        cell.favorite.text = "\(data["categories"][indexPath.row]["array"][indexPath.subRow-1]["favorite"].intValue)"
         return cell
     }
 
@@ -101,7 +105,7 @@ class ListeningPracticeVC: UIViewController ,FlexibleTableViewDelegate,UISearchR
 //        backItem.title = ""
 //        navigationItem.backBarButtonItem = backItem
         let vc = getVC("selectTogo") as! ListenDataDetailViewController
-        vc.listen_id = data["categories"][indexPath.subRow-1]["id"].stringValue
+        vc.listen_id = data["categories"][indexPath.row]["array"][indexPath.subRow-1]["id"].stringValue
         navigationController?.pushViewController(vc, animated: true)
 
 //        tableView.deselectRowAtIndexPath(indexPath., animated: true)

@@ -66,18 +66,17 @@ class RegisterViewController: UIViewController ,TextFieldDelegate{
                     "nickname":nickname.text!,
                     "email":mail.text!
                     ]
-        let req = NSMutableURLRequest(URL: NSURL(string: "http://tx.razord.top/api/register")!)
-        req.HTTPMethod = "POST"
-        req.setValue("application/json", forHTTPHeaderField: "Content-Type")
-
-        req.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(data, options: [])
-
+//        let req = NSMutableURLRequest(URL: NSURL(string: "http://tx.razord.top/api/register")!)
+//        req.HTTPMethod = "POST"
+//        req.setValue("application/json", forHTTPHeaderField: "Content-Type")
+//
+//        req.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(data, options: [])
+//
         KVNProgress.showWithStatus("请稍后")
 
-        request(req).responseJSON(){
+        request(.POST,api+"register",parameters:data).responseJSON(){
             s in guard let res = s.result.value else{KVNProgress.showError();return}
-            if  s.response?.statusCode == 401{
-                inf.reflashHeader(res["token"]as!String)
+            if  s.response?.statusCode == 200{
                 KVNProgress.dismiss()
                 (UIApplication.sharedApplication().delegate as!AppDelegate).changeRootVC(getVC("mainTabVC"))
             }else{

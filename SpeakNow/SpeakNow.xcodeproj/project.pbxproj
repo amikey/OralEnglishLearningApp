@@ -17,6 +17,8 @@
 		0927EDA01CC0A7D7000AB5C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0927ED9E1CC0A7D7000AB5C3 /* LaunchScreen.storyboard */; };
 		0927EDAB1CC0A7D7000AB5C3 /* SpeakNowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0927EDAA1CC0A7D7000AB5C3 /* SpeakNowTests.swift */; };
 		0927EDB61CC0A7D7000AB5C3 /* SpeakNowUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0927EDB51CC0A7D7000AB5C3 /* SpeakNowUITests.swift */; };
+		092ECEE41D52DAFB00DB73B9 /* MessagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092ECEE31D52DAFB00DB73B9 /* MessagerViewController.swift */; };
+		092ECEE61D52DCB700DB73B9 /* PreperChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092ECEE51D52DCB700DB73B9 /* PreperChatViewController.swift */; };
 		0946B5071CC0E67200B69970 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0946B5061CC0E67200B69970 /* RegisterViewController.swift */; };
 		09603A931D38BBBF0083C3C6 /* ListeningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09603A921D38BBBF0083C3C6 /* ListeningViewController.swift */; };
 		0965D4A11CC2323C0046AD15 /* PracticeExpandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0965D4A01CC2323C0046AD15 /* PracticeExpandCell.swift */; };
@@ -62,6 +64,9 @@
 		0927EDB11CC0A7D7000AB5C3 /* SpeakNowUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpeakNowUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0927EDB51CC0A7D7000AB5C3 /* SpeakNowUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakNowUITests.swift; sourceTree = "<group>"; };
 		0927EDB71CC0A7D7000AB5C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		092ECEDE1D52DA8E00DB73B9 /* SpeakNow-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpeakNow-Bridging-Header.h"; sourceTree = "<group>"; };
+		092ECEE31D52DAFB00DB73B9 /* MessagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessagerViewController.swift; path = message/MessagerViewController.swift; sourceTree = "<group>"; };
+		092ECEE51D52DCB700DB73B9 /* PreperChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PreperChatViewController.swift; path = message/PreperChatViewController.swift; sourceTree = "<group>"; };
 		0946B5061CC0E67200B69970 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		09603A921D38BBBF0083C3C6 /* ListeningViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListeningViewController.swift; sourceTree = "<group>"; };
 		0965D4A01CC2323C0046AD15 /* PracticeExpandCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PracticeExpandCell.swift; path = Prctice/PracticeExpandCell.swift; sourceTree = "<group>"; };
@@ -148,6 +153,7 @@
 		0927ED911CC0A7D7000AB5C3 /* SpeakNow */ = {
 			isa = PBXGroup;
 			children = (
+				092ECEE21D52DAD600DB73B9 /* message */,
 				09852B8C1D470CDE00B0E749 /* Setting */,
 				091875BB1CC2231E0084F9B4 /* Practice */,
 				091875B81CC220E30084F9B4 /* Model */,
@@ -158,6 +164,7 @@
 				0927ED9E1CC0A7D7000AB5C3 /* LaunchScreen.storyboard */,
 				0927EDA11CC0A7D7000AB5C3 /* Info.plist */,
 				0927ED991CC0A7D7000AB5C3 /* SpeakNow.xcdatamodeld */,
+				092ECEDE1D52DA8E00DB73B9 /* SpeakNow-Bridging-Header.h */,
 			);
 			path = SpeakNow;
 			sourceTree = "<group>";
@@ -178,6 +185,15 @@
 				0927EDB71CC0A7D7000AB5C3 /* Info.plist */,
 			);
 			path = SpeakNowUITests;
+			sourceTree = "<group>";
+		};
+		092ECEE21D52DAD600DB73B9 /* message */ = {
+			isa = PBXGroup;
+			children = (
+				092ECEE31D52DAFB00DB73B9 /* MessagerViewController.swift */,
+				092ECEE51D52DCB700DB73B9 /* PreperChatViewController.swift */,
+			);
+			name = message;
 			sourceTree = "<group>";
 		};
 		0946B5051CC0E50D00B69970 /* Login */ = {
@@ -404,7 +420,9 @@
 				091875BD1CC2235F0084F9B4 /* ListeningPracticeVC.swift in Sources */,
 				0927ED931CC0A7D7000AB5C3 /* AppDelegate.swift in Sources */,
 				0965D4A51CC242660046AD15 /* Extensions.swift in Sources */,
+				092ECEE41D52DAFB00DB73B9 /* MessagerViewController.swift in Sources */,
 				0965D4A11CC2323C0046AD15 /* PracticeExpandCell.swift in Sources */,
+				092ECEE61D52DCB700DB73B9 /* PreperChatViewController.swift in Sources */,
 				0927ED9B1CC0A7D7000AB5C3 /* SpeakNow.xcdatamodeld in Sources */,
 				09CAB9451CCFB4950077FBE3 /* ListenTabBar.swift in Sources */,
 				091875BA1CC2218C0084F9B4 /* Information.swift in Sources */,
@@ -554,13 +572,16 @@
 			baseConfigurationReference = DD27051A0BC3B3DAB9802AD8 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = SpeakNow/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.cccfl.SpeakNow;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cccfl.SpeakNowios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "SpeakNow/SpeakNow-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -569,13 +590,15 @@
 			baseConfigurationReference = 4C5439C363579C9403C3A464 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = SpeakNow/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.cccfl.SpeakNow;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cccfl.SpeakNowios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "SpeakNow/SpeakNow-Bridging-Header.h";
 			};
 			name = Release;
 		};

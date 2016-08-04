@@ -16,14 +16,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-
+//        LeanCloud.initialize(applicationID: "iCnaTRwvat0REUTViiX3KBvu-gzGzoHsz", applicationKey: "NTBgO118rRnaipNn0Q9GnuBh")
+        AVOSCloud.setApplicationId("iCnaTRwvat0REUTViiX3KBvu-gzGzoHsz", clientKey: "NTBgO118rRnaipNn0Q9GnuBh")
+        AVOSCloud.initialize()
         if inf.username == ""{
             window=UIWindow(frame: UIScreen.mainScreen().bounds)
             window!.makeKeyAndVisible()
             let VC = getVC("LoginNav")
             window?.rootViewController = VC
         }else{
-            inf.login()
         }
 
 

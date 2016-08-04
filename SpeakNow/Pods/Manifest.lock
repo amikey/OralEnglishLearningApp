@@ -1,29 +1,42 @@
 PODS:
-  - Alamofire (3.3.1)
-  - FlexibleTableView (1.1.2)
-  - KeychainSwift (3.0.13)
+  - Alamofire (3.4.1)
+  - AVOSCloud (3.3.5)
+  - AVOSCloudIM (3.3.5):
+    - AVOSCloud
+  - FlexibleTableView (1.2)
+  - JSQMessagesViewController (7.3.4):
+    - JSQSystemSoundPlayer (~> 2.0.1)
+  - JSQSystemSoundPlayer (2.0.1)
+  - KeychainSwift (3.0.16)
   - Kingfisher (2.4.2)
-  - KVNProgress (2.2.4)
+  - KVNProgress (2.3)
   - Material (1.39.17)
   - MJRefresh (3.1.12)
   - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
   - Alamofire (~> 3.0)
+  - AVOSCloud
+  - AVOSCloudIM
   - FlexibleTableView
+  - JSQMessagesViewController
   - KeychainSwift (~> 3.0)
   - Kingfisher (~> 2.0)
   - KVNProgress
-  - Material (~> 1.0)
+  - Material (~> 1.39.17)
   - MJRefresh
   - SwiftyJSON
 
 SPEC CHECKSUMS:
-  Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
-  FlexibleTableView: b5e1d8ba02079aba946c763831ee2cd0b956018f
-  KeychainSwift: 3bda518adb1ab386da0a9a1de93b561ee2c9322b
+  Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
+  AVOSCloud: 1fe170768bee7e05bc3ea86e38d5bddb105cb957
+  AVOSCloudIM: dc307c48e951fcd861f4ae6db6d807e7b40639c8
+  FlexibleTableView: cff970d6ab61afe239c9f412ff1a7d387210256e
+  JSQMessagesViewController: 39fed975e3c9f8eba7292071e29eeb541d105e66
+  JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
+  KeychainSwift: a5bb85cd498ce2217b55e055ec59e9268d83384c
   Kingfisher: 05bf8d04408aaa70fcd2c8c81b9f1d0f1ad313dd
-  KVNProgress: 541edcea5a1fef592aceac8d791a410d38cb499d
+  KVNProgress: d0459bfa4dca0379cdba5c038326ea34e9fc2df9
   Material: eccc5afdac89e10aa7a635ad34d6c3564387bfd3
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a

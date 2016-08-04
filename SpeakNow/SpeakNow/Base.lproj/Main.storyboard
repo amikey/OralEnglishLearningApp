@@ -252,7 +252,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="NMr-6y-b2a">
-                                <rect key="frame" x="30" y="629" width="317" height="31"/>
+                                <rect key="frame" x="18" y="629" width="320" height="31"/>
                                 <color key="minimumTrackTintColor" red="0.96862745100000003" green="0.39607843139999999" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="silder_move:" destination="R2r-XM-rfp" eventType="valueChanged" id="peY-6l-RjW"/>
@@ -262,41 +262,37 @@
                                 <rect key="frame" x="0.0" y="620" width="375" height="1"/>
                                 <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cm_audio_white_2x.png" translatesAutoresizingMaskIntoConstraints="NO" id="Jh2-63-9Z7">
-                                <rect key="frame" x="5" y="630" width="24" height="27"/>
-                                <color key="backgroundColor" red="0.96862745100000003" green="0.39607843139999999" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cm_audio_white_2x.png" translatesAutoresizingMaskIntoConstraints="NO" id="lPC-r0-Hge">
-                                <rect key="frame" x="346" y="630" width="24" height="27"/>
-                                <color key="backgroundColor" red="0.97254901959999995" green="0.47058823529999999" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
-                            </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="224" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vqV-4A-RTC">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="102" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vqV-4A-RTC">
                                 <rect key="frame" x="0.0" y="64" width="375" height="557"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="224" id="oiw-RY-cu0">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="224"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="listen" id="oiw-RY-cu0">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="102"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oiw-RY-cu0" id="dM4-Uz-iPZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="223"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" tableViewCell="oiw-RY-cu0" id="dM4-Uz-iPZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="101"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GKN-Qs-ayK">
-                                                    <rect key="frame" x="8" y="8" width="359" height="207"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1.  Today’s program is all about eyes. When it comes to relationships, people’s eyes can be a window into their hearts. " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b9b-Ll-u9X">
-                                                            <rect key="frame" x="8" y="8" width="338" height="191"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.  Today’s program is all about eyes. When it comes to relationships, people’s eyes can be a window into their hearts. " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b9b-Ll-u9X">
+                                                    <rect key="frame" x="17" y="9" width="343" height="79"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="b9b-Ll-u9X" firstAttribute="leading" secondItem="dM4-Uz-iPZ" secondAttribute="leadingMargin" constant="9" id="2M9-6c-5Rd"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="b9b-Ll-u9X" secondAttribute="trailing" constant="7" id="652-gY-2NS"/>
+                                                <constraint firstItem="b9b-Ll-u9X" firstAttribute="top" secondItem="dM4-Uz-iPZ" secondAttribute="topMargin" constant="1" id="9vq-Ao-hzz"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="b9b-Ll-u9X" secondAttribute="bottom" constant="5" id="ZpS-yv-sgf"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="R2r-XM-rfp" id="FVw-RA-f16"/>
+                                    <outlet property="delegate" destination="R2r-XM-rfp" id="Wjb-ac-xkR"/>
+                                </connections>
                             </tableView>
                             <navigationBar contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="0Nh-uA-RYW">
                                 <rect key="frame" x="-4" y="0.0" width="383" height="64"/>
@@ -312,6 +308,13 @@
                                     <navigationItem title="Title" id="eWb-NF-cGJ"/>
                                 </items>
                             </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kdx-Ol-i6F">
+                                <rect key="frame" x="338" y="629" width="29" height="29"/>
+                                <state key="normal" title="Button" backgroundImage="play.png"/>
+                                <connections>
+                                    <action selector="playClick:" destination="R2r-XM-rfp" eventType="touchUpInside" id="Z38-FU-o1S"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -589,8 +592,8 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TGD-xs-dSh">
                                     <rect key="frame" x="0.0" y="37" width="320" height="33"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="个人信息" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mzv-IA-nPf">
-                                            <rect key="frame" x="8" y="6" width="68" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="个人信息" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mzv-IA-nPf">
+                                            <rect key="frame" x="8" y="6" width="88" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="88" id="aK4-7k-2cN"/>
                                             </constraints>
@@ -607,8 +610,8 @@
                                         <constraint firstItem="mzv-IA-nPf" firstAttribute="top" secondItem="TGD-xs-dSh" secondAttribute="top" constant="6" id="q8n-zl-SVo"/>
                                     </constraints>
                                 </view>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="register_img" translatesAutoresizingMaskIntoConstraints="NO" id="k4e-rj-Vbt">
-                                    <rect key="frame" x="120" y="-18" width="80" height="80"/>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="register_img" translatesAutoresizingMaskIntoConstraints="NO" id="k4e-rj-Vbt">
+                                    <rect key="frame" x="133" y="7" width="55" height="55"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="55" id="18Y-Kt-kbE"/>
                                         <constraint firstAttribute="height" constant="55" id="EBR-mX-plt"/>
@@ -738,11 +741,72 @@
             </objects>
             <point key="canvasLocation" x="2223" y="2009"/>
         </scene>
-        <!--Item-->
+        <!--Preper Chat View Controller-->
+        <scene sceneID="bev-sc-W9z">
+            <objects>
+                <viewController id="a4a-vY-Iot" customClass="PreperChatViewController" customModule="SpeakNow" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ldf-j2-tUw"/>
+                        <viewControllerLayoutGuide type="bottom" id="HFM-74-XPn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pAq-fI-Vbj">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ywI-vc-5KH">
+                                <rect key="frame" x="130" y="269" width="60" height="30"/>
+                                <state key="normal" title="开始聊天"/>
+                                <connections>
+                                    <segue destination="Y5M-mY-Qgl" kind="push" id="ITo-56-OnE"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1wA-eC-fbG">
+                                <rect key="frame" x="140" y="201" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="to" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WAg-Rj-Dll">
+                                <rect key="frame" x="105" y="204" width="16" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="0LX-WQ-Ckv"/>
+                    <connections>
+                        <outlet property="to" destination="1wA-eC-fbG" id="2xP-Rd-wab"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nzt-Av-dKD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2223" y="2721"/>
+        </scene>
+        <!--Message-->
+        <scene sceneID="CYF-oT-2bU">
+            <objects>
+                <viewController title="Message" hidesBottomBarWhenPushed="YES" id="Y5M-mY-Qgl" customClass="MessagerViewController" customModule="SpeakNow" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="LyA-QK-vdC"/>
+                        <viewControllerLayoutGuide type="bottom" id="4sk-eZ-dFr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XaZ-Mh-tRB">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="vtg-c0-Y6r"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iKN-xW-d6H" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2594" y="2721"/>
+        </scene>
+        <!--个人设置-->
         <scene sceneID="AZP-hZ-nae">
             <objects>
-                <navigationController id="JDe-op-tmG" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="5Dl-Uv-Kg3"/>
+                <navigationController title="个人设置" id="JDe-op-tmG" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="more" id="5Dl-Uv-Kg3"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="zsO-C9-D1H">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -797,18 +861,19 @@
                     </tabBar>
                     <connections>
                         <segue destination="BUV-gH-flh" kind="relationship" relationship="viewControllers" id="fJN-5l-ohY"/>
-                        <segue destination="JDe-op-tmG" kind="relationship" relationship="viewControllers" id="kBe-h0-Soz"/>
+                        <segue destination="wXB-ot-eOP" kind="relationship" relationship="viewControllers" id="ckO-dR-XG8"/>
+                        <segue destination="JDe-op-tmG" kind="relationship" relationship="viewControllers" id="oX4-5G-DJg"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UkG-Er-a23" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1078.5" y="1240.5"/>
         </scene>
-        <!--练习-->
+        <!--Navigation Controller-->
         <scene sceneID="2BF-IB-xvk">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BUV-gH-flh" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="练习" id="Wo9-Zq-FVN"/>
+                    <tabBarItem key="tabBarItem" systemItem="bookmarks" id="Wo9-Zq-FVN"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZN3-md-Aig">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -829,16 +894,36 @@
             </objects>
             <point key="canvasLocation" x="1643.5" y="1240.5"/>
         </scene>
+        <!--聊天发现-->
+        <scene sceneID="6PV-aH-zH2">
+            <objects>
+                <navigationController title="聊天发现" automaticallyAdjustsScrollViewInsets="NO" id="wXB-ot-eOP" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="favorites" id="FaN-3X-edB"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gmW-wY-AQ9">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.95294117649999999" green="0.36470588240000001" blue="0.22352941179999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="a4a-vY-Iot" kind="relationship" relationship="rootViewController" id="T6B-CK-KFA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CNw-bK-9s1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1613" y="2721"/>
+        </scene>
     </scenes>
     <resources>
         <image name="cet4" width="400" height="666"/>
-        <image name="cm_audio_white_2x.png" width="48" height="48"/>
         <image name="download-house" width="284" height="284"/>
         <image name="listen_bg" width="365" height="146"/>
         <image name="login_bg" width="369" height="656"/>
         <image name="login_button" width="201" height="200"/>
         <image name="main_bg" width="800" height="1423"/>
         <image name="play" width="200" height="200"/>
+        <image name="play.png" width="28" height="28"/>
         <image name="register_img" width="375" height="667"/>
         <image name="share-house" width="284" height="284"/>
         <image name="star-house" width="284" height="284"/>

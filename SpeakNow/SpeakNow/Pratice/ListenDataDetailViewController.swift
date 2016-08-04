@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyJSON
+import Alamofire
 
 class ListenDataDetailViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UIGestureRecognizerDelegate {
 
@@ -25,12 +26,12 @@ class ListenDataDetailViewController: UIViewController,UITableViewDelegate,UITab
     var data:JSON = ""
 
     func getdata(){
-        inf.requestWithHeader(.GET, URLString: "/audiocates/"+listen_id){
-            res in
+        request(.GET,api+"categories/"+listen_id).responseJSON{
+            s in guard let vaule = s.result.value else{return}
+            let res = JSON(vaule)
             self.data = res
             print(res)
             self.tableview.reloadData()
-
         }
     }
 
@@ -62,7 +63,7 @@ class ListenDataDetailViewController: UIViewController,UITableViewDelegate,UITab
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return self.data["data"].arrayValue.count
+        return self.data["materials"].arrayValue.count
     }
 
 
@@ -72,18 +73,16 @@ class ListenDataDetailViewController: UIViewController,UITableViewDelegate,UITab
 
         let title = cell.viewWithTag(1) as! UILabel
 
-        title.text = data["data"][row]["name"].stringValue
+        title.text = data["materials"][row]["name"].stringValue
         return cell
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let button = sender
-        print(button)
-        print(button?.superview)
         let cell = button!.superview!!.superview?.superview as! UITableViewCell
         let row = tableview.indexPathForCell(cell)!.row
         let dis = segue.destinationViewController as! ListeningViewController
-        dis.url = data["data"][row]["path"].stringValue
+        dis.id = data["materials"][row]["id"].stringValue
 
 
     }

@@ -13,7 +13,7 @@ import KeychainSwift
 import KVNProgress
 import SwiftyJSON
 
-
+let api = "https://learning2learn.cn/speaknow/"
 let inf=Information()
 
 let sWidth = UIScreen.mainScreen().bounds.width
@@ -31,15 +31,12 @@ class Information:NSObject{
     var username = ""
     var pwd = ""
     var avatar = ""
-    var headers = ["Authorization": ""]
+//    var headers = ["Authorization": ""]
     var uid:String = ""
     var email:String = ""
     var nickname:String = ""
 
-    func reflashHeader(token:String){
-        print(token)
-        self.headers = ["Authorization": "Bearer \(token)"]
-    }
+
 
 
     func login(completionHandler:(()->())?=nil){
@@ -49,27 +46,21 @@ class Information:NSObject{
 
     func login(username:String,password:String,completionHandler:(()->())?=nil) {
         let data = ["username":username,"password":password,]
-        let req = NSMutableURLRequest(URL: NSURL(string: "http://tx.razord.top/api/login")!)
-        req.HTTPMethod = "POST"
-        req.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        req.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(data, options: [])
-
-        request(req).responseJSON{
+        request(.POST,"https://learning2learn.cn/speaknow/login",parameters:data).responseJSON{
             s in guard let res = s.result.value else{return}
             if(s.response?.statusCode == 400){
                 KVNProgress.showErrorWithStatus(res["message"]as!String)
                 return
             }
             self.avatar = res["avatar"] as! String
-            self.reflashHeader(res["token"] as! String)
+//            self.reflashHeader(res["token"] as! String)
             completionHandler?()
         }
     }
 
     func getProfile(completionHandler:(()->())?=nil){
-        request(.GET, "http://tx.razord.top/api/profile",headers: headers).responseJSON{
+        request(.GET, "https://learning2learn.cn/speaknow/profile").responseJSON{
             s in guard let res = s.result.value else{return}
-            self.uid = res["id"]as!String
             self.email = res["email"]as!String
             self.nickname = res["nickname"]as!String
             completionHandler?()
@@ -87,7 +78,7 @@ class Information:NSObject{
         keychain.set(pwd, forKey: "password")
     }
     
-    
+    /*
     func requestWithHeader(method: Alamofire.Method, URLString: String, parameters: [String : AnyObject]?=nil,handler:((JSON)->())? = nil ) {
         let url = "http://tx.razord.top/api"+URLString
         print(url)
@@ -103,6 +94,7 @@ class Information:NSObject{
             handler?(s)
         }
     }
+ */
 
 }
 

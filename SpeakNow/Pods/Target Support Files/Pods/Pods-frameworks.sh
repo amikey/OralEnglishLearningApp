@@ -86,6 +86,8 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods/Alamofire.framework"
   install_framework "Pods/FlexibleTableView.framework"
+  install_framework "Pods/JSQMessagesViewController.framework"
+  install_framework "Pods/JSQSystemSoundPlayer.framework"
   install_framework "Pods/KVNProgress.framework"
   install_framework "Pods/KeychainSwift.framework"
   install_framework "Pods/Kingfisher.framework"
@@ -96,6 +98,8 @@ fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/Alamofire.framework"
   install_framework "Pods/FlexibleTableView.framework"
+  install_framework "Pods/JSQMessagesViewController.framework"
+  install_framework "Pods/JSQSystemSoundPlayer.framework"
   install_framework "Pods/KVNProgress.framework"
   install_framework "Pods/KeychainSwift.framework"
   install_framework "Pods/Kingfisher.framework"
