@@ -771,6 +771,13 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gDh-aN-roQ">
+                                <rect key="frame" x="124" y="425" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="xjD-A7-mt8" kind="push" id="qNz-Up-i6N"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -913,6 +920,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CNw-bK-9s1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1613" y="2721"/>
+        </scene>
+        <!--Oral Judging View Controller-->
+        <scene sceneID="fVb-iB-ruR">
+            <objects>
+                <viewController id="xjD-A7-mt8" customClass="OralJudgingViewController" customModule="SpeakNow" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xJN-9E-6Qr"/>
+                        <viewControllerLayoutGuide type="bottom" id="T2N-Vq-zO3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="R0g-QA-IQY">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="EZ0-Qb-rwD"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B9q-PL-08M" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2231" y="3372"/>
         </scene>
     </scenes>
     <resources>

@@ -29,19 +29,13 @@ class ListeningViewController: UIViewController,UITableViewDelegate,UITableViewD
         super.viewDidLoad()
         self.tableview.estimatedRowHeight = 200;
         self.tableview.rowHeight = UITableViewAutomaticDimension;
-
-//        player.delegate = self
-//        player.dele
-
-//        let soundData = NSData(contentsOfURL:path)!
         tableview.separatorStyle = .None
-//        tableview.allowsSelection = false
         getdata()
+    }
 
-
-
-
-
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        stop()
     }
 
     func start(){

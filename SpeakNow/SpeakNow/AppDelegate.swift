@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Foundation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -28,7 +29,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
 
-        // Override point for customization after application launch.
+        IFlySetting.setLogFile(.LVL_ALL)
+
+        IFlySetting.showLogcat(true)
+        let cachePath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.CachesDirectory, NSSearchPathDomainMask.UserDomainMask, true).last! as String
+
+        IFlySetting.setLogFilePath(cachePath)
+
+        let initString = "appid=57a698b5"
+
+        IFlySpeechUtility.createUtility(initString)
+
+
+
+
         return true
     }
 
