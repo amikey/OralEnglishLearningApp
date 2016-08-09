@@ -37,7 +37,23 @@
 		0988DFEE1D56D2A90081F678 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0988DFED1D56D2A90081F678 /* CoreGraphics.framework */; };
 		0988DFF01D56D2B60081F678 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0988DFEF1D56D2B60081F678 /* CoreLocation.framework */; };
 		0988DFF21D56D3D30081F678 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0988DFF11D56D3D30081F678 /* AddressBook.framework */; };
-		0988DFF51D56D79D0081F678 /* OralJudgingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0988DFF41D56D79D0081F678 /* OralJudgingViewController.swift */; };
+		0988E0141D56D9650081F678 /* ISEParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 0988DFF81D56D9650081F678 /* ISEParams.m */; };
+		0988E0151D56D9650081F678 /* ISESettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0988DFFA1D56D9650081F678 /* ISESettingViewController.m */; };
+		0988E0161D56D9650081F678 /* ISEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0988DFFC1D56D9650081F678 /* ISEViewController.m */; };
+		0988E0171D56D9650081F678 /* ISEResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 0988DFFF1D56D9650081F678 /* ISEResult.m */; };
+		0988E0181D56D9650081F678 /* ISEResultFinal.m in Sources */ = {isa = PBXBuildFile; fileRef = 0988E0011D56D9650081F678 /* ISEResultFinal.m */; };
+		0988E0191D56D9650081F678 /* ISEResultPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 0988E0031D56D9650081F678 /* ISEResultPhone.m */; };
+		0988E01A1D56D9650081F678 /* ISEResultReadSentence.m in Sources */ = {isa = PBXBuildFile; fileRef = 0988E0051D56D9650081F678 /* ISEResultReadSentence.m */; };
+		0988E01B1D56D9650081F678 /* ISEResultReadSyllable.m in Sources */ = {isa = PBXBuildFile; fileRef = 0988E0071D56D9650081F678 /* ISEResultReadSyllable.m */; };
+		0988E01C1D56D9650081F678 /* ISEResultReadWord.m in Sources */ = {isa = PBXBuildFile; fileRef = 0988E0091D56D9650081F678 /* ISEResultReadWord.m */; };
+		0988E01D1D56D9650081F678 /* ISEResultSentence.m in Sources */ = {isa = PBXBuildFile; fileRef = 0988E00B1D56D9650081F678 /* ISEResultSentence.m */; };
+		0988E01E1D56D9650081F678 /* ISEResultSyll.m in Sources */ = {isa = PBXBuildFile; fileRef = 0988E00D1D56D9650081F678 /* ISEResultSyll.m */; };
+		0988E01F1D56D9650081F678 /* ISEResultTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 0988E00F1D56D9650081F678 /* ISEResultTools.m */; };
+		0988E0201D56D9650081F678 /* ISEResultWord.m in Sources */ = {isa = PBXBuildFile; fileRef = 0988E0111D56D9650081F678 /* ISEResultWord.m */; };
+		0988E0211D56D9650081F678 /* ISEResultXmlParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0988E0131D56D9650081F678 /* ISEResultXmlParser.m */; };
+		0988E0241D56D9F30081F678 /* PopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0988E0231D56D9F30081F678 /* PopupView.m */; };
+		0988E0271D56FA430081F678 /* SpeaknowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0988E0261D56FA430081F678 /* SpeaknowViewController.swift */; };
+		0988E02A1D572ED60081F678 /* OralTestingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0988E0291D572ED60081F678 /* OralTestingViewController.m */; };
 		09CAB9431CCFB1D60077FBE3 /* ListenDataDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAB9421CCFB1D60077FBE3 /* ListenDataDetailViewController.swift */; };
 		09CAB9451CCFB4950077FBE3 /* ListenTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAB9441CCFB4950077FBE3 /* ListenTabBar.swift */; };
 		3A20CCB6B10FB699C4337C9D /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B314C847AB64C9C343400349 /* Pods.framework */; };
@@ -98,7 +114,40 @@
 		0988DFED1D56D2A90081F678 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		0988DFEF1D56D2B60081F678 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		0988DFF11D56D3D30081F678 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
-		0988DFF41D56D79D0081F678 /* OralJudgingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OralJudgingViewController.swift; path = Oral/OralJudgingViewController.swift; sourceTree = "<group>"; };
+		0988DFF71D56D9650081F678 /* ISEParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISEParams.h; sourceTree = "<group>"; };
+		0988DFF81D56D9650081F678 /* ISEParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISEParams.m; sourceTree = "<group>"; };
+		0988DFF91D56D9650081F678 /* ISESettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISESettingViewController.h; sourceTree = "<group>"; };
+		0988DFFA1D56D9650081F678 /* ISESettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISESettingViewController.m; sourceTree = "<group>"; };
+		0988DFFB1D56D9650081F678 /* ISEViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISEViewController.h; sourceTree = "<group>"; };
+		0988DFFC1D56D9650081F678 /* ISEViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISEViewController.m; sourceTree = "<group>"; };
+		0988DFFE1D56D9650081F678 /* ISEResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISEResult.h; sourceTree = "<group>"; };
+		0988DFFF1D56D9650081F678 /* ISEResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISEResult.m; sourceTree = "<group>"; };
+		0988E0001D56D9650081F678 /* ISEResultFinal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISEResultFinal.h; sourceTree = "<group>"; };
+		0988E0011D56D9650081F678 /* ISEResultFinal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISEResultFinal.m; sourceTree = "<group>"; };
+		0988E0021D56D9650081F678 /* ISEResultPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISEResultPhone.h; sourceTree = "<group>"; };
+		0988E0031D56D9650081F678 /* ISEResultPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISEResultPhone.m; sourceTree = "<group>"; };
+		0988E0041D56D9650081F678 /* ISEResultReadSentence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISEResultReadSentence.h; sourceTree = "<group>"; };
+		0988E0051D56D9650081F678 /* ISEResultReadSentence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISEResultReadSentence.m; sourceTree = "<group>"; };
+		0988E0061D56D9650081F678 /* ISEResultReadSyllable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISEResultReadSyllable.h; sourceTree = "<group>"; };
+		0988E0071D56D9650081F678 /* ISEResultReadSyllable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISEResultReadSyllable.m; sourceTree = "<group>"; };
+		0988E0081D56D9650081F678 /* ISEResultReadWord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISEResultReadWord.h; sourceTree = "<group>"; };
+		0988E0091D56D9650081F678 /* ISEResultReadWord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISEResultReadWord.m; sourceTree = "<group>"; };
+		0988E00A1D56D9650081F678 /* ISEResultSentence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISEResultSentence.h; sourceTree = "<group>"; };
+		0988E00B1D56D9650081F678 /* ISEResultSentence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISEResultSentence.m; sourceTree = "<group>"; };
+		0988E00C1D56D9650081F678 /* ISEResultSyll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISEResultSyll.h; sourceTree = "<group>"; };
+		0988E00D1D56D9650081F678 /* ISEResultSyll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISEResultSyll.m; sourceTree = "<group>"; };
+		0988E00E1D56D9650081F678 /* ISEResultTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISEResultTools.h; sourceTree = "<group>"; };
+		0988E00F1D56D9650081F678 /* ISEResultTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISEResultTools.m; sourceTree = "<group>"; };
+		0988E0101D56D9650081F678 /* ISEResultWord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISEResultWord.h; sourceTree = "<group>"; };
+		0988E0111D56D9650081F678 /* ISEResultWord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISEResultWord.m; sourceTree = "<group>"; };
+		0988E0121D56D9650081F678 /* ISEResultXmlParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISEResultXmlParser.h; sourceTree = "<group>"; };
+		0988E0131D56D9650081F678 /* ISEResultXmlParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISEResultXmlParser.m; sourceTree = "<group>"; };
+		0988E0221D56D9F30081F678 /* PopupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopupView.h; sourceTree = "<group>"; };
+		0988E0231D56D9F30081F678 /* PopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopupView.m; sourceTree = "<group>"; };
+		0988E0251D56DA2C0081F678 /* Definition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Definition.h; sourceTree = "<group>"; };
+		0988E0261D56FA430081F678 /* SpeaknowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeaknowViewController.swift; sourceTree = "<group>"; };
+		0988E0281D572ED60081F678 /* OralTestingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OralTestingViewController.h; path = Oral/OralTestingViewController.h; sourceTree = "<group>"; };
+		0988E0291D572ED60081F678 /* OralTestingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OralTestingViewController.m; path = Oral/OralTestingViewController.m; sourceTree = "<group>"; };
 		09CAB9421CCFB1D60077FBE3 /* ListenDataDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListenDataDetailViewController.swift; path = Pratice/ListenDataDetailViewController.swift; sourceTree = "<group>"; };
 		09CAB9441CCFB4950077FBE3 /* ListenTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListenTabBar.swift; path = Prctice/ListenTabBar.swift; sourceTree = "<group>"; };
 		4C5439C363579C9403C3A464 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -204,6 +253,7 @@
 				0927EDA11CC0A7D7000AB5C3 /* Info.plist */,
 				0927ED991CC0A7D7000AB5C3 /* SpeakNow.xcdatamodeld */,
 				092ECEDE1D52DA8E00DB73B9 /* SpeakNow-Bridging-Header.h */,
+				0988E0261D56FA430081F678 /* SpeaknowViewController.swift */,
 			);
 			path = SpeakNow;
 			sourceTree = "<group>";
@@ -255,9 +305,57 @@
 		0988DFF31D56D7790081F678 /* oral */ = {
 			isa = PBXGroup;
 			children = (
-				0988DFF41D56D79D0081F678 /* OralJudgingViewController.swift */,
+				0988DFF61D56D9650081F678 /* ise */,
+				0988E0281D572ED60081F678 /* OralTestingViewController.h */,
+				0988E0291D572ED60081F678 /* OralTestingViewController.m */,
 			);
 			name = oral;
+			sourceTree = "<group>";
+		};
+		0988DFF61D56D9650081F678 /* ise */ = {
+			isa = PBXGroup;
+			children = (
+				0988E0251D56DA2C0081F678 /* Definition.h */,
+				0988E0221D56D9F30081F678 /* PopupView.h */,
+				0988E0231D56D9F30081F678 /* PopupView.m */,
+				0988DFF71D56D9650081F678 /* ISEParams.h */,
+				0988DFF81D56D9650081F678 /* ISEParams.m */,
+				0988DFF91D56D9650081F678 /* ISESettingViewController.h */,
+				0988DFFA1D56D9650081F678 /* ISESettingViewController.m */,
+				0988DFFB1D56D9650081F678 /* ISEViewController.h */,
+				0988DFFC1D56D9650081F678 /* ISEViewController.m */,
+				0988DFFD1D56D9650081F678 /* Results */,
+			);
+			path = ise;
+			sourceTree = "<group>";
+		};
+		0988DFFD1D56D9650081F678 /* Results */ = {
+			isa = PBXGroup;
+			children = (
+				0988DFFE1D56D9650081F678 /* ISEResult.h */,
+				0988DFFF1D56D9650081F678 /* ISEResult.m */,
+				0988E0001D56D9650081F678 /* ISEResultFinal.h */,
+				0988E0011D56D9650081F678 /* ISEResultFinal.m */,
+				0988E0021D56D9650081F678 /* ISEResultPhone.h */,
+				0988E0031D56D9650081F678 /* ISEResultPhone.m */,
+				0988E0041D56D9650081F678 /* ISEResultReadSentence.h */,
+				0988E0051D56D9650081F678 /* ISEResultReadSentence.m */,
+				0988E0061D56D9650081F678 /* ISEResultReadSyllable.h */,
+				0988E0071D56D9650081F678 /* ISEResultReadSyllable.m */,
+				0988E0081D56D9650081F678 /* ISEResultReadWord.h */,
+				0988E0091D56D9650081F678 /* ISEResultReadWord.m */,
+				0988E00A1D56D9650081F678 /* ISEResultSentence.h */,
+				0988E00B1D56D9650081F678 /* ISEResultSentence.m */,
+				0988E00C1D56D9650081F678 /* ISEResultSyll.h */,
+				0988E00D1D56D9650081F678 /* ISEResultSyll.m */,
+				0988E00E1D56D9650081F678 /* ISEResultTools.h */,
+				0988E00F1D56D9650081F678 /* ISEResultTools.m */,
+				0988E0101D56D9650081F678 /* ISEResultWord.h */,
+				0988E0111D56D9650081F678 /* ISEResultWord.m */,
+				0988E0121D56D9650081F678 /* ISEResultXmlParser.h */,
+				0988E0131D56D9650081F678 /* ISEResultXmlParser.m */,
+			);
+			path = Results;
 			sourceTree = "<group>";
 		};
 		0C87E4AB275F4A6C07548E37 /* Frameworks */ = {
@@ -475,21 +573,37 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0988E01E1D56D9650081F678 /* ISEResultSyll.m in Sources */,
+				0988E0171D56D9650081F678 /* ISEResult.m in Sources */,
+				0988E01A1D56D9650081F678 /* ISEResultReadSentence.m in Sources */,
 				0927ED951CC0A7D7000AB5C3 /* LoginViewController.swift in Sources */,
+				0988E0271D56FA430081F678 /* SpeaknowViewController.swift in Sources */,
 				091875BD1CC2235F0084F9B4 /* ListeningPracticeVC.swift in Sources */,
 				0927ED931CC0A7D7000AB5C3 /* AppDelegate.swift in Sources */,
 				0965D4A51CC242660046AD15 /* Extensions.swift in Sources */,
+				0988E01C1D56D9650081F678 /* ISEResultReadWord.m in Sources */,
 				092ECEE41D52DAFB00DB73B9 /* MessagerViewController.swift in Sources */,
+				0988E0241D56D9F30081F678 /* PopupView.m in Sources */,
+				0988E01D1D56D9650081F678 /* ISEResultSentence.m in Sources */,
 				0965D4A11CC2323C0046AD15 /* PracticeExpandCell.swift in Sources */,
+				0988E0211D56D9650081F678 /* ISEResultXmlParser.m in Sources */,
+				0988E01B1D56D9650081F678 /* ISEResultReadSyllable.m in Sources */,
+				0988E0161D56D9650081F678 /* ISEViewController.m in Sources */,
 				092ECEE61D52DCB700DB73B9 /* PreperChatViewController.swift in Sources */,
 				0927ED9B1CC0A7D7000AB5C3 /* SpeakNow.xcdatamodeld in Sources */,
 				09CAB9451CCFB4950077FBE3 /* ListenTabBar.swift in Sources */,
 				091875BA1CC2218C0084F9B4 /* Information.swift in Sources */,
+				0988E01F1D56D9650081F678 /* ISEResultTools.m in Sources */,
+				0988E0201D56D9650081F678 /* ISEResultWord.m in Sources */,
+				0988E02A1D572ED60081F678 /* OralTestingViewController.m in Sources */,
 				09CAB9431CCFB1D60077FBE3 /* ListenDataDetailViewController.swift in Sources */,
+				0988E0191D56D9650081F678 /* ISEResultPhone.m in Sources */,
+				0988E0181D56D9650081F678 /* ISEResultFinal.m in Sources */,
+				0988E0141D56D9650081F678 /* ISEParams.m in Sources */,
 				09603A931D38BBBF0083C3C6 /* ListeningViewController.swift in Sources */,
 				0946B5071CC0E67200B69970 /* RegisterViewController.swift in Sources */,
 				09852B8E1D470CFC00B0E749 /* SettingViewController.swift in Sources */,
-				0988DFF51D56D79D0081F678 /* OralJudgingViewController.swift in Sources */,
+				0988E0151D56D9650081F678 /* ISESettingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

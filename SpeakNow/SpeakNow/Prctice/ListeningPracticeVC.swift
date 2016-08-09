@@ -50,10 +50,14 @@ class ListeningPracticeVC: UIViewController ,FlexibleTableViewDelegate,UISearchR
 
     }
 
-    func getData(){
+    func getData(oral:Bool=false){
         KVNProgress.showWithStatus("loading")
         print(api+"categories")
-        request(.GET, api+"categories").responseJSON{
+        let url:String
+        if oral{
+            url = api+"categories/orals"
+        }else {url=api+"categories"}
+        request(.GET, url).responseJSON{
             s in guard let vaule = s.result.value else{return}
             let res = JSON(vaule)
             self.data = res
@@ -64,6 +68,14 @@ class ListeningPracticeVC: UIViewController ,FlexibleTableViewDelegate,UISearchR
         
     }
 
+    @IBAction func switchbuttonchange(sender: UISegmentedControl) {
+        print(sender.selectedSegmentIndex)
+        if sender.selectedSegmentIndex == 0 {
+            getData()
+        }else{
+            getData(true)
+        }
+    }
 
     func tableView(tableView: FlexibleTableView, numberOfRowsInSection section: Int) -> Int{
         return 4

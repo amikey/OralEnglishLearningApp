@@ -13,10 +13,15 @@ class PreperChatViewController: UIViewController {
     @IBOutlet weak var to: UITextField!
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier  != "chat"{return}
         let vc = segue.destinationViewController as! MessagerViewController
         vc.senderId = inf.username
         vc.senderDisplayName = inf.nickname
         vc.toid = to.text!
         vc.toname = to.text!
+    }
+    @IBAction func oralclick(sender: AnyObject) {
+        let vc = getVC("oral")
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

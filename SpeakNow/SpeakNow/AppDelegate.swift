@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         IFlySetting.setLogFile(.LVL_ALL)
 
-        IFlySetting.showLogcat(true)
+        IFlySetting.showLogcat(false)
         let cachePath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.CachesDirectory, NSSearchPathDomainMask.UserDomainMask, true).last! as String
 
         IFlySetting.setLogFilePath(cachePath)
