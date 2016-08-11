@@ -20,8 +20,5 @@ class PreperChatViewController: UIViewController {
         vc.toid = to.text!
         vc.toname = to.text!
     }
-    @IBAction func oralclick(sender: AnyObject) {
-        let vc = getVC("oral")
-        navigationController?.pushViewController(vc, animated: true)
-    }
+
 }

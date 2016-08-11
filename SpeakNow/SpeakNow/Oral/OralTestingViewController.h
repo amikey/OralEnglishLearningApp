@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SpeakNow-Swift.h"
 
 @interface OralTestingViewController : UIViewController
+@property NSString* audioid;
 
 @end

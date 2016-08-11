@@ -13,13 +13,35 @@
 #import "Definition.h"
 #import <Foundation/Foundation.h>
 
+#import "SpeakNow-Swift.h"
+#import "AVFoundation/AVFoundation.h"
+
+@import Alamofire;
+
+
+
 @interface OralTestingViewController () <IFlySpeechEvaluatorDelegate,UIGestureRecognizerDelegate,ISEResultXmlParserDelegate>
 
 
 @property (nonatomic, strong) IFlySpeechEvaluator *iFlySpeechEvaluator;
 @property (nonatomic, strong) ISEParams *iseParams;
 
+@property (weak, nonatomic) IBOutlet UILabel *unitlabel;
+@property (weak, nonatomic) IBOutlet UIProgressView *progressview;
+@property (weak, nonatomic) IBOutlet UILabel *progresslabel;
+@property (weak, nonatomic) IBOutlet UILabel *partlabel;
 @property (weak, nonatomic) IBOutlet UITextView *textarea;
+@property (weak, nonatomic) IBOutlet UIButton *speakbutton;
+@property (weak, nonatomic) IBOutlet UILabel *scoretext;
+@property (weak, nonatomic) IBOutlet UILabel *goodjoblabel;
+@property (weak, nonatomic) IBOutlet UIButton *nextbutton;
+@property (weak, nonatomic) IBOutlet UIButton *playbutton;
+
+@property NSDictionary *data;
+@property AVPlayer *player;
+@property int part;
+@property bool finish;
+@property NSString *title;
 
 @end
 
@@ -31,11 +53,12 @@
 
 
 
-- (instancetype)init {
+- (instancetype)init{
     self = [super init];
     if (!self) {
         return nil;
     }
+
 
 
 
@@ -64,6 +87,17 @@
     [self.iFlySpeechEvaluator setParameter:@"" forKey:[IFlySpeechConstant PARAMS]];
     self.iseParams=[ISEParams fromUserDefaults];
     self.iseParams.language = @"en_us";
+    [self setparam];
+
+
+    [self init_prossview];
+
+    self.unitlabel.text = self.title;
+
+    self.part = 0;
+    [self getdata];
+
+
 
 }
 
@@ -72,13 +106,81 @@
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:true];
     self.navigationController.interactivePopGestureRecognizer.delegate = self;
-    [self setparam];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
     self.navigationController.interactivePopGestureRecognizer.delegate = nil;
     [self.iFlySpeechEvaluator cancel];
+    if (self.player != nil)
+        [self.player removeObserver:self forKeyPath:@"status"];
 
+
+}
+
+-(void)init_prossview{
+    self.progressview.transform = CGAffineTransformMakeScale(1.0f,8.0f);
+}
+
+-(void)getdata{
+    NSString *url = [NSString stringWithFormat:@"https://learning2learn.cn/speaknow/audio/%@",self.audioid];
+
+    [AlamofireWrapper request:RequestMethodGET URLString:url parameters:nil encoding:RequestParameterEncodingURL headers:nil success:^(NSURLRequest * _Nullable request, NSHTTPURLResponse * _Nullable response, NSDictionary * _Nullable json) {
+        NSLog(@"Success");
+//        NSLog(json);
+        NSLog(@"%@", json);
+
+        self.data = json;
+        [self reflash_screen];
+    } failure:^(NSURLRequest * _Nullable request, NSHTTPURLResponse * _Nullable response, NSError * _Nullable error) {
+        NSLog(@"Failure");
+    }];
+}
+
+
+-(void)reflash_screen{
+
+    self.textarea.text = [NSString stringWithFormat:@"%@\n\n%@",self.data[@"lyric"][self.part][1],self.data[@"lyric"][self.part][2]] ;
+    self.textarea.font = [UIFont systemFontOfSize:16.0f];
+    self.textarea.textAlignment = NSTextAlignmentCenter;
+
+    self.scoretext.hidden = YES;
+    self.goodjoblabel.hidden = YES;
+    self.nextbutton.hidden = YES;
+
+    NSInteger len = [self.data[@"lyric"] count];
+
+    self.progressview.progress = ((float)self.part+1)/len;
+    self.progresslabel.text = [NSString stringWithFormat:@"%d/%ld",self.part+1,(long)len];
+
+    self.partlabel.text = [NSString stringWithFormat:@"Part %d",self.part+1];
+
+
+
+
+
+}
+- (IBAction)playbuttonTap:(id)sender {
+    NSString *url = [NSString stringWithFormat:@"http://7xq7zd.com1.z0.glb.clouddn.com/%@",self.data[@"lyric"][self.part][0]];
+    AVPlayer *player = [[AVPlayer alloc] initWithURL:[NSURL URLWithString:url]];
+
+    if (self.player != nil)
+        [self.player removeObserver:self forKeyPath:@"status"];
+
+    self.player = player;
+    [self.player addObserver:self forKeyPath:@"status" options:0 context:nil];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if (object == self.player && [keyPath isEqualToString:@"status"]) {
+        if (self.player.status == AVPlayerStatusFailed) {
+            NSLog(@"AVPlayer Failed");
+        } else if (self.player.status == AVPlayerStatusReadyToPlay) {
+            NSLog(@"AVPlayerStatusReadyToPlay");
+            [self.player play];
+        } else if (self.player.status == AVPlayerItemStatusUnknown) {
+            NSLog(@"AVPlayer Unknown");
+        }
+    }
 }
 
 -(BOOL) gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
@@ -101,11 +203,11 @@
 
 - (IBAction)SpeakButtonTap:(id)sender {
     NSLog(@"press button");
+    self.finish = NO;
 
     [self.iFlySpeechEvaluator setParameter:@"16000" forKey:[IFlySpeechConstant SAMPLE_RATE]];
     [self.iFlySpeechEvaluator setParameter:@"utf-8" forKey:[IFlySpeechConstant TEXT_ENCODING]];
     [self.iFlySpeechEvaluator setParameter:@"xml" forKey:[IFlySpeechConstant ISE_RESULT_TYPE]];
-
     [self.iFlySpeechEvaluator setParameter:@"eva.pcm" forKey:[IFlySpeechConstant ISE_AUDIO_PATH]];
 
     NSLog(@"text encoding:%@",[self.iFlySpeechEvaluator parameterForKey:[IFlySpeechConstant TEXT_ENCODING]]);
@@ -118,7 +220,7 @@
     NSMutableData *buffer = nil;
     NSStringEncoding encoding = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
 
-    buffer= [NSMutableData dataWithData:[self.textarea.text dataUsingEncoding:encoding]];
+    buffer= [NSMutableData dataWithData:[self.data[@"lyric"][self.part][1] dataUsingEncoding:encoding]];
 
 
     [self.iFlySpeechEvaluator startListening:buffer params:nil];
@@ -128,6 +230,10 @@
 
 }
 
+- (IBAction)nextbuttonTap:(id)sender {
+    self.part += 1;
+    [self reflash_screen];
+}
 
 /*!
  *  音量和数据回调
@@ -175,7 +281,11 @@
  *  @param errorCode 错误描述类
  */
 - (void)onError:(IFlySpeechError *)errorCode;{
+    if(!self.finish){
+        NSLog(@"error!!!!!!why!!!!!");
 
+        self.finish = YES;
+    }
     NSLog(@"错误码：%d %@",[errorCode errorCode],[errorCode errorDesc]);
 
 }
@@ -208,18 +318,9 @@
 //        NSLog(showText);
         NSLog(@"%d",isLast);
 
-        if([showText containsString:@"</xml_result>"]){
+        if(isLast || [showText containsString:@"</xml_result>"]){
             NSLog(@"评测结束");
-
-            ISEResultXmlParser* parser=[[ISEResultXmlParser alloc] init];
-            parser.delegate=self;
-            [parser parserXml:showText];
-            NSLog(@"calling showtext");
-        }
-
-        if(isLast){
-            NSLog(@"评测结束");
-
+            self.finish = YES;
             ISEResultXmlParser* parser=[[ISEResultXmlParser alloc] init];
             parser.delegate=self;
             [parser parserXml:showText];
@@ -241,6 +342,12 @@
 }
 -(void)onISEResultXmlParserResult:(ISEResult*)result;{
     NSLog(@"------------>score: %f",[result total_score]);
+//    NSString *scorestring =
+    int score = [result total_score]*[result total_score]*4;
+    self.scoretext.text = [NSString stringWithFormat:@"%d",score];
+    self.scoretext.hidden = NO;
+    self.goodjoblabel.hidden = NO;
+    self.nextbutton.hidden = NO;
 }
 
 @end

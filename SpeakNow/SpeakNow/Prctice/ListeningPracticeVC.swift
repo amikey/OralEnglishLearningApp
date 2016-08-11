@@ -19,6 +19,7 @@ class ListeningPracticeVC: UIViewController ,FlexibleTableViewDelegate,UISearchR
     var tableView: FlexibleTableView!
     var searchController:UISearchController!
     
+    @IBOutlet weak var switchbutton: UISegmentedControl!
     var data:JSON = JSON("")
 
     @IBAction func logout(sender: AnyObject) {
@@ -118,6 +119,9 @@ class ListeningPracticeVC: UIViewController ,FlexibleTableViewDelegate,UISearchR
 //        navigationItem.backBarButtonItem = backItem
         let vc = getVC("selectTogo") as! ListenDataDetailViewController
         vc.listen_id = data["categories"][indexPath.row]["array"][indexPath.subRow-1]["id"].stringValue
+        if switchbutton.selectedSegmentIndex == 0{
+            vc.isoral = false
+        }else{vc.isoral=true}
         navigationController?.pushViewController(vc, animated: true)
 
 //        tableView.deselectRowAtIndexPath(indexPath., animated: true)

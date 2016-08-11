@@ -621,7 +621,6 @@ static NSString *LocalizedEvaString(NSString *key, NSString *comment) {
 #pragma mark - ISEResultXmlParserDelegate
 
 -(void)onISEResultXmlParser:(NSXMLParser *)parser Error:(NSError*)error{
-    
 }
 
 -(void)onISEResultXmlParserResult:(ISEResult*)result{

@@ -54,6 +54,7 @@
 		0988E0241D56D9F30081F678 /* PopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0988E0231D56D9F30081F678 /* PopupView.m */; };
 		0988E0271D56FA430081F678 /* SpeaknowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0988E0261D56FA430081F678 /* SpeaknowViewController.swift */; };
 		0988E02A1D572ED60081F678 /* OralTestingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0988E0291D572ED60081F678 /* OralTestingViewController.m */; };
+		09AA34B71D5988DE005E7558 /* AlamofireWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AA34B61D5988DE005E7558 /* AlamofireWrapper.swift */; };
 		09CAB9431CCFB1D60077FBE3 /* ListenDataDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAB9421CCFB1D60077FBE3 /* ListenDataDetailViewController.swift */; };
 		09CAB9451CCFB4950077FBE3 /* ListenTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAB9441CCFB4950077FBE3 /* ListenTabBar.swift */; };
 		3A20CCB6B10FB699C4337C9D /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B314C847AB64C9C343400349 /* Pods.framework */; };
@@ -148,6 +149,7 @@
 		0988E0261D56FA430081F678 /* SpeaknowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeaknowViewController.swift; sourceTree = "<group>"; };
 		0988E0281D572ED60081F678 /* OralTestingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OralTestingViewController.h; path = Oral/OralTestingViewController.h; sourceTree = "<group>"; };
 		0988E0291D572ED60081F678 /* OralTestingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OralTestingViewController.m; path = Oral/OralTestingViewController.m; sourceTree = "<group>"; };
+		09AA34B61D5988DE005E7558 /* AlamofireWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireWrapper.swift; sourceTree = "<group>"; };
 		09CAB9421CCFB1D60077FBE3 /* ListenDataDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListenDataDetailViewController.swift; path = Pratice/ListenDataDetailViewController.swift; sourceTree = "<group>"; };
 		09CAB9441CCFB4950077FBE3 /* ListenTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListenTabBar.swift; path = Prctice/ListenTabBar.swift; sourceTree = "<group>"; };
 		4C5439C363579C9403C3A464 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				091875B91CC2218C0084F9B4 /* Information.swift */,
+				09AA34B61D5988DE005E7558 /* AlamofireWrapper.swift */,
 				0965D4A41CC242660046AD15 /* Extensions.swift */,
 			);
 			name = Model;
@@ -575,6 +578,7 @@
 			files = (
 				0988E01E1D56D9650081F678 /* ISEResultSyll.m in Sources */,
 				0988E0171D56D9650081F678 /* ISEResult.m in Sources */,
+				09AA34B71D5988DE005E7558 /* AlamofireWrapper.swift in Sources */,
 				0988E01A1D56D9650081F678 /* ISEResultReadSentence.m in Sources */,
 				0927ED951CC0A7D7000AB5C3 /* LoginViewController.swift in Sources */,
 				0988E0271D56FA430081F678 /* SpeaknowViewController.swift in Sources */,

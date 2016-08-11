@@ -13,6 +13,7 @@ import Alamofire
 class ListenDataDetailViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UIGestureRecognizerDelegate {
 
     var listen_id:String!
+    var isoral:Bool!
 
     @IBOutlet weak var tableview: UITableView!
     override func viewDidLoad() {
@@ -87,4 +88,23 @@ class ListenDataDetailViewController: UIViewController,UITableViewDelegate,UITab
 
     }
 
+    @IBAction func playbuttonTap(sender: UIButton) {
+        let view = sender.superview?.superview?.superview as! UITableViewCell
+        let indexpath = tableview.indexPathForCell(view)
+
+        let id = data["materials"][(indexpath?.row)!]["id"].stringValue
+        if isoral==true {
+            let vc = getVC("oral") as! OralTestingViewController
+            vc.audioid = data["materials"][(indexpath?.row)!]["id"].stringValue
+            vc.title = data["materials"][(indexpath?.row)!]["name"].stringValue
+            navigationController?.pushViewController(vc, animated: true)
+
+        }else{
+            let vc = getVC("listen")as! ListeningViewController
+            vc.id = id
+            navigationController?.pushViewController(vc, animated: true)
+
+        }
+
+    }
 }
