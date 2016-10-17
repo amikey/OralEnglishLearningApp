@@ -41,7 +41,7 @@ public struct MaterialIcon {
 	public static var bundle: NSBundle {
 		if nil == MaterialIcon.internalBundle {
 			MaterialIcon.internalBundle = NSBundle(forClass: MaterialView.self)
-			let b: NSBundle? = NSBundle(URL: MaterialIcon.internalBundle!.resourceURL!.URLByAppendingPathComponent("io.cosmicmind.material.icons.bundle"))
+			let b: NSBundle? = NSBundle(URL: MaterialIcon.internalBundle!.resourceURL!.URLByAppendingPathComponent("io.cosmicmind.material.icons.bundle")!)
 			if let v: NSBundle = b {
 				MaterialIcon.internalBundle = v
 			}
@@ -62,11 +62,15 @@ public struct MaterialIcon {
     public static let arrowDownward: UIImage? = MaterialIcon.icon("ic_arrow_downward_white")
     public static let audio: UIImage? = MaterialIcon.icon("ic_audiotrack_white")
     public static let bell: UIImage? = MaterialIcon.icon("cm_bell_white")
-    public static let clear: UIImage? = MaterialIcon.icon("ic_close_white")
+	public static let check: UIImage? = MaterialIcon.icon("ic_check_white")
+	public static let clear: UIImage? = MaterialIcon.icon("ic_close_white")
     public static let close: UIImage? = MaterialIcon.icon("ic_close_white")
     public static let edit: UIImage? = MaterialIcon.icon("ic_edit_white")
-    public static let history: UIImage? = MaterialIcon.icon("ic_history_white")
-    public static let image: UIImage? = MaterialIcon.icon("ic_image_white")
+	public static let favorite: UIImage? = MaterialIcon.icon("ic_favorite_white")
+	public static let favoriteBorder: UIImage? = MaterialIcon.icon("ic_favorite_border_white")
+	public static let history: UIImage? = MaterialIcon.icon("ic_history_white")
+	public static let home: UIImage? = MaterialIcon.icon("ic_home_white")
+	public static let image: UIImage? = MaterialIcon.icon("ic_image_white")
     public static let menu: UIImage? = MaterialIcon.icon("ic_menu_white")
     public static let moreHorizontal: UIImage? = MaterialIcon.icon("ic_more_horiz_white")
     public static let moreVertical: UIImage? = MaterialIcon.icon("ic_more_vert_white")
@@ -82,7 +86,7 @@ public struct MaterialIcon {
     public static let starBorder: UIImage? = MaterialIcon.icon("ic_star_border_white")
     public static let starHalf: UIImage? = MaterialIcon.icon("ic_star_half_white")
     public static let videocam: UIImage? = MaterialIcon.icon("ic_videocam_white")
-    public static let video: UIImage? = MaterialIcon.icon("cm_video_white")
+    public static let visibility: UIImage? = MaterialIcon.icon("ic_visibility_white")
     
 	/// CosmicMind icons.
     public struct cm {

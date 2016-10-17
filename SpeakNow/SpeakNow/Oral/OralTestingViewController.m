@@ -16,6 +16,8 @@
 #import "SpeakNow-Swift.h"
 #import "AVFoundation/AVFoundation.h"
 
+//#import <iflyMSC/IFlySpeechEvaluatorDelegate.h>
+#import <iflyMSC/IFlyMSC.h>
 @import Alamofire;
 
 

@@ -19,7 +19,9 @@ class SettingViewController: UITableViewController {
         navigationController?.navigationBar.translucent = false
         navigationController?.navigationBar.barTintColor = UIColor(red: 246.0/255, green: 88.0/255, blue: 64.0/255, alpha: 1)
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        self.avastar.addPicFromUrl(inf.avatar)
+        self.avastar.addPicFromUrl("http://7xq7zd.com1.z0.glb.clouddn.com/" + inf.avatar)
+        self.avastar.setRound()
+        print(inf.avatar)
     }
 
     override func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {

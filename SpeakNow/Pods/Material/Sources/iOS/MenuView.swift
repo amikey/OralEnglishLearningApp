@@ -30,9 +30,16 @@
 
 import UIKit
 
+@objc(MenuViewDelegate)
+public protocol MenuViewDelegate : MaterialDelegate {
+    /// Gets called when the user taps outside menu buttons.
+    optional func menuViewDidTapOutside(menuView: MenuView)
+    
+}
+
 public class MenuView : MaterialPulseView {
 	/// References the Menu instance.
-	public private(set) lazy var menu: Menu = Menu(origin: CGPointZero)
+	public private(set) lazy var menu: Menu = Menu()
 	
 	/**
 	Prepares the view instance when intialized. When subclassing,
@@ -43,8 +50,7 @@ public class MenuView : MaterialPulseView {
 	*/
 	public override func prepareView() {
 		super.prepareView()
-		pulseColor = nil
-		pulseScale = false
+		pulseAnimation = .None
 		clipsToBounds = false
 		backgroundColor = nil
 	}
@@ -88,12 +94,21 @@ public class MenuView : MaterialPulseView {
 		Since the subviews will be outside the bounds of this view,
 		we need to look at the subviews to see if we have a hit.
 		*/
+        guard !hidden else {
+            return nil
+        }
+		
 		for v in subviews {
 			let p: CGPoint = v.convertPoint(point, fromView: self)
 			if CGRectContainsPoint(v.bounds, p) {
 				return v.hitTest(p, withEvent: event)
 			}
 		}
+		
+		if menu.opened {
+			(delegate as? MenuViewDelegate)?.menuViewDidTapOutside?(self)
+		}
+		
 		return super.hitTest(point, withEvent: event)
 	}
 }

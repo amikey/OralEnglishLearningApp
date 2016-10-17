@@ -26,6 +26,8 @@ class Information:NSObject{
     override init() {
         if let x = keychain.get("username"){username = x}
         if let x = keychain.get("password"){pwd = x}
+        print(username)
+        print(pwd)
     }
 
     var username = ""
@@ -76,6 +78,8 @@ class Information:NSObject{
     func save(){
         keychain.set(username, forKey: "username")
         keychain.set(pwd, forKey: "password")
+        print("saving!!!!!")
+        print(keychain.get("username"))
     }
     
     /*

@@ -14,6 +14,7 @@
 #import "UIImage+KVNImageEffects.h"
 #import "UIImage+KVNEmpty.h"
 #import "UIColor+KVNContrast.h"
+#import "KVNRotationViewController.h"
 
 #define KVNBlockSelf __blockSelf
 #define KVNPrepareBlockSelf() __weak typeof(self) KVNBlockSelf = self
@@ -86,7 +87,7 @@ static KVNProgressConfiguration *configuration;
 @property (atomic) NSOperationQueue *queue;
 @property (atomic) NSBlockOperation *animateAppearanceOperation;
 @property (nonatomic, strong) UIWindow *progressWindow;
-@property (nonatomic, strong) UIWindow *keyWindow;
+@property (nonatomic, strong) UIWindow *originalKeyWindow;
 
 @end
 
@@ -414,7 +415,7 @@ static KVNProgressConfiguration *configuration;
 		if (superview) {
 			[self addToView:superview];
 		} else {
-			[self addProgressWindow];
+			[self addToWindow];
 		}
 		
 		[self setupUI:YES];
@@ -535,7 +536,7 @@ static KVNProgressConfiguration *configuration;
 		
 		if (!progressView.progressWindow.hidden) {
 			progressView.progressWindow.hidden = YES;
-			[progressView.keyWindow makeKeyAndVisible];
+			[progressView.originalKeyWindow makeKeyAndVisible];
 		}
 		
 		[UIApplication sharedApplication].statusBarStyle = [self sharedView].rootControllerStatusBarStyle;
@@ -866,11 +867,19 @@ static KVNProgressConfiguration *configuration;
 	[self.contentView addMotionEffect:group];
 }
 
-- (void)addProgressWindow
+- (void)addToWindow
 {
-	self.keyWindow = [UIApplication sharedApplication].keyWindow;
+	self.originalKeyWindow = [UIApplication sharedApplication].keyWindow;
 	
-	self.progressWindow = [[UIWindow alloc] initWithFrame:self.keyWindow.frame];
+	if (!self.progressWindow) {
+		self.progressWindow = [[UIWindow alloc] initWithFrame:self.originalKeyWindow.frame];
+		
+		// That code makes the custom UIWindow handle the orientation changes.
+		// http://stackoverflow.com/a/27091111/2571566
+		self.progressWindow.rootViewController = [[KVNRotationViewController alloc] init];
+	}
+	
+	self.progressWindow.frame = self.originalKeyWindow.frame;
 	
 	// Since iOS 9.0 set the windowsLevel to UIWindowLevelStatusBar is not working anymore.
 	// This trick, place the progressWindow on the top.
@@ -883,6 +892,10 @@ static KVNProgressConfiguration *configuration;
 
 - (void)addToView:(UIView *)superview
 {
+	if (self.superview == superview) {
+		return;
+	}
+	
 	if (self.superview) {
 		[self.superview removeConstraints:self.constraintsToSuperview];
 		[self removeFromSuperview];
@@ -891,22 +904,25 @@ static KVNProgressConfiguration *configuration;
 	[superview addSubview:self];
 	[superview bringSubviewToFront:self];
 	
-	NSArray *verticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[self]|"
-																		   options:0
-																		   metrics:nil
-																			 views:@{@"self" : self}];
-	NSArray *horizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[self]|"
-																			 options:0
-																			 metrics:nil
-																			   views:@{@"self" : self}];
-	
-	self.constraintsToSuperview = [verticalConstraints arrayByAddingObjectsFromArray:horizontalConstraints];
-	
-	self.translatesAutoresizingMaskIntoConstraints = NO;
-	[superview addConstraints:verticalConstraints];
-	[superview addConstraints:horizontalConstraints];
-	
-	[self layoutIfNeeded];
+	if (![superview isKindOfClass:[UITableView class]]) {
+		// Autolayout messes when superview is a UITableView
+		NSArray *verticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[self]|"
+																			   options:0
+																			   metrics:nil
+																				 views:@{@"self" : self}];
+		NSArray *horizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[self]|"
+																				 options:0
+																				 metrics:nil
+																				   views:@{@"self" : self}];
+		
+		self.constraintsToSuperview = [verticalConstraints arrayByAddingObjectsFromArray:horizontalConstraints];
+		
+		self.translatesAutoresizingMaskIntoConstraints = NO;
+		[superview addConstraints:verticalConstraints];
+		[superview addConstraints:horizontalConstraints];
+		
+		[self layoutIfNeeded];
+	}
 	
 	self.alpha = 0.0f;
 	
@@ -1229,16 +1245,14 @@ static KVNProgressConfiguration *configuration;
 
 - (UIImage *)blurredScreenShot
 {
-	return [self blurredScreenShotWithRect:[UIApplication sharedApplication].keyWindow.frame];
+	return [self blurredScreenShotWithRect:self.originalKeyWindow.frame];
 }
 
 - (UIImage *)blurredScreenShotWithRect:(CGRect)rect
 {
-	UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
-	
 	UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0);
 	
-	[keyWindow drawViewHierarchyInRect:rect afterScreenUpdates:NO];
+	[self.originalKeyWindow drawViewHierarchyInRect:rect afterScreenUpdates:NO];
 	UIImage *blurredScreenShot = UIGraphicsGetImageFromCurrentImageContext();
 	
 	UIGraphicsEndImageContext();

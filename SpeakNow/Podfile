@@ -1,15 +1,20 @@
 platform :ios, '8.0'
-pod "FlexibleTableView"
-pod 'Alamofire', '~> 3.0'
-pod 'JSQMessagesViewController'
-pod 'KeychainSwift', '~> 3.0'
-pod 'Kingfisher', '~> 2.0'
-pod 'KVNProgress'
-pod 'Material', '~> 1.39.17'
-pod 'MJRefresh'
-pod 'SwiftyJSON'
-pod 'AVOSCloud'        
-pod 'AVOSCloudIM'    
+project 'SpeakNow.xcodeproj'
+
+target "SpeakNow" do
+	use_frameworks!
+	
+	pod "FlexibleTableView"
+	pod 'Alamofire', '3.5.0'
+	pod 'JSQMessagesViewController'
+	pod 'KeychainSwift', git: 'https://github.com/marketplacer/keychain-swift.git', branch: 'swift_2_3'
+	pod 'Kingfisher', '2.6.1'
+	pod 'KVNProgress'
+	pod 'Material', git: 'https://github.com/CosmicMind/Material.git', branch: 'swift-2.3'
+	pod 'MJRefresh'
+	pod 'SwiftyJSON','2.4.0'
+	pod 'AVOSCloud'        
+	pod 'AVOSCloudIM'   
+end
+
 source 'https://github.com/CocoaPods/Specs.git'
-use_frameworks!
-xcodeproj 'SpeakNow.xcodeproj'

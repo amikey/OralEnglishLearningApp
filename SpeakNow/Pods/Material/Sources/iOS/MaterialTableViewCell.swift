@@ -31,7 +31,7 @@
 import UIKit
 
 @IBDesignable
-public class MaterialTableViewCell : UITableViewCell {
+public class MaterialTableViewCell : UITableViewCell, CAAnimationDelegate {
 	/**
 	A CAShapeLayer used to manage elements that would be affected by
 	the clipToBounds property of the backing layer. For example, this
@@ -45,23 +45,21 @@ public class MaterialTableViewCell : UITableViewCell {
 	*/
 	public weak var delegate: MaterialDelegate?
 	
-	/// To use a single pulse and have it focused when held.
-	@IBInspectable public var pulseFocus: Bool = false
-	
-	/// A pulse layer for focus handling.
-	public private(set) var pulseLayer: CAShapeLayer?
-	
-	/// Sets whether the scaling animation should be used.
-	@IBInspectable public lazy var pulseScale: Bool = true
+	/// An Array of pulse layers.
+	public private(set) lazy var pulseLayers: Array<CAShapeLayer> = Array<CAShapeLayer>()
 	
 	/// The opcaity value for the pulse animation.
 	@IBInspectable public var pulseOpacity: CGFloat = 0.25
 	
 	/// The color of the pulse effect.
-	@IBInspectable public var pulseColor: UIColor?
+	@IBInspectable public var pulseColor: UIColor = MaterialColor.grey.base
 	
-	/// Sets a pulse animation to always radiate from the center
-	@IBInspectable public var pulseCenter: Bool = false
+	/// The type of PulseAnimation.
+	public var pulseAnimation: PulseAnimation = .AtPointWithBacking {
+		didSet {
+			visualLayer.masksToBounds = .CenterRadialBeyondBounds != pulseAnimation
+		}
+	}
 	
 	/**
 	This property is the same as clipsToBounds. It crops any of the view's
@@ -187,8 +185,6 @@ public class MaterialTableViewCell : UITableViewCell {
 		didSet {
 			if shadowPathAutoSizeEnabled {
 				layoutShadowPath()
-			} else {
-				shadowPath = nil
 			}
 		}
 	}
@@ -302,8 +298,12 @@ public class MaterialTableViewCell : UITableViewCell {
 		super.layoutSublayersOfLayer(layer)
 		if self.layer == layer {
 			layoutVisualLayer()
-			layoutShadowPath()
 		}
+	}
+	
+	public override func layoutSubviews() {
+		super.layoutSubviews()
+		layoutShadowPath()
 	}
 	
 	/**
@@ -314,7 +314,7 @@ public class MaterialTableViewCell : UITableViewCell {
 	public func animate(animation: CAAnimation) {
 		animation.delegate = self
 		if let a: CABasicAnimation = animation as? CABasicAnimation {
-			a.fromValue = (nil == layer.presentationLayer() ? layer : layer.presentationLayer() as! CALayer).valueForKeyPath(a.keyPath!)
+			a.fromValue = (layer.presentationLayer() ?? layer).valueForKeyPath(a.keyPath!)
 		}
 		if let a: CAPropertyAnimation = animation as? CAPropertyAnimation {
 			layer.addAnimation(a, forKey: a.keyPath!)
@@ -330,7 +330,7 @@ public class MaterialTableViewCell : UITableViewCell {
 	running an animation.
 	- Parameter anim: The currently running CAAnimation instance.
 	*/
-	public override func animationDidStart(anim: CAAnimation) {
+	public func animationDidStart(anim: CAAnimation) {
 		(delegate as? MaterialAnimationDelegate)?.materialAnimationDidStart?(anim)
 	}
 	
@@ -342,7 +342,7 @@ public class MaterialTableViewCell : UITableViewCell {
 	because it was completed or interrupted. True if completed, false
 	if interrupted.
 	*/
-	public override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
+	public func animationDidStop(anim: CAAnimation, finished flag: Bool) {
 		if let a: CAPropertyAnimation = anim as? CAPropertyAnimation {
 			if let b: CABasicAnimation = a as? CABasicAnimation {
 				if let v: AnyObject = b.toValue {
@@ -367,20 +367,10 @@ public class MaterialTableViewCell : UITableViewCell {
 	*/
 	public func pulse(point: CGPoint? = nil) {
 		let p: CGPoint = nil == point ? CGPointMake(CGFloat(width / 2), CGFloat(height / 2)) : point!
-		let duration: NSTimeInterval = MaterialAnimation.pulseDuration(width)
-		
-		if let v: UIColor = pulseColor {
-			MaterialAnimation.pulseAnimation(layer, visualLayer: visualLayer, color: v.colorWithAlphaComponent(pulseOpacity), point: p, width: width, height: height, duration: duration)
-		}
-		
-		if pulseScale {
-			MaterialAnimation.expandAnimation(layer, scale: 1.05, duration: duration)
-			MaterialAnimation.delay(duration) { [weak self] in
-				if let l: CALayer = self?.layer {
-					if let w: CGFloat = self?.width {
-						MaterialAnimation.shrinkAnimation(l, width: w, duration: duration)
-					}
-				}
+		MaterialAnimation.pulseExpandAnimation(layer, visualLayer: visualLayer, pulseColor: pulseColor, pulseOpacity: pulseOpacity, point: p, width: width, height: height, pulseLayers: &pulseLayers, pulseAnimation: pulseAnimation)
+		MaterialAnimation.delay(0.35) { [weak self] in
+			if let s: MaterialTableViewCell = self {
+				MaterialAnimation.pulseContractAnimation(s.layer, visualLayer: s.visualLayer, pulseColor: s.pulseColor, pulseLayers: &s.pulseLayers, pulseAnimation: s.pulseAnimation)
 			}
 		}
 	}
@@ -393,20 +383,7 @@ public class MaterialTableViewCell : UITableViewCell {
 	*/
 	public override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
 		super.touchesBegan(touches, withEvent: event)
-		let duration: NSTimeInterval = MaterialAnimation.pulseDuration(width)
-		
-		if pulseFocus {
-			pulseLayer = CAShapeLayer()
-		}
-		
-		if let v: UIColor = pulseColor {
-			let point: CGPoint = pulseCenter ? CGPointMake(CGFloat(width / 2), CGFloat(height / 2)) : layer.convertPoint(touches.first!.locationInView(self), fromLayer: layer)
-			MaterialAnimation.pulseAnimation(layer, visualLayer: visualLayer, color: v.colorWithAlphaComponent(pulseOpacity), point: point, width: width, height: height, duration: duration, pulseLayer: pulseLayer)
-		}
-		
-		if pulseScale {
-			MaterialAnimation.expandAnimation(layer, scale: 1.05, duration: duration)
-		}
+		MaterialAnimation.pulseExpandAnimation(layer, visualLayer: visualLayer, pulseColor: pulseColor, pulseOpacity: pulseOpacity, point: layer.convertPoint(touches.first!.locationInView(self), fromLayer: layer), width: width, height: height, pulseLayers: &pulseLayers, pulseAnimation: pulseAnimation)
 	}
 	
 	/**
@@ -417,7 +394,7 @@ public class MaterialTableViewCell : UITableViewCell {
 	*/
 	public override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
 		super.touchesEnded(touches, withEvent: event)
-		MaterialAnimation.shrinkAnimation(layer, width: width, duration: MaterialAnimation.pulseDuration(width), pulseLayer: pulseLayer)
+		MaterialAnimation.pulseContractAnimation(layer, visualLayer: visualLayer, pulseColor: pulseColor, pulseLayers: &pulseLayers, pulseAnimation: pulseAnimation)
 	}
 	
 	/**
@@ -426,9 +403,9 @@ public class MaterialTableViewCell : UITableViewCell {
 	- Parameter touches: A set of UITouch objects.
 	- Parameter event: A UIEvent object.
 	*/
-	public override func touchesCancelled(touches: Set<UITouch>?, withEvent event: UIEvent?) {
+	public override func touchesCancelled(touches: Set<UITouch>, withEvent event: UIEvent?) {
 		super.touchesCancelled(touches, withEvent: event)
-		MaterialAnimation.shrinkAnimation(layer, width: width, duration: MaterialAnimation.pulseDuration(width), pulseLayer: pulseLayer)
+		MaterialAnimation.pulseContractAnimation(layer, visualLayer: visualLayer, pulseColor: pulseColor, pulseLayers: &pulseLayers, pulseAnimation: pulseAnimation)
 	}
 	
 	/**
@@ -439,13 +416,13 @@ public class MaterialTableViewCell : UITableViewCell {
 	when subclassing.
 	*/
 	public func prepareView() {
-		prepareVisualLayer()
 		selectionStyle = .None
-		pulseColor = MaterialColor.grey.lighten1
-		pulseScale = false
+		separatorInset = UIEdgeInsetsZero
+		contentScaleFactor = MaterialDevice.scale
 		imageView?.userInteractionEnabled = false
 		textLabel?.userInteractionEnabled = false
 		detailTextLabel?.userInteractionEnabled = false
+		prepareVisualLayer()
 	}
 	
 	/// Prepares the visualLayer property.

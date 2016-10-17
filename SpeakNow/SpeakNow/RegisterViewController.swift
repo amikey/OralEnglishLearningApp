@@ -88,12 +88,12 @@ class RegisterViewController: UIViewController ,TextFieldDelegate{
     }
 
     @IBAction func textfieldVauleChange(sender: AnyObject) {
-        (sender as! TextField).detailLabelHidden = check(sender as! UITextField)
+//        (sender as! TextField).detailLabelHidden = check(sender as! UITextField)
     }
 
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         let res = check(textField)
-        (textField as! TextField).detailLabelHidden = res
+//        (textField as! TextField).detailLabel = res
         if res{
             switch textField.tag {
             case 1:pwd.becomeFirstResponder()
@@ -132,8 +132,8 @@ class RegisterViewController: UIViewController ,TextFieldDelegate{
 extension TextField{
     func set_detailLabel(x:String){
         self.detailLabel.text = x
-        self.detailLabelActiveColor = MaterialColor.red.accent3
+//        self.detailLabelActiveColor = MaterialColor.red.accent3
         self.detailLabel.font = RobotoFont.regularWithSize(10)
-        self.detailLabelAutoHideEnabled = false
+//        self.detailLabelAutoHideEnabled = false
     }
 }

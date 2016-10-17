@@ -34,20 +34,23 @@ import UIKit
 private var MaterialAssociatedObjectNavigationItemKey: UInt8 = 0
 
 public class MaterialAssociatedObjectNavigationItem {
-	/// Portrait inset.
-	public var portraitInset: CGFloat
+	/**
+	A boolean indicating whether keys are being observed
+	on the UINavigationItem.
+	*/
+	internal var observed: Bool = false
 	
-	/// Landscape inset.
-	public var landscapeInset: CGFloat
+	/// Back Button.
+	public var backButton: IconButton?
 	
-	/// Detail View.
-	public var detailView: UIView?
+	/// Content View.
+	public var contentView: UIView?
 	
 	/// Title label.
-	public var titleLabel: UILabel?
+	public private(set) var titleLabel: UILabel!
 	
 	/// Detail label.
-	public var detailLabel: UILabel?
+	public private(set) var detailLabel: UILabel!
 	
 	/// Left controls.
 	public var leftControls: Array<UIControl>?
@@ -55,9 +58,24 @@ public class MaterialAssociatedObjectNavigationItem {
 	/// Right controls.
 	public var rightControls: Array<UIControl>?
 	
-	public init(portraitInset: CGFloat, landscapeInset: CGFloat) {
-		self.portraitInset = portraitInset
-		self.landscapeInset = landscapeInset
+	/// Initializer.
+	public init() {
+		prepareTitleLabel()
+		prepareDetailLabel()
+	}
+	
+	/// Prepares the titleLabel.
+	private func prepareTitleLabel() {
+		titleLabel = UILabel()
+		titleLabel.font = RobotoFont.mediumWithSize(17)
+		titleLabel.textAlignment = .Center
+	}
+	
+	/// Prepares the detailLabel.
+	private func prepareDetailLabel() {
+		detailLabel = UILabel()
+		detailLabel.font = RobotoFont.regularWithSize(12)
+		detailLabel.textAlignment = .Center
 	}
 }
 
@@ -66,7 +84,7 @@ public extension UINavigationItem {
 	public internal(set) var item: MaterialAssociatedObjectNavigationItem {
 		get {
 			return MaterialAssociatedObject(self, key: &MaterialAssociatedObjectNavigationItemKey) {
-				return MaterialAssociatedObjectNavigationItem(portraitInset: .iPad == MaterialDevice.type || "iPhone 6s Plus" == MaterialDevice.model || "iPhone 6 Plus" == MaterialDevice.model ? -20 : -16, landscapeInset: -20)
+				return MaterialAssociatedObjectNavigationItem()
 			}
 		}
 		set(value) {
@@ -74,38 +92,38 @@ public extension UINavigationItem {
 		}
 	}
 	
-	/// Portrait inset.
-	public var portraitInset: CGFloat {
+	/// Back Button.
+	public internal(set) var backButton: IconButton? {
 		get {
-			return item.portraitInset
+			return item.backButton
 		}
 		set(value) {
-			item.portraitInset = value
+			item.backButton = value
 		}
 	}
 	
-	/// Landscape inset.
-	public var landscapeInset: CGFloat {
+	/// Content View.
+	public internal(set) var contentView: UIView? {
 		get {
-			return item.landscapeInset
+			return item.contentView
 		}
 		set(value) {
-			item.landscapeInset = value
+			item.contentView = value
 		}
 	}
 	
-	/// Detail View.
-	public var detailView: UIView? {
+	@nonobjc
+	public var title: String? {
 		get {
-			return item.detailView
+			return titleLabel.text
 		}
 		set(value) {
-			item.detailView = value
+			titleLabel.text = value
 		}
 	}
 	
 	/// Title Label.
-	public var titleLabel: UILabel? {
+	public internal(set) var titleLabel: UILabel {
 		get {
 			return item.titleLabel
 		}
@@ -114,8 +132,18 @@ public extension UINavigationItem {
 		}
 	}
 	
+	/// Detail text.
+	public var detail: String? {
+		get {
+			return detailLabel.text
+		}
+		set(value) {
+			detailLabel.text = value
+		}
+	}
+	
 	/// Detail Label.
-	public var detailLabel: UILabel? {
+	public internal(set) var detailLabel: UILabel {
 		get {
 			return item.detailLabel
 		}

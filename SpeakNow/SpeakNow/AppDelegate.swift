@@ -10,6 +10,8 @@ import UIKit
 import CoreData
 import Foundation
 
+import AVOSCloud
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -77,15 +79,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         let snapshot = self.window!.snapshotViewAfterScreenUpdates(true) 
-        vc.view.addSubview(snapshot)
+        vc.view.addSubview(snapshot!)
         self.window?.rootViewController=vc
 
         UIView.animateWithDuration(0.5, animations: {
-            snapshot.layer.opacity = 0
-            snapshot.layer.transform = CATransform3DMakeScale(1.5, 1.5, 1.5)
+            snapshot!.layer.opacity = 0
+            snapshot!.layer.transform = CATransform3DMakeScale(1.5, 1.5, 1.5)
             }, completion: {
                 _ in
-                snapshot.removeFromSuperview()
+                snapshot!.removeFromSuperview()
         })
 
     }

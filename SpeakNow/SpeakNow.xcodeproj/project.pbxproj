@@ -57,7 +57,7 @@
 		09AA34B71D5988DE005E7558 /* AlamofireWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AA34B61D5988DE005E7558 /* AlamofireWrapper.swift */; };
 		09CAB9431CCFB1D60077FBE3 /* ListenDataDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAB9421CCFB1D60077FBE3 /* ListenDataDetailViewController.swift */; };
 		09CAB9451CCFB4950077FBE3 /* ListenTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAB9441CCFB4950077FBE3 /* ListenTabBar.swift */; };
-		3A20CCB6B10FB699C4337C9D /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B314C847AB64C9C343400349 /* Pods.framework */; };
+		5823FDD04931F5E555C7979F /* Pods_SpeakNow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04CC6C5E2F8126E3F6EA3D22 /* Pods_SpeakNow.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +78,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04CC6C5E2F8126E3F6EA3D22 /* Pods_SpeakNow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpeakNow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0908A4E31DB52C4A00CFC48D /* SpeakNow.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SpeakNow.entitlements; sourceTree = "<group>"; };
 		091875B91CC2218C0084F9B4 /* Information.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Information.swift; sourceTree = "<group>"; };
 		091875BC1CC2235F0084F9B4 /* ListeningPracticeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListeningPracticeVC.swift; path = Prctice/ListeningPracticeVC.swift; sourceTree = "<group>"; };
 		0927ED8F1CC0A7D7000AB5C3 /* SpeakNow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeakNow.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -152,9 +154,9 @@
 		09AA34B61D5988DE005E7558 /* AlamofireWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireWrapper.swift; sourceTree = "<group>"; };
 		09CAB9421CCFB1D60077FBE3 /* ListenDataDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListenDataDetailViewController.swift; path = Pratice/ListenDataDetailViewController.swift; sourceTree = "<group>"; };
 		09CAB9441CCFB4950077FBE3 /* ListenTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListenTabBar.swift; path = Prctice/ListenTabBar.swift; sourceTree = "<group>"; };
-		4C5439C363579C9403C3A464 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		A7CA48303458A64B0DF3FC4D /* Pods-SpeakNow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpeakNow.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpeakNow/Pods-SpeakNow.release.xcconfig"; sourceTree = "<group>"; };
 		B314C847AB64C9C343400349 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DD27051A0BC3B3DAB9802AD8 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		C5F2236547FA167C1983D0E6 /* Pods-SpeakNow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpeakNow.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpeakNow/Pods-SpeakNow.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,7 +176,7 @@
 				0988DFE01D56D2550081F678 /* CoreTelephony.framework in Frameworks */,
 				0988DFDE1D56D23D0081F678 /* libz.tbd in Frameworks */,
 				0988DFDC1D56D2000081F678 /* iflyMSC.framework in Frameworks */,
-				3A20CCB6B10FB699C4337C9D /* Pods.framework in Frameworks */,
+				5823FDD04931F5E555C7979F /* Pods_SpeakNow.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,8 +227,8 @@
 				0927EDA91CC0A7D7000AB5C3 /* SpeakNowTests */,
 				0927EDB41CC0A7D7000AB5C3 /* SpeakNowUITests */,
 				0927ED901CC0A7D7000AB5C3 /* Products */,
-				9699923E01B476B8BA6D5FF6 /* Pods */,
 				0C87E4AB275F4A6C07548E37 /* Frameworks */,
+				A811FF951F40E4BB7116DDDC /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -243,6 +245,7 @@
 		0927ED911CC0A7D7000AB5C3 /* SpeakNow */ = {
 			isa = PBXGroup;
 			children = (
+				0908A4E31DB52C4A00CFC48D /* SpeakNow.entitlements */,
 				0988DFF31D56D7790081F678 /* oral */,
 				092ECEE21D52DAD600DB73B9 /* message */,
 				09852B8C1D470CDE00B0E749 /* Setting */,
@@ -377,15 +380,16 @@
 				0988DFDD1D56D23D0081F678 /* libz.tbd */,
 				0988DFDB1D56D2000081F678 /* iflyMSC.framework */,
 				B314C847AB64C9C343400349 /* Pods.framework */,
+				04CC6C5E2F8126E3F6EA3D22 /* Pods_SpeakNow.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		9699923E01B476B8BA6D5FF6 /* Pods */ = {
+		A811FF951F40E4BB7116DDDC /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				DD27051A0BC3B3DAB9802AD8 /* Pods.debug.xcconfig */,
-				4C5439C363579C9403C3A464 /* Pods.release.xcconfig */,
+				C5F2236547FA167C1983D0E6 /* Pods-SpeakNow.debug.xcconfig */,
+				A7CA48303458A64B0DF3FC4D /* Pods-SpeakNow.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -397,12 +401,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0927EDBA1CC0A7D7000AB5C3 /* Build configuration list for PBXNativeTarget "SpeakNow" */;
 			buildPhases = (
-				3CE06959418573D1D65DFEB8 /* Check Pods Manifest.lock */,
+				FC0595A8C7862815C041A97B /* [CP] Check Pods Manifest.lock */,
 				0927ED8B1CC0A7D7000AB5C3 /* Sources */,
 				0927ED8C1CC0A7D7000AB5C3 /* Frameworks */,
 				0927ED8D1CC0A7D7000AB5C3 /* Resources */,
-				253A72F98985244C5A4D4090 /* Embed Pods Frameworks */,
-				67718DF1072A760190753D04 /* Copy Pods Resources */,
+				01D4A3AA998464ABAE9AA6E7 /* [CP] Embed Pods Frameworks */,
+				307D246997AC4E2607642607 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -456,12 +460,18 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = cccfl;
 				TargetAttributes = {
 					0927ED8E1CC0A7D7000AB5C3 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = PLN78VXB7A;
+						LastSwiftMigration = 0800;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					0927EDA51CC0A7D7000AB5C3 = {
 						CreatedOnToolsVersion = 7.3;
@@ -524,49 +534,49 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		253A72F98985244C5A4D4090 /* Embed Pods Frameworks */ = {
+		01D4A3AA998464ABAE9AA6E7 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SpeakNow/Pods-SpeakNow-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		3CE06959418573D1D65DFEB8 /* Check Pods Manifest.lock */ = {
+		307D246997AC4E2607642607 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SpeakNow/Pods-SpeakNow-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		67718DF1072A760190753D04 /* Copy Pods Resources */ = {
+		FC0595A8C7862815C041A97B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -676,8 +686,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -704,6 +716,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -721,8 +734,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -741,16 +756,20 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 2.3;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		0927EDBB1CC0A7D7000AB5C3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DD27051A0BC3B3DAB9802AD8 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = C5F2236547FA167C1983D0E6 /* Pods-SpeakNow.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = SpeakNow/SpeakNow.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
@@ -765,15 +784,18 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SpeakNow/SpeakNow-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
 		0927EDBC1CC0A7D7000AB5C3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4C5439C363579C9403C3A464 /* Pods.release.xcconfig */;
+			baseConfigurationReference = A7CA48303458A64B0DF3FC4D /* Pods-SpeakNow.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = SpeakNow/SpeakNow.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
@@ -787,6 +809,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SpeakNow/SpeakNow-Bridging-Header.h";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
@@ -798,6 +821,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cccfl.SpeakNowTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpeakNow.app/SpeakNow";
 			};
 			name = Debug;
@@ -810,6 +834,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cccfl.SpeakNowTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpeakNow.app/SpeakNow";
 			};
 			name = Release;
@@ -821,6 +846,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cccfl.SpeakNowUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_TARGET_NAME = SpeakNow;
 			};
 			name = Debug;
@@ -832,6 +858,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cccfl.SpeakNowUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_TARGET_NAME = SpeakNow;
 			};
 			name = Release;

@@ -1,44 +1,69 @@
 PODS:
-  - Alamofire (3.4.1)
-  - AVOSCloud (3.3.5)
-  - AVOSCloudIM (3.3.5):
-    - AVOSCloud
+  - Alamofire (3.5.0)
+  - AVOSCloud (3.6.0)
+  - AVOSCloudIM (3.6.0):
+    - AVOSCloud (= 3.6.0)
+    - AVOSCloudIM/_ARC (= 3.6.0)
+    - AVOSCloudIM/_NOARC (= 3.6.0)
+  - AVOSCloudIM/_ARC (3.6.0):
+    - AVOSCloud (= 3.6.0)
+    - AVOSCloudIM/_NOARC (= 3.6.0)
+  - AVOSCloudIM/_NOARC (3.6.0):
+    - AVOSCloud (= 3.6.0)
   - FlexibleTableView (1.2)
   - JSQMessagesViewController (7.3.4):
     - JSQSystemSoundPlayer (~> 2.0.1)
   - JSQSystemSoundPlayer (2.0.1)
   - KeychainSwift (3.0.16)
-  - Kingfisher (2.4.2)
-  - KVNProgress (2.3)
-  - Material (1.39.17)
+  - Kingfisher (2.6.1)
+  - KVNProgress (2.3.1)
+  - Material (1.42.9)
   - MJRefresh (3.1.12)
-  - SwiftyJSON (2.3.2)
+  - SwiftyJSON (2.4.0)
 
 DEPENDENCIES:
-  - Alamofire (~> 3.0)
+  - Alamofire (= 3.5.0)
   - AVOSCloud
   - AVOSCloudIM
   - FlexibleTableView
   - JSQMessagesViewController
-  - KeychainSwift (~> 3.0)
-  - Kingfisher (~> 2.0)
+  - KeychainSwift (from `https://github.com/marketplacer/keychain-swift.git`, branch `swift_2_3`)
+  - Kingfisher (= 2.6.1)
   - KVNProgress
-  - Material (~> 1.39.17)
+  - Material (from `https://github.com/CosmicMind/Material.git`, branch `swift-2.3`)
   - MJRefresh
-  - SwiftyJSON
+  - SwiftyJSON (= 2.4.0)
+
+EXTERNAL SOURCES:
+  KeychainSwift:
+    :branch: swift_2_3
+    :git: https://github.com/marketplacer/keychain-swift.git
+  Material:
+    :branch: swift-2.3
+    :git: https://github.com/CosmicMind/Material.git
+
+CHECKOUT OPTIONS:
+  KeychainSwift:
+    :commit: bd1f7dd023fb26f92a5a94d44e6450aa44dacc29
+    :git: https://github.com/marketplacer/keychain-swift.git
+  Material:
+    :commit: 485b3a7346f53425b36c00be1b2852857bf0aae9
+    :git: https://github.com/CosmicMind/Material.git
 
 SPEC CHECKSUMS:
-  Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
-  AVOSCloud: 1fe170768bee7e05bc3ea86e38d5bddb105cb957
-  AVOSCloudIM: dc307c48e951fcd861f4ae6db6d807e7b40639c8
+  Alamofire: b70a7352335f8ea5babd0a923eb7e8eacc67b877
+  AVOSCloud: be838e80e13c3247abf24d95e325b3fd515f9d12
+  AVOSCloudIM: 7044ffb9c883fedb8d9055db12e4f28c5160795d
   FlexibleTableView: cff970d6ab61afe239c9f412ff1a7d387210256e
   JSQMessagesViewController: 39fed975e3c9f8eba7292071e29eeb541d105e66
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
   KeychainSwift: a5bb85cd498ce2217b55e055ec59e9268d83384c
-  Kingfisher: 05bf8d04408aaa70fcd2c8c81b9f1d0f1ad313dd
-  KVNProgress: d0459bfa4dca0379cdba5c038326ea34e9fc2df9
-  Material: eccc5afdac89e10aa7a635ad34d6c3564387bfd3
+  Kingfisher: 7e5515bf6c4f2acad91f6400955d2257549cab7b
+  KVNProgress: 8167b1f19e2758290c0b6143020ed9dcbb0477a1
+  Material: a84ed893b7785f0d3c8d568e88c055f82b436473
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
-  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+  SwiftyJSON: 96918c1bf505efa50c4f72957018dd3452090c9c
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 225747f174b4a8ed024d211253ea9615c1113166
+
+COCOAPODS: 1.1.0.beta.2

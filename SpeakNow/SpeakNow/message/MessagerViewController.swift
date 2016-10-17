@@ -9,7 +9,8 @@
 import JSQMessagesViewController
 import UIKit
 import Foundation
-
+import AVOSCloud
+import AVOSCloudIM
 
 class MessagerViewController: JSQMessagesViewController, AVIMClientDelegate {
 
@@ -66,7 +67,7 @@ class MessagerViewController: JSQMessagesViewController, AVIMClientDelegate {
         let audioSession = AVAudioSession.sharedInstance()
         do {
             try audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
-            try audioRecorder = AVAudioRecorder(URL: soundURL,
+            try audioRecorder = AVAudioRecorder(URL: soundURL!,
                                                 settings: recordSettings)//初始化实例
 
             audioRecorder.prepareToRecord()//准备录音
@@ -76,7 +77,7 @@ class MessagerViewController: JSQMessagesViewController, AVIMClientDelegate {
 
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
-        self.client.conversationForId(conversation.conversationId)
+        self.client.conversationForId(conversation.conversationId!)
     }
 
     func initConversation(){
@@ -115,7 +116,7 @@ class MessagerViewController: JSQMessagesViewController, AVIMClientDelegate {
         let msg:JSQMessage
         switch message.mediaType {
         case -3:
-            let audioItem = JSQAudioMediaItem(data: NSData(contentsOfURL: NSURL(string: message.file.url)! ))
+            let audioItem = JSQAudioMediaItem(data: NSData(contentsOfURL: NSURL(string: message.file!.url!)! ))
             msg = JSQMessage(senderId: toid, displayName: toname, media: audioItem)
         case -1:
             msg = JSQMessage(senderId: toid, displayName: toname, text: message.text)

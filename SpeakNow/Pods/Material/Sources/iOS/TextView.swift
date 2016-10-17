@@ -35,7 +35,7 @@ public protocol TextViewDelegate : UITextViewDelegate {}
 
 @IBDesignable
 @objc(TextView)
-public class TextView: UITextView {
+public class TextView: UITextView, CAAnimationDelegate {
 	/**
 	This property is the same as clipsToBounds. It crops any of the view's
 	contents from bleeding past the view's frame.
@@ -148,8 +148,6 @@ public class TextView: UITextView {
 		didSet {
 			if shadowPathAutoSizeEnabled {
 				layoutShadowPath()
-			} else {
-				shadowPath = nil
 			}
 		}
 	}
@@ -327,7 +325,7 @@ public class TextView: UITextView {
 	- Parameter textContainer: A NSTextContainer instance.
 	*/
 	public convenience init(textContainer: NSTextContainer?) {
-		self.init(frame: CGRectZero, textContainer: textContainer)
+		self.init(frame: CGRect.zero, textContainer: textContainer)
 	}
 	
 	/** Denitializer. This should never be called unless you know
@@ -340,15 +338,9 @@ public class TextView: UITextView {
 	/// Overriding the layout callback for subviews.
 	public override func layoutSubviews() {
 		super.layoutSubviews()
+		layoutShadowPath()
 		placeholderLabel?.preferredMaxLayoutWidth = textContainer.size.width - textContainer.lineFragmentPadding * 2
 		titleLabel?.frame.size.width = bounds.width
-	}
-	
-	public override func layoutSublayersOfLayer(layer: CALayer) {
-		super.layoutSublayersOfLayer(layer)
-		if self.layer == layer {
-			layoutShadowPath()
-		}
 	}
 	
 	/**
@@ -359,7 +351,7 @@ public class TextView: UITextView {
 	public func animate(animation: CAAnimation) {
 		animation.delegate = self
 		if let a: CABasicAnimation = animation as? CABasicAnimation {
-			a.fromValue = (nil == layer.presentationLayer() ? layer : layer.presentationLayer() as! CALayer).valueForKeyPath(a.keyPath!)
+			a.fromValue = (layer.presentationLayer() ?? layer).valueForKeyPath(a.keyPath!)
 		}
 		if let a: CAPropertyAnimation = animation as? CAPropertyAnimation {
 			layer.addAnimation(a, forKey: a.keyPath!)
@@ -375,7 +367,7 @@ public class TextView: UITextView {
 	running an animation.
 	- Parameter anim: The currently running CAAnimation instance.
 	*/
-	public override func animationDidStart(anim: CAAnimation) {
+	public func animationDidStart(anim: CAAnimation) {
 		(delegate as? MaterialAnimationDelegate)?.materialAnimationDidStart?(anim)
 	}
 	
@@ -387,7 +379,7 @@ public class TextView: UITextView {
 	because it was completed or interrupted. True if completed, false
 	if interrupted.
 	*/
-	public override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
+	public func animationDidStop(anim: CAAnimation, finished flag: Bool) {
 		if let a: CAPropertyAnimation = anim as? CAPropertyAnimation {
 			if let b: CABasicAnimation = a as? CABasicAnimation {
 				if let v: AnyObject = b.toValue {
@@ -409,8 +401,7 @@ public class TextView: UITextView {
 	internal func reloadView() {
 		if let p = placeholderLabel {
 			removeConstraints(constraints)
-			MaterialLayout.alignToParent(self,
-				child: p,
+			layout(p).edges(
 				top: textContainerInset.top,
 				left: textContainerInset.left + textContainer.lineFragmentPadding,
 				bottom: textContainerInset.bottom,
@@ -467,6 +458,7 @@ public class TextView: UITextView {
 	when subclassing.
 	*/
 	public func prepareView() {
+		contentScaleFactor = MaterialDevice.scale
 		textContainerInset = MaterialEdgeInsetToValue(.None)
 		backgroundColor = MaterialColor.white
 		masksToBounds = false
@@ -478,7 +470,6 @@ public class TextView: UITextView {
 	/// prepares the placeholderLabel property.
 	private func preparePlaceholderLabel() {
 		if let v: UILabel = placeholderLabel {
-			v.translatesAutoresizingMaskIntoConstraints = false
 			v.font = font
 			v.textAlignment = textAlignment
 			v.numberOfLines = 0
@@ -512,9 +503,11 @@ public class TextView: UITextView {
 				let h: CGFloat = ceil(v.font.lineHeight)
 				v.frame = CGRectMake(0, -h, bounds.width, h)
 				v.hidden = false
-				UIView.animateWithDuration(0.25, animations: { [unowned self] in
-					v.alpha = 1
-					v.frame.origin.y = -v.frame.height - self.titleLabelAnimationDistance
+				UIView.animateWithDuration(0.25, animations: { [weak self] in
+					if let s: TextView = self {
+						v.alpha = 1
+						v.frame.origin.y = -v.frame.height - s.titleLabelAnimationDistance
+					}
 				})
 			}
 		}

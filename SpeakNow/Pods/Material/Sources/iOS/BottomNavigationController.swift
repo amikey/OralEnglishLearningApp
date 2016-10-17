@@ -36,8 +36,8 @@ public class BottomNavigationFadeAnimatedTransitioning : NSObject, UIViewControl
 		let toView : UIView = transitionContext.viewForKey(UITransitionContextToViewKey)!
 		toView.alpha = 0
 		
-		transitionContext.containerView()!.addSubview(fromView)
-		transitionContext.containerView()!.addSubview(toView)
+		transitionContext.containerView().addSubview(fromView)
+		transitionContext.containerView().addSubview(toView)
 		
 		UIView.animateWithDuration(transitionDuration(transitionContext),
 			animations: { _ in
@@ -69,7 +69,6 @@ public class BottomNavigationController : UITabBarController, UITabBarController
 	*/
 	public required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
-		prepareView()
 	}
 	
 	/**
@@ -79,11 +78,14 @@ public class BottomNavigationController : UITabBarController, UITabBarController
 	*/
 	public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
 		super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-		prepareView()
 	}
 	
 	public init() {
 		super.init(nibName: nil, bundle: nil)
+	}
+	
+	public override func viewDidLoad() {
+		super.viewDidLoad()
 		prepareView()
 	}
 	
@@ -126,6 +128,7 @@ public class BottomNavigationController : UITabBarController, UITabBarController
 	*/
 	public func prepareView() {
 		view.clipsToBounds = true
+		view.contentScaleFactor = MaterialDevice.scale
 		delegate = self
 		prepareTabBar()
 	}

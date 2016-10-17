@@ -58,13 +58,13 @@ public class FlexibleTableViewCellIndicator: UIView {
     override public func drawRect(rect: CGRect) {
         let context = UIGraphicsGetCurrentContext();
         
-        CGContextBeginPath(context);
-        CGContextMoveToPoint   (context, CGRectGetMinX(rect), CGRectGetMaxY(rect));
-        CGContextAddLineToPoint(context, CGRectGetMidX(rect), CGRectGetMinY(rect));
-        CGContextAddLineToPoint(context, CGRectGetMaxX(rect), CGRectGetMaxY(rect));
-        CGContextClosePath(context);
+        CGContextBeginPath(context!);
+        CGContextMoveToPoint   (context!, CGRectGetMinX(rect), CGRectGetMaxY(rect));
+        CGContextAddLineToPoint(context!, CGRectGetMidX(rect), CGRectGetMinY(rect));
+        CGContextAddLineToPoint(context!, CGRectGetMaxX(rect), CGRectGetMaxY(rect));
+        CGContextClosePath(context!);
         
-        CGContextSetFillColorWithColor(context, indicatorColor!.CGColor);
-        CGContextFillPath(context);
+        CGContextSetFillColorWithColor(context!, indicatorColor!.CGColor);
+        CGContextFillPath(context!);
     }
 }

@@ -30,90 +30,129 @@
 
 import UIKit
 
-public class Toolbar : StatusBarView {
+public class Toolbar : BarView {
+	/// A convenience property to set the titleLabel text.
+	public var title: String? {
+		get {
+			return titleLabel?.text
+		}
+		set(value) {
+			titleLabel?.text = value
+			layoutSubviews()
+		}
+	}
+	
 	/// Title label.
-	public var titleLabel: UILabel? {
-		didSet {
-			if let v: UILabel = titleLabel {
-				contentView.addSubview(v)
-			}
+	public private(set) var titleLabel: UILabel!
+	
+	/// A convenience property to set the detailLabel text.
+	public var detail: String? {
+		get {
+			return detailLabel?.text
+		}
+		set(value) {
+			detailLabel?.text = value
 			layoutSubviews()
 		}
 	}
 	
 	/// Detail label.
-	public var detailLabel: UILabel? {
-		didSet {
-			if let v: UILabel = detailLabel {
-				contentView.addSubview(v)
-			}
-			layoutSubviews()
-		}
-	}
-	
-	/// A convenience initializer.
-	public convenience init() {
-		self.init(frame: CGRectZero)
-	}
-	
-	/**
-	A convenience initializer with parameter settings.
-	- Parameter titleLabel: UILabel for the title.
-	- Parameter detailLabel: UILabel for the details.
-	- Parameter leftControls: An Array of UIControls that go on the left side.
-	- Parameter rightControls: An Array of UIControls that go on the right side.
-	*/
-	public convenience init?(titleLabel: UILabel? = nil, detailLabel: UILabel? = nil, leftControls: Array<UIControl>? = nil, rightControls: Array<UIControl>? = nil) {
-		self.init(frame: CGRectZero)
-		prepareProperties(titleLabel, detailLabel: detailLabel, leftControls: leftControls, rightControls: rightControls)
-	}
+	public private(set) var detailLabel: UILabel!
 	
 	public override func layoutSubviews() {
 		super.layoutSubviews()
 		if willRenderView {
-			
-			contentView.grid.views = []
-			
-			// TitleView alignment.
-			if let t: UILabel = titleLabel {
-				t.grid.rows = 1
-				contentView.grid.views?.append(t)
-				
-				if let d: UILabel = detailLabel {
-					t.font = t.font.fontWithSize(17)
-					
-					d.grid.rows = 1
-					d.font = d.font.fontWithSize(12)
-					
-					contentView.grid.axis.rows = 2
-					contentView.grid.views?.append(d)
-				} else {
-					t.font = t.font?.fontWithSize(20)
-					contentView.grid.axis.rows = 1
+
+			if nil != title && "" != title {
+				if nil == titleLabel.superview {
+					contentView.addSubview(titleLabel)
 				}
+				titleLabel.frame = contentView.bounds
+			} else {
+				titleLabel.removeFromSuperview()
 			}
 			
-			grid.reloadLayout()
+			if nil != detail && "" != detail {
+				if nil == detailLabel.superview {
+					contentView.addSubview(detailLabel)
+				}
+				
+				if nil == titleLabel.superview {
+					detailLabel.frame = contentView.bounds
+				} else {
+					titleLabel.sizeToFit()
+					detailLabel.sizeToFit()
+					
+					let diff: CGFloat = (contentView.frame.height - titleLabel.frame.height - detailLabel.frame.height) / 2
+					
+					titleLabel.frame.size.height += diff
+					titleLabel.frame.size.width = contentView.frame.width
+					
+					detailLabel.frame.size.height += diff
+					detailLabel.frame.size.width = contentView.frame.width
+					detailLabel.frame.origin.y = titleLabel.frame.height
+				}
+			} else {
+				detailLabel.removeFromSuperview()
+			}
+			
 			contentView.grid.reloadLayout()
 		}
 	}
 	
-	/// Prepares the contentView.
-	public override func prepareContentView() {
-		super.prepareContentView()
-		contentView.grid.axis.direction = .Vertical
+	/**
+	An initializer that initializes the object with a NSCoder object.
+	- Parameter aDecoder: A NSCoder instance.
+	*/
+	public required init?(coder aDecoder: NSCoder) {
+		super.init(coder: aDecoder)
 	}
 	
 	/**
-	Used to trigger property changes  that initializers avoid.
-	- Parameter titleLabel: UILabel for the title.
-	- Parameter detailLabel: UILabel for the details.
+	An initializer that initializes the object with a CGRect object.
+	If AutoLayout is used, it is better to initilize the instance
+	using the init() initializer.
+	- Parameter frame: A CGRect instance.
+	*/
+	public override init(frame: CGRect) {
+		super.init(frame: frame)
+	}
+	
+	/**
+	A convenience initializer with parameter settings.
 	- Parameter leftControls: An Array of UIControls that go on the left side.
 	- Parameter rightControls: An Array of UIControls that go on the right side.
 	*/
-	internal func prepareProperties(titleLabel: UILabel?, detailLabel: UILabel?, leftControls: Array<UIControl>?, rightControls: Array<UIControl>?) {
-		prepareProperties(leftControls, rightControls: rightControls)
-		self.titleLabel = titleLabel
-		self.detailLabel = detailLabel
+	public override init(leftControls: Array<UIControl>? = nil, rightControls: Array<UIControl>? = nil) {
+		super.init(leftControls: leftControls, rightControls: rightControls)
+	}
+	
+	/**
+	Prepares the view instance when intialized. When subclassing,
+	it is recommended to override the prepareView method
+	to initialize property values and other setup operations.
+	The super.prepareView method should always be called immediately
+	when subclassing.
+	*/
+	public override func prepareView() {
+		super.prepareView()
+		prepareTitleLabel()
+		prepareDetailLabel()
+	}
+	
+	/// Prepares the titleLabel.
+	private func prepareTitleLabel() {
+		titleLabel = UILabel()
+		titleLabel.contentScaleFactor = MaterialDevice.scale
+		titleLabel.font = RobotoFont.mediumWithSize(17)
+		titleLabel.textAlignment = .Left
+	}
+	
+	/// Prepares the detailLabel.
+	private func prepareDetailLabel() {
+		detailLabel = UILabel()
+		detailLabel.contentScaleFactor = MaterialDevice.scale
+		detailLabel.font = RobotoFont.regularWithSize(12)
+		detailLabel.textAlignment = .Left
 	}
 }

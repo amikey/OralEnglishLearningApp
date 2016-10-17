@@ -32,6 +32,46 @@ import UIKit
 
 @IBDesignable
 public class MaterialCollectionView : UICollectionView {
+	/// A property that accesses the layer.frame.origin.x property.
+	@IBInspectable public var x: CGFloat {
+		get {
+			return layer.frame.origin.x
+		}
+		set(value) {
+			layer.frame.origin.x = value
+		}
+	}
+	
+	/// A property that accesses the layer.frame.origin.y property.
+	@IBInspectable public var y: CGFloat {
+		get {
+			return layer.frame.origin.y
+		}
+		set(value) {
+			layer.frame.origin.y = value
+		}
+	}
+	
+	/// A property that accesses the layer.frame.size.width property.
+	@IBInspectable public var width: CGFloat {
+		get {
+			return layer.frame.size.width
+		}
+		set(value) {
+			layer.frame.size.width = value
+		}
+	}
+	
+	/// A property that accesses the layer.frame.size.height property.
+	@IBInspectable public var height: CGFloat {
+		get {
+			return layer.frame.size.height
+		}
+		set(value) {
+			layer.frame.size.height = value
+		}
+	}
+	
 	/// A preset wrapper around contentInset.
 	public var contentInsetPreset: MaterialEdgeInset {
 		get {
@@ -84,6 +124,7 @@ public class MaterialCollectionView : UICollectionView {
 	*/
 	public required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
+		prepareView()
 	}
 	
 	/**
@@ -107,7 +148,7 @@ public class MaterialCollectionView : UICollectionView {
 	
 	/// A convenience initializer that initializes the object.
 	public convenience init() {
-		self.init(frame: CGRectZero)
+		self.init(frame: CGRect.zero)
 	}
 	
 	/**
@@ -118,6 +159,7 @@ public class MaterialCollectionView : UICollectionView {
 	when subclassing.
 	*/
 	public func prepareView() {
+		contentScaleFactor = MaterialDevice.scale
 		backgroundColor = MaterialColor.clear
 		contentInset = UIEdgeInsetsZero
 	}
