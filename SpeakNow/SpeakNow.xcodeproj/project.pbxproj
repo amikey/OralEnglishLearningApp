@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		091148141DB66854004FB5FA /* VoiceInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091148121DB66854004FB5FA /* VoiceInputViewController.swift */; };
+		091148151DB66854004FB5FA /* VoiceInputViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 091148131DB66854004FB5FA /* VoiceInputViewController.xib */; };
 		091875BA1CC2218C0084F9B4 /* Information.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091875B91CC2218C0084F9B4 /* Information.swift */; };
 		091875BD1CC2235F0084F9B4 /* ListeningPracticeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091875BC1CC2235F0084F9B4 /* ListeningPracticeVC.swift */; };
 		0927ED931CC0A7D7000AB5C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0927ED921CC0A7D7000AB5C3 /* AppDelegate.swift */; };
@@ -80,6 +82,8 @@
 /* Begin PBXFileReference section */
 		04CC6C5E2F8126E3F6EA3D22 /* Pods_SpeakNow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpeakNow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0908A4E31DB52C4A00CFC48D /* SpeakNow.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SpeakNow.entitlements; sourceTree = "<group>"; };
+		091148121DB66854004FB5FA /* VoiceInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VoiceInputViewController.swift; path = message/VoiceInputViewController.swift; sourceTree = "<group>"; };
+		091148131DB66854004FB5FA /* VoiceInputViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VoiceInputViewController.xib; path = message/VoiceInputViewController.xib; sourceTree = "<group>"; };
 		091875B91CC2218C0084F9B4 /* Information.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Information.swift; sourceTree = "<group>"; };
 		091875BC1CC2235F0084F9B4 /* ListeningPracticeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListeningPracticeVC.swift; path = Prctice/ListeningPracticeVC.swift; sourceTree = "<group>"; };
 		0927ED8F1CC0A7D7000AB5C3 /* SpeakNow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeakNow.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -287,6 +291,8 @@
 			children = (
 				092ECEE31D52DAFB00DB73B9 /* MessagerViewController.swift */,
 				092ECEE51D52DCB700DB73B9 /* PreperChatViewController.swift */,
+				091148121DB66854004FB5FA /* VoiceInputViewController.swift */,
+				091148131DB66854004FB5FA /* VoiceInputViewController.xib */,
 			);
 			name = message;
 			sourceTree = "<group>";
@@ -514,6 +520,7 @@
 				0927ED9D1CC0A7D7000AB5C3 /* Assets.xcassets in Resources */,
 				0965D4A31CC232840046AD15 /* PracticeExpandCell.xib in Resources */,
 				0927ED981CC0A7D7000AB5C3 /* Main.storyboard in Resources */,
+				091148151DB66854004FB5FA /* VoiceInputViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -611,6 +618,7 @@
 				0988E0201D56D9650081F678 /* ISEResultWord.m in Sources */,
 				0988E02A1D572ED60081F678 /* OralTestingViewController.m in Sources */,
 				09CAB9431CCFB1D60077FBE3 /* ListenDataDetailViewController.swift in Sources */,
+				091148141DB66854004FB5FA /* VoiceInputViewController.swift in Sources */,
 				0988E0191D56D9650081F678 /* ISEResultPhone.m in Sources */,
 				0988E0181D56D9650081F678 /* ISEResultFinal.m in Sources */,
 				0988E0141D56D9650081F678 /* ISEParams.m in Sources */,

@@ -11,16 +11,14 @@ import UIKit
 import Foundation
 import AVOSCloud
 import AVOSCloudIM
+import KVNProgress
 
-class MessagerViewController: JSQMessagesViewController, AVIMClientDelegate {
+class MessagerViewController: JSQMessagesViewController, AVIMClientDelegate,VoiceInputViewDelegate {
 
     var toid:String!
     var toname:String!
     var client:AVIMClient!
     var conversation:AVIMConversation!
-
-    var speakview:UIView!
-
 
     var audioRecorder:AVAudioRecorder!
     var audioPlayer:AVAudioPlayer!
@@ -30,25 +28,27 @@ class MessagerViewController: JSQMessagesViewController, AVIMClientDelegate {
         super.viewDidLoad()
 
 
-        initspeakview()
-
-//        messages.append(JSQMessage(senderId: "system", displayName: "系统通知", text: "欢迎来到SpeakNow Time！"))
-//        finishReceivingMessageAnimated(true)
 
         self.navigationController?.title = toname
-//        let audioItem = JSQAudioMediaItem(data: NSData())
-//        let audioMessage = JSQMessage(senderId: "cxy", displayName: "test", media: audioItem)
 
 
         self.collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSizeZero
         self.collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSizeZero
         initConversation()
-        self.collectionView.backgroundColor = UIColor.brownColor()
+        
+        self.collectionView.backgroundView = UIImageView(image: UIImage(named: "main_bg"))
+        
         self.navigationItem.title = "Practise With \(senderDisplayName)"
         let navigationTitleAttribute: NSDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor()]
 
         self.navigationController?.navigationBar.titleTextAttributes = navigationTitleAttribute as? [String : AnyObject]
         prepare_audio()
+        
+        let voice = VoiceInputViewController()
+        voice.delegate = self
+        addChildViewController(voice)
+        inputToolbar.contentView.textView.inputView = voice.view
+        inputToolbar.contentView.textView.resignFirstResponder()
     }
 
 
@@ -186,40 +186,8 @@ class MessagerViewController: JSQMessagesViewController, AVIMClientDelegate {
     }
 
 
-    func initspeakview(){
-        speakview = UIView(frame:CGRect(x:0 , y: sHeight-200, width: sWidth, height: 200) )
-        speakview.backgroundColor = UIColor.groupTableViewBackgroundColor()
-
-        let button = UIButton(frame: CGRect(x:sWidth/2-50 , y: 70, width: 100, height: 100))
-        let label = UILabel(frame: CGRect(x: sWidth/2-50, y: 30, width: 100, height: 30))
-        label.text = "按住说话"
-        label.textColor = UIColor.grayColor()
-        label.font = UIFont.systemFontOfSize(20)
-        label.textAlignment = .Center
-        button.setRound()
-        button.backgroundColor = UIColor.greenColor()
-
-        speakview.addSubview(button)
-        speakview.addSubview(label)
-
-        let long = UILongPressGestureRecognizer(target: self, action: #selector(MessagerViewController.long_gesture(_:)))
-
-        button.addGestureRecognizer(long)
 
 
-
-    }
-
-    func long_gesture(gesture:UILongPressGestureRecognizer){
-        switch gesture.state {
-        case .Began:
-            start_record()
-        case .Ended:
-            end_record()
-        default:
-            break
-        }
-    }
 
     func start_record(){
         if !audioRecorder.recording {//判断是否正在录音状态
@@ -255,23 +223,34 @@ class MessagerViewController: JSQMessagesViewController, AVIMClientDelegate {
         finishSendingMessage()
     }
 
+    func cancle_record(){
+        print("cancle_record")
+        audioRecorder.stop()
+        KVNProgress.showErrorWithStatus("取消发送")
+    }
 
 
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.inputToolbar.hidden = false
-        self.speakview.removeFromSuperview()
         inputToolbar.contentView.textView.becomeFirstResponder()
 
     }
 
 
     override func didPressAccessoryButton(sender: UIButton!) {
-        self.inputToolbar.hidden = true
-        inputToolbar.contentView.textView.resignFirstResponder()
-        self.view.addSubview(speakview)
+        print(inputToolbar.contentView.textView.inputView)
 
-
-
+    }
+    
+    
+    func voiceRecordDidBeagn(){
+        start_record()
+    }
+    func voiceRecordDidEnd(){
+        cancle_record()
+    }
+    func voiceRecordDidCancel(){
+        end_record()
     }
 
 }
