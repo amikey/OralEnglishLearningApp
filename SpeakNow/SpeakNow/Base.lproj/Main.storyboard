@@ -838,9 +838,34 @@
                     <view key="view" contentMode="scaleToFill" id="XaZ-Mh-tRB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.65000000000000002" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rEz-FO-1on">
+                                <frame key="frameInset" minX="103" minY="264" width="168" height="139"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Recording" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7aP-ma-LJI">
+                                        <frame key="frameInset" minX="45" minY="59" width="78" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="vtg-c0-Y6r"/>
+                    <connections>
+                        <outlet property="hud" destination="rEz-FO-1on" id="XaP-fd-rJd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iKN-xW-d6H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -851,7 +876,7 @@
             <objects>
                 <navigationController title="个人设置" id="JDe-op-tmG" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="more" id="5Dl-Uv-Kg3"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="zsO-C9-D1H">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="zsO-C9-D1H">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.98431372549999996" green="0.34901960780000002" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -869,7 +894,7 @@
             <objects>
                 <navigationController storyboardIdentifier="LoginNav" automaticallyAdjustsScrollViewInsets="NO" id="Exn-OF-Gea" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" opaque="NO" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="RRd-bP-ofH">
+                    <navigationBar key="navigationBar" opaque="NO" contentMode="scaleToFill" barStyle="black" id="RRd-bP-ofH">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.94509803920000002" green="0.30588235289999999" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -920,7 +945,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BUV-gH-flh" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="bookmarks" id="Wo9-Zq-FVN"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ZN3-md-Aig">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZN3-md-Aig">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -946,7 +971,7 @@
                 <navigationController title="聊天发现" automaticallyAdjustsScrollViewInsets="NO" id="wXB-ot-eOP" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="FaN-3X-edB"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="gmW-wY-AQ9">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gmW-wY-AQ9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

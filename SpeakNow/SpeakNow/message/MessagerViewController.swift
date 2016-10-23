@@ -15,6 +15,8 @@ import KVNProgress
 
 class MessagerViewController: JSQMessagesViewController, AVIMClientDelegate,VoiceInputViewDelegate {
 
+    @IBOutlet var hud: UIView!
+    
     var toid:String!
     var toname:String!
     var client:AVIMClient!
@@ -27,9 +29,8 @@ class MessagerViewController: JSQMessagesViewController, AVIMClientDelegate,Voic
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationController?.title = toname
 
-
-        self.navigationController?.title = toname
 
 
         self.collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSizeZero
@@ -43,12 +44,9 @@ class MessagerViewController: JSQMessagesViewController, AVIMClientDelegate,Voic
 
         self.navigationController?.navigationBar.titleTextAttributes = navigationTitleAttribute as? [String : AnyObject]
         prepare_audio()
+        hud.removeFromSuperview()
         
-        let voice = VoiceInputViewController()
-        voice.delegate = self
-        addChildViewController(voice)
-        inputToolbar.contentView.textView.inputView = voice.view
-        inputToolbar.contentView.textView.resignFirstResponder()
+
     }
 
 
@@ -239,18 +237,45 @@ class MessagerViewController: JSQMessagesViewController, AVIMClientDelegate,Voic
 
     override func didPressAccessoryButton(sender: UIButton!) {
         print(inputToolbar.contentView.textView.inputView)
+        if(inputToolbar.contentView.textView.inputView == nil){
+            let voice = VoiceInputViewController()
+            voice.delegate = self
+            addChildViewController(voice)
+            inputToolbar.contentView.textView.inputView = voice.view
+            inputToolbar.contentView.textView.resignFirstResponder()
+            inputToolbar.contentView.textView.becomeFirstResponder()
 
+            
+        }else{
+            inputToolbar.contentView.textView.inputView = nil
+            inputToolbar.contentView.textView.resignFirstResponder()
+            inputToolbar.contentView.textView.becomeFirstResponder()
+
+
+        }
     }
     
     
     func voiceRecordDidBeagn(){
+        print("开始")
+        if !view.subviews.contains(hud){
+            view.addSubview(hud)
+        }
         start_record()
     }
     func voiceRecordDidEnd(){
-        cancle_record()
+        if view.subviews.contains(hud){
+            hud.removeFromSuperview()
+        }
+        end_record()
+
     }
     func voiceRecordDidCancel(){
-        end_record()
+        if view.subviews.contains(hud){
+            hud.removeFromSuperview()
+        }
+        cancle_record()
+
     }
 
 }

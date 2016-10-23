@@ -49,10 +49,11 @@ class VoiceInputViewController: UIViewController ,UIGestureRecognizerDelegate{
             isRecoarding = true
             delegate?.voiceRecordDidBeagn()
         case .Ended:
-            isRecoarding = false
             if isRecoarding{
                 delegate?.voiceRecordDidEnd()
             }
+            isRecoarding = false
+
         default:
             break
         }
@@ -60,6 +61,7 @@ class VoiceInputViewController: UIViewController ,UIGestureRecognizerDelegate{
     
     func swipDidBegain(gesture:UIPanGestureRecognizer){
         if(gesture.translationInView(gesture.view).y < -50 && isRecoarding){
+            print("取消")
             isRecoarding = false
             delegate?.voiceRecordDidCancel()
         }
