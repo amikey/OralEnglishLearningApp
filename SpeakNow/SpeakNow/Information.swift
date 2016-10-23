@@ -63,6 +63,7 @@ class Information:NSObject{
     func getProfile(completionHandler:(()->())?=nil){
         request(.GET, "https://learning2learn.cn/speaknow/profile").responseJSON{
             s in guard let res = s.result.value else{return}
+            print(s)
             self.email = res["email"]as!String
             self.nickname = res["nickname"]as!String
             completionHandler?()

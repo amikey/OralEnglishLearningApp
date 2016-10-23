@@ -12,6 +12,7 @@ import Foundation
 import AVOSCloud
 import AVOSCloudIM
 import KVNProgress
+import Kingfisher
 
 class MessagerViewController: JSQMessagesViewController, AVIMClientDelegate,VoiceInputViewDelegate {
 
@@ -25,31 +26,30 @@ class MessagerViewController: JSQMessagesViewController, AVIMClientDelegate,Voic
     var audioRecorder:AVAudioRecorder!
     var audioPlayer:AVAudioPlayer!
 
+    var myAvatar = UIImageView()
+    
     var messages = [JSQMessage]()
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationController?.title = toname
-
-
-
-        self.collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSizeZero
-        self.collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSizeZero
+        self.collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize(width: 35, height: 35)
+        self.collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize(width: 35, height: 35)
         initConversation()
         
         self.collectionView.backgroundView = UIImageView(image: UIImage(named: "main_bg"))
-        
-        self.navigationItem.title = "Practise With \(senderDisplayName)"
-        let navigationTitleAttribute: NSDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor()]
 
-        self.navigationController?.navigationBar.titleTextAttributes = navigationTitleAttribute as? [String : AnyObject]
+        self.navigationController!.navigationBar.topItem!.title = "The Title"
+        
+        self.title = "Talking With \(senderDisplayName)"
+        
         prepare_audio()
         hud.removeFromSuperview()
         
-
+        myAvatar.addPicFromUrl("http://7xq7zd.com1.z0.glb.clouddn.com/" + inf.avatar)
     }
 
 
+    
     func prepare_audio(){
         let recordSettings = [AVSampleRateKey : NSNumber(float: Float(16000.0)),//声音采样率
             AVFormatIDKey : NSNumber(int: Int32(kAudioFormatLinearPCM)),//编码格式
@@ -75,7 +75,6 @@ class MessagerViewController: JSQMessagesViewController, AVIMClientDelegate,Voic
 
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
-        self.client.conversationForId(conversation.conversationId!)
     }
 
     func initConversation(){
@@ -92,10 +91,10 @@ class MessagerViewController: JSQMessagesViewController, AVIMClientDelegate,Voic
 
 
     func sendTextNessage(string:String){
-        let message = AVIMTextMessage(text: string, attributes: [:])
-        self.conversation.sendMessage(message, callback: { (success, error) in
-            print("\(string):发送成功")
-        })
+//        let message = AVIMTextMessage(text: string, attributes: [:])
+//        self.conversation.sendMessage(message, callback: { (success, error) in
+//            print("\(string):发送成功")
+//        })
     }
 
     func sendAudioNessage(data:NSData){
@@ -110,7 +109,7 @@ class MessagerViewController: JSQMessagesViewController, AVIMClientDelegate,Voic
 
 
 
-    func conversation(conversation: AVIMConversation!, didReceiveTypedMessage message: AVIMTypedMessage!) {
+    func conversation(conversation: AVIMConversation, didReceiveTypedMessage message: AVIMTypedMessage) {
         let msg:JSQMessage
         switch message.mediaType {
         case -3:
@@ -154,7 +153,19 @@ class MessagerViewController: JSQMessagesViewController, AVIMClientDelegate,Voic
                                                   NSUnderlineStyleAttributeName : NSUnderlineStyle.StyleSingle.rawValue | NSUnderlineStyle.PatternSolid.rawValue ]
         }
 
+        cell.avatarImageView.setRound()
         return cell
+    }
+    
+    override func collectionView(collectionView: JSQMessagesCollectionView!, didTapCellAtIndexPath indexPath: NSIndexPath!, touchLocation: CGPoint) {
+        self.inputToolbar.contentView.textView.resignFirstResponder()
+    }
+    
+    
+    
+    override func collectionView(collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageAvatarImageDataSource!{
+        let img = JSQMessagesAvatarImage(avatarImage: myAvatar.image, highlightedImage: myAvatar.image, placeholderImage: myAvatar.image)
+        return img
     }
 
     override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: NSDate!) {
@@ -170,6 +181,7 @@ class MessagerViewController: JSQMessagesViewController, AVIMClientDelegate,Voic
     }
 
 
+
     //气泡样式
     override func collectionView(collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageBubbleImageDataSource! {
         let message = messages[indexPath.item]
@@ -177,12 +189,15 @@ class MessagerViewController: JSQMessagesViewController, AVIMClientDelegate,Voic
         let bubbleFactory = JSQMessagesBubbleImageFactory()
 
         if (message.senderId == self.senderId) {
-            return bubbleFactory.outgoingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleLightGrayColor())
+            return bubbleFactory.outgoingMessagesBubbleImageWithColor(UIColor.whiteColor())
         }
 
         return bubbleFactory.incomingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleGreenColor())
     }
 
+    override func collectionView(collectionView: JSQMessagesCollectionView!, attributedTextForCellBottomLabelAtIndexPath indexPath: NSIndexPath!) -> NSAttributedString!{
+        return NSAttributedString(string: "1232312")
+    }
 
 
 
@@ -257,7 +272,6 @@ class MessagerViewController: JSQMessagesViewController, AVIMClientDelegate,Voic
     
     
     func voiceRecordDidBeagn(){
-        print("开始")
         if !view.subviews.contains(hud){
             view.addSubview(hud)
         }

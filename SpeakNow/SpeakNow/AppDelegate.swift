@@ -28,6 +28,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let VC = getVC("LoginNav")
             window?.rootViewController = VC
         }else{
+            inf.login(){
+                inf.getProfile()
+            }
         }
 
 
@@ -41,7 +44,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let initString = "appid=57a698b5"
 
         IFlySpeechUtility.createUtility(initString)
-
 
 
 

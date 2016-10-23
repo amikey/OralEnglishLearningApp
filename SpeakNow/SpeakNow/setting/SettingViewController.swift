@@ -12,6 +12,8 @@ import Foundation
 class SettingViewController: UITableViewController {
     @IBOutlet weak var avastar: UIImageView!
 
+    @IBOutlet var nickname: UITextField!
+    @IBOutlet var mail: UITextField!
 
     override func viewDidLoad() {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
@@ -21,7 +23,8 @@ class SettingViewController: UITableViewController {
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         self.avastar.addPicFromUrl("http://7xq7zd.com1.z0.glb.clouddn.com/" + inf.avatar)
         self.avastar.setRound()
-        print(inf.avatar)
+        self.nickname.text = inf.nickname
+        self.mail.text = inf.email
     }
 
     override func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
