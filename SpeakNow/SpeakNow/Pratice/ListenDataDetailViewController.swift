@@ -42,9 +42,14 @@ class ListenDataDetailViewController: UIViewController,UITableViewDelegate,UITab
     }
 
     override func viewWillDisappear(animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
-//        如果遇到崩溃把这句话放到delloc里去
-        navigationController?.interactivePopGestureRecognizer?.delegate = nil
+        
+        
+        if self.navigationController?.viewControllers.indexOf(self) == nil{
+            self.navigationController?.setNavigationBarHidden(false, animated: true)
+            //如果遇到崩溃把这句话放到delloc里去
+            navigationController?.interactivePopGestureRecognizer?.delegate = nil
+ 
+        }
 
 
     }
@@ -102,6 +107,7 @@ class ListenDataDetailViewController: UIViewController,UITableViewDelegate,UITab
         }else{
             let vc = getVC("listen")as! ListeningViewController
             vc.id = id
+            vc.title = data["materials"][(indexpath?.row)!]["name"].stringValue
             navigationController?.pushViewController(vc, animated: true)
 
         }

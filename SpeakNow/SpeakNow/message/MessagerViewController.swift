@@ -38,7 +38,6 @@ class MessagerViewController: JSQMessagesViewController, AVIMClientDelegate,Voic
         
         self.collectionView.backgroundView = UIImageView(image: UIImage(named: "main_bg"))
 
-        self.navigationController!.navigationBar.topItem!.title = "The Title"
         
         self.title = "Talking With \(senderDisplayName)"
         
@@ -91,10 +90,10 @@ class MessagerViewController: JSQMessagesViewController, AVIMClientDelegate,Voic
 
 
     func sendTextNessage(string:String){
-//        let message = AVIMTextMessage(text: string, attributes: [:])
-//        self.conversation.sendMessage(message, callback: { (success, error) in
-//            print("\(string):发送成功")
-//        })
+        let message = AVIMTextMessage(text: string, attributes: [:])
+        self.conversation.sendMessage(message, callback: { (success, error) in
+            print("\(string):发送成功")
+        })
     }
 
     func sendAudioNessage(data:NSData){

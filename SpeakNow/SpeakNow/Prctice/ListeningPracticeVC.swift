@@ -22,10 +22,7 @@ class ListeningPracticeVC: UIViewController ,FlexibleTableViewDelegate,UISearchR
     @IBOutlet weak var switchbutton: UISegmentedControl!
     var data:JSON = JSON("")
 
-    @IBAction func logout(sender: AnyObject) {
 
-        inf.logout()
-    }
 
     
     override func viewDidLoad() {
