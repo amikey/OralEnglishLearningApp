@@ -34,12 +34,12 @@ class ListeningPracticeVC: UIViewController ,FlexibleTableViewDelegate,UISearchR
         tableView.backgroundColor = UIColor.clearColor()
         view.addSubview(tableView)
 
-        searchController = UISearchController(searchResultsController: nil)
-        searchController.searchResultsUpdater = self
-        searchController.dimsBackgroundDuringPresentation = false
-        definesPresentationContext = true
-        tableView.tableHeaderView = searchController.searchBar
-        self.tableView.contentOffset = CGPoint(x: 0.0, y: searchController.searchBar.frame.size.height)
+//        searchController = UISearchController(searchResultsController: nil)
+//        searchController.searchResultsUpdater = self
+//        searchController.dimsBackgroundDuringPresentation = false
+//        definesPresentationContext = true
+//        tableView.tableHeaderView = searchController.searchBar
+//        self.tableView.contentOffset = CGPoint(x: 0.0, y: searchController.searchBar.frame.size.height)
 
         inf.login(){
             self.getData()
@@ -76,7 +76,7 @@ class ListeningPracticeVC: UIViewController ,FlexibleTableViewDelegate,UISearchR
     }
 
     func tableView(tableView: FlexibleTableView, numberOfRowsInSection section: Int) -> Int{
-        return 4
+        return data["categories"].count
 
     }
     func tableView(tableView: FlexibleTableView, numberOfSubRowsAtIndexPath indexPath: NSIndexPath) -> Int{

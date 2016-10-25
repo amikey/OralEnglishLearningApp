@@ -32,9 +32,10 @@ class SettingViewController: UITableViewController {
         footer.textLabel?.textColor = UIColor.grayColor()
     }
 
-    @IBAction func logout(sender: AnyObject) {
+
+
+    @IBAction func logoutTap(sender: AnyObject) {
         inf.logout()
     }
-
 
 }

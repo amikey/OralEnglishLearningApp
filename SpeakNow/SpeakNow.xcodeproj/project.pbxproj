@@ -57,6 +57,7 @@
 		0988E0271D56FA430081F678 /* SpeaknowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0988E0261D56FA430081F678 /* SpeaknowViewController.swift */; };
 		0988E02A1D572ED60081F678 /* OralTestingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0988E0291D572ED60081F678 /* OralTestingViewController.m */; };
 		099CB2DB1DBF031A00924CC2 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D4A3161DBF00F9006BCAF3 /* FeedbackViewController.swift */; };
+		099CB2DD1DBF30DC00924CC2 /* FakeVCs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099CB2DC1DBF30DC00924CC2 /* FakeVCs.swift */; };
 		09AA34B71D5988DE005E7558 /* AlamofireWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AA34B61D5988DE005E7558 /* AlamofireWrapper.swift */; };
 		09B9386B1DBE688B00CA5A3F /* CopyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B9386A1DBE688B00CA5A3F /* CopyLabel.swift */; };
 		09CAB9431CCFB1D60077FBE3 /* ListenDataDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAB9421CCFB1D60077FBE3 /* ListenDataDetailViewController.swift */; };
@@ -157,6 +158,7 @@
 		0988E0261D56FA430081F678 /* SpeaknowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeaknowViewController.swift; sourceTree = "<group>"; };
 		0988E0281D572ED60081F678 /* OralTestingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OralTestingViewController.h; path = Oral/OralTestingViewController.h; sourceTree = "<group>"; };
 		0988E0291D572ED60081F678 /* OralTestingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OralTestingViewController.m; path = Oral/OralTestingViewController.m; sourceTree = "<group>"; };
+		099CB2DC1DBF30DC00924CC2 /* FakeVCs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FakeVCs.swift; path = setting/FakeVCs.swift; sourceTree = "<group>"; };
 		09AA34B61D5988DE005E7558 /* AlamofireWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireWrapper.swift; sourceTree = "<group>"; };
 		09B9386A1DBE688B00CA5A3F /* CopyLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CopyLabel.swift; path = Prctice/CopyLabel.swift; sourceTree = "<group>"; };
 		09CAB9421CCFB1D60077FBE3 /* ListenDataDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListenDataDetailViewController.swift; path = Pratice/ListenDataDetailViewController.swift; sourceTree = "<group>"; };
@@ -316,6 +318,7 @@
 			isa = PBXGroup;
 			children = (
 				09852B8D1D470CFC00B0E749 /* SettingViewController.swift */,
+				099CB2DC1DBF30DC00924CC2 /* FakeVCs.swift */,
 			);
 			name = Setting;
 			sourceTree = "<group>";
@@ -618,6 +621,7 @@
 				0988E0211D56D9650081F678 /* ISEResultXmlParser.m in Sources */,
 				0988E01B1D56D9650081F678 /* ISEResultReadSyllable.m in Sources */,
 				0988E0161D56D9650081F678 /* ISEViewController.m in Sources */,
+				099CB2DD1DBF30DC00924CC2 /* FakeVCs.swift in Sources */,
 				092ECEE61D52DCB700DB73B9 /* PreperChatViewController.swift in Sources */,
 				0927ED9B1CC0A7D7000AB5C3 /* SpeakNow.xcdatamodeld in Sources */,
 				09CAB9451CCFB4950077FBE3 /* ListenTabBar.swift in Sources */,
