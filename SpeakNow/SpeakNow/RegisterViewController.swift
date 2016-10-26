@@ -11,14 +11,14 @@ import Material
 import Alamofire
 import KVNProgress
 
-class RegisterViewController: UIViewController ,TextFieldDelegate{
+class RegisterViewController: UIViewController,UITextFieldDelegate{
 
-    @IBOutlet weak var username: TextField!
-    @IBOutlet weak var pwd: TextField!
-    @IBOutlet weak var doubleped: TextField!
-    @IBOutlet weak var nickname: TextField!
-    @IBOutlet weak var mail: TextField!
-    @IBOutlet weak var Button: UIButton!
+    @IBOutlet weak var username: UITextField!
+    @IBOutlet weak var pwd: UITextField!
+    @IBOutlet weak var doubleped: UITextField!
+    @IBOutlet weak var nickname: UITextField!
+    @IBOutlet weak var mail: UITextField!
+    @IBOutlet weak var Button: UITextField!
 
     
     override func viewDidLoad() {
@@ -27,11 +27,11 @@ class RegisterViewController: UIViewController ,TextFieldDelegate{
     }
 
     func setErrorNotice(){
-        username.set_detailLabel("用户名长度不得少于3位")
-        pwd.set_detailLabel("密码不得少于6位")
-        doubleped.set_detailLabel("两次密码输入不一致")
-        nickname.set_detailLabel("昵称不合法")
-        mail.set_detailLabel("邮箱不合法")
+//        username.set_detailLabel("用户名长度不得少于3位")
+//        pwd.set_detailLabel("密码不得少于6位")
+//        doubleped.set_detailLabel("两次密码输入不一致")
+//        nickname.set_detailLabel("昵称不合法")
+//        mail.set_detailLabel("邮箱不合法")
 
     }
 
@@ -66,12 +66,7 @@ class RegisterViewController: UIViewController ,TextFieldDelegate{
                     "nickname":nickname.text!,
                     "email":mail.text!
                     ]
-//        let req = NSMutableURLRequest(URL: NSURL(string: "http://tx.razord.top/api/register")!)
-//        req.HTTPMethod = "POST"
-//        req.setValue("application/json", forHTTPHeaderField: "Content-Type")
-//
-//        req.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(data, options: [])
-//
+
         KVNProgress.showWithStatus("请稍后")
 
         request(.POST,api+"register",parameters:data).responseJSON(){
