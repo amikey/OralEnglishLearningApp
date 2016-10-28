@@ -15,17 +15,49 @@ class ListenDataDetailViewController: UIViewController,UITableViewDelegate,UITab
     var listen_id:String!
     var isoral:Bool!
 
+    @IBOutlet var progressLabel: UILabel!
+    @IBOutlet var continueButton: UIButton!
     @IBOutlet weak var tableview: UITableView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.automaticallyAdjustsScrollViewInsets = false
         print(listen_id)
         getdata()
+        
+        let data = NSUserDefaults.standardUserDefaults()
+        
+        if let x = data.objectForKey(listen_id) as? [String]{
+            self.progressLabel.text = x[0]
+        }else{
+            self.progressLabel.text = "还未开始学习"
+            self.continueButton.hidden = true
+        }
 
     }
 
     var data:JSON = ""
 
+    @IBAction func continueTap(sender: AnyObject) {
+        let data = NSUserDefaults.standardUserDefaults()
+
+        guard let x = data.objectForKey(listen_id) as? [String]else{return}
+        
+        if isoral==true {
+            let vc = getVC("oral") as! OralTestingViewController
+            vc.audioid = x[1]
+            vc.title = x[0]
+            navigationController?.pushViewController(vc, animated: true)
+            
+        }else{
+            let vc = getVC("listen")as! ListeningViewController
+            vc.id = x[1]
+            vc.title = x[0]
+            navigationController?.pushViewController(vc, animated: true)
+            
+        }
+    }
     func getdata(){
         request(.GET,api+"categories/"+listen_id).responseJSON{
             s in guard let vaule = s.result.value else{return}
@@ -92,12 +124,19 @@ class ListenDataDetailViewController: UIViewController,UITableViewDelegate,UITab
 
 
     }
+    @IBAction func back(sender: AnyObject) {
+        navigationController?.popViewControllerAnimated(true)
+    }
 
     @IBAction func playbuttonTap(sender: UIButton) {
         let view = sender.superview?.superview?.superview as! UITableViewCell
         let indexpath = tableview.indexPathForCell(view)
 
         let id = data["materials"][(indexpath?.row)!]["id"].stringValue
+        
+        let datas = NSUserDefaults.standardUserDefaults()
+        datas.setObject([data["materials"][(indexpath?.row)!]["name"].stringValue,id], forKey: self.listen_id)
+        
         if isoral==true {
             let vc = getVC("oral") as! OralTestingViewController
             vc.audioid = data["materials"][(indexpath?.row)!]["id"].stringValue

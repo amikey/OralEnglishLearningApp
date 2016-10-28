@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		090D829B1DC23E220098AB7B /* ScoreDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090D829A1DC23E220098AB7B /* ScoreDetailViewController.swift */; };
 		091148141DB66854004FB5FA /* VoiceInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091148121DB66854004FB5FA /* VoiceInputViewController.swift */; };
 		091148151DB66854004FB5FA /* VoiceInputViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 091148131DB66854004FB5FA /* VoiceInputViewController.xib */; };
 		091875BA1CC2218C0084F9B4 /* Information.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091875B91CC2218C0084F9B4 /* Information.swift */; };
@@ -40,8 +41,6 @@
 		0988DFF01D56D2B60081F678 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0988DFEF1D56D2B60081F678 /* CoreLocation.framework */; };
 		0988DFF21D56D3D30081F678 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0988DFF11D56D3D30081F678 /* AddressBook.framework */; };
 		0988E0141D56D9650081F678 /* ISEParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 0988DFF81D56D9650081F678 /* ISEParams.m */; };
-		0988E0151D56D9650081F678 /* ISESettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0988DFFA1D56D9650081F678 /* ISESettingViewController.m */; };
-		0988E0161D56D9650081F678 /* ISEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0988DFFC1D56D9650081F678 /* ISEViewController.m */; };
 		0988E0171D56D9650081F678 /* ISEResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 0988DFFF1D56D9650081F678 /* ISEResult.m */; };
 		0988E0181D56D9650081F678 /* ISEResultFinal.m in Sources */ = {isa = PBXBuildFile; fileRef = 0988E0011D56D9650081F678 /* ISEResultFinal.m */; };
 		0988E0191D56D9650081F678 /* ISEResultPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 0988E0031D56D9650081F678 /* ISEResultPhone.m */; };
@@ -53,7 +52,6 @@
 		0988E01F1D56D9650081F678 /* ISEResultTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 0988E00F1D56D9650081F678 /* ISEResultTools.m */; };
 		0988E0201D56D9650081F678 /* ISEResultWord.m in Sources */ = {isa = PBXBuildFile; fileRef = 0988E0111D56D9650081F678 /* ISEResultWord.m */; };
 		0988E0211D56D9650081F678 /* ISEResultXmlParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0988E0131D56D9650081F678 /* ISEResultXmlParser.m */; };
-		0988E0241D56D9F30081F678 /* PopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0988E0231D56D9F30081F678 /* PopupView.m */; };
 		0988E0271D56FA430081F678 /* SpeaknowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0988E0261D56FA430081F678 /* SpeaknowViewController.swift */; };
 		0988E02A1D572ED60081F678 /* OralTestingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0988E0291D572ED60081F678 /* OralTestingViewController.m */; };
 		099CB2DB1DBF031A00924CC2 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D4A3161DBF00F9006BCAF3 /* FeedbackViewController.swift */; };
@@ -85,6 +83,7 @@
 /* Begin PBXFileReference section */
 		04CC6C5E2F8126E3F6EA3D22 /* Pods_SpeakNow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpeakNow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0908A4E31DB52C4A00CFC48D /* SpeakNow.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SpeakNow.entitlements; sourceTree = "<group>"; };
+		090D829A1DC23E220098AB7B /* ScoreDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScoreDetailViewController.swift; path = Oral/ScoreDetailViewController.swift; sourceTree = "<group>"; };
 		091148121DB66854004FB5FA /* VoiceInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VoiceInputViewController.swift; path = message/VoiceInputViewController.swift; sourceTree = "<group>"; };
 		091148131DB66854004FB5FA /* VoiceInputViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VoiceInputViewController.xib; path = message/VoiceInputViewController.xib; sourceTree = "<group>"; };
 		091875B91CC2218C0084F9B4 /* Information.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Information.swift; sourceTree = "<group>"; };
@@ -329,6 +328,7 @@
 				0988DFF61D56D9650081F678 /* ise */,
 				0988E0281D572ED60081F678 /* OralTestingViewController.h */,
 				0988E0291D572ED60081F678 /* OralTestingViewController.m */,
+				090D829A1DC23E220098AB7B /* ScoreDetailViewController.swift */,
 			);
 			name = oral;
 			sourceTree = "<group>";
@@ -615,12 +615,10 @@
 				0965D4A51CC242660046AD15 /* Extensions.swift in Sources */,
 				0988E01C1D56D9650081F678 /* ISEResultReadWord.m in Sources */,
 				092ECEE41D52DAFB00DB73B9 /* MessagerViewController.swift in Sources */,
-				0988E0241D56D9F30081F678 /* PopupView.m in Sources */,
 				0988E01D1D56D9650081F678 /* ISEResultSentence.m in Sources */,
 				0965D4A11CC2323C0046AD15 /* PracticeExpandCell.swift in Sources */,
 				0988E0211D56D9650081F678 /* ISEResultXmlParser.m in Sources */,
 				0988E01B1D56D9650081F678 /* ISEResultReadSyllable.m in Sources */,
-				0988E0161D56D9650081F678 /* ISEViewController.m in Sources */,
 				099CB2DD1DBF30DC00924CC2 /* FakeVCs.swift in Sources */,
 				092ECEE61D52DCB700DB73B9 /* PreperChatViewController.swift in Sources */,
 				0927ED9B1CC0A7D7000AB5C3 /* SpeakNow.xcdatamodeld in Sources */,
@@ -636,8 +634,8 @@
 				0988E0141D56D9650081F678 /* ISEParams.m in Sources */,
 				09603A931D38BBBF0083C3C6 /* ListeningViewController.swift in Sources */,
 				0946B5071CC0E67200B69970 /* RegisterViewController.swift in Sources */,
+				090D829B1DC23E220098AB7B /* ScoreDetailViewController.swift in Sources */,
 				09852B8E1D470CFC00B0E749 /* SettingViewController.swift in Sources */,
-				0988E0151D56D9650081F678 /* ISESettingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

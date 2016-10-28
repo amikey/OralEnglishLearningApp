@@ -18,7 +18,6 @@ class ListeningViewController: UIViewController,UITableViewDelegate,UITableViewD
     @IBOutlet weak var silder: UISlider!
     
     @IBOutlet var speedbutton: UIBarButtonItem!
-    @IBOutlet var answerbutton: UIBarButtonItem!
 
     var id:String!
     var player:AVPlayer = AVPlayer()

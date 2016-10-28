@@ -12,7 +12,7 @@
 #import "ISEResultXmlParser.h"
 #import "Definition.h"
 #import <Foundation/Foundation.h>
-
+#import <KVNProgress/KVNProgress.h>
 #import "SpeakNow-Swift.h"
 #import "AVFoundation/AVFoundation.h"
 
@@ -38,6 +38,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *goodjoblabel;
 @property (weak, nonatomic) IBOutlet UIButton *nextbutton;
 @property (weak, nonatomic) IBOutlet UIButton *playbutton;
+@property (strong, nonatomic) IBOutlet UIView *hudView;
+@property (strong, nonatomic) IBOutlet UIButton *detail;
 
 @property NSDictionary *data;
 @property AVPlayer *player;
@@ -45,6 +47,9 @@
 @property bool finish;
 @property NSString *title;
 
+
+@property NSString *detail_str;
+@property bool started;
 @end
 
 
@@ -90,7 +95,8 @@
     self.iseParams=[ISEParams fromUserDefaults];
     self.iseParams.language = @"en_us";
     [self setparam];
-
+//    [self.hudView removeFromSuperview];
+    self.hudView.hidden = YES;
 
     [self init_prossview];
 
@@ -98,9 +104,12 @@
 
     self.part = 0;
     [self getdata];
-
-
-
+    
+    UILongPressGestureRecognizer *long_ges = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(didpressbutton:)];
+    [self.speakbutton addGestureRecognizer:long_ges];
+    
+    self.detail_str = @"no change yet";
+    _started = NO;
 }
 
 
@@ -113,10 +122,33 @@
 -(void)viewWillDisappear:(BOOL)animated{
     self.navigationController.interactivePopGestureRecognizer.delegate = nil;
     [self.iFlySpeechEvaluator cancel];
+    
     if (self.player != nil)
-        [self.player removeObserver:self forKeyPath:@"status"];
+        @try{
+            [self.player removeObserver:self forKeyPath:@"status"];
+        }@catch(id anException){
+            //do nothing, obviously it wasn't attached because an exception was thrown
+        }
 
 
+}
+
+-(void)didpressbutton:(UILongPressGestureRecognizer*)gesture{
+    switch (gesture.state) {
+        case UIGestureRecognizerStateBegan:
+            NSLog(@"begian");
+            self.hudView.hidden=NO;
+            if(!_started){[self StartRecord];}
+            break;
+        case UIGestureRecognizerStateEnded:
+            self.hudView.hidden=YES;
+            _started = NO;
+            [self.iFlySpeechEvaluator stopListening];
+            [KVNProgress showWithStatus:@"评测中"];
+//            kvnproge
+        default:
+            break;
+    }
 }
 
 -(void)init_prossview{
@@ -140,14 +172,16 @@
 
 
 -(void)reflash_screen{
+    [self.iFlySpeechEvaluator cancel];
 
     self.textarea.text = [NSString stringWithFormat:@"%@\n\n%@",self.data[@"lyric"][self.part][1],self.data[@"lyric"][self.part][2]] ;
     self.textarea.font = [UIFont systemFontOfSize:16.0f];
     self.textarea.textAlignment = NSTextAlignmentCenter;
-
+    
     self.scoretext.hidden = YES;
     self.goodjoblabel.hidden = YES;
     self.nextbutton.hidden = YES;
+    self.detail.hidden = YES;
 
     NSInteger len = [self.data[@"lyric"] count];
 
@@ -166,11 +200,26 @@
     AVPlayer *player = [[AVPlayer alloc] initWithURL:[NSURL URLWithString:url]];
 
     if (self.player != nil)
-        [self.player removeObserver:self forKeyPath:@"status"];
-
+        @try{
+            [self.player removeObserver:self forKeyPath:@"status"];
+        }@catch(id anException){
+            //do nothing, obviously it wasn't attached because an exception was thrown
+        }
     self.player = player;
     [self.player addObserver:self forKeyPath:@"status" options:0 context:nil];
 }
+
+- (IBAction)detailTap:(id)sender {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    ScoreDetailViewController *myVC = (ScoreDetailViewController *)[storyboard instantiateViewControllerWithIdentifier:@"detailreport"];
+    [myVC setText:self.detail_str];
+    [self presentViewController:myVC animated:YES completion:nil];
+}
+
+
+
+
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if (object == self.player && [keyPath isEqualToString:@"status"]) {
@@ -204,31 +253,36 @@
 
 
 - (IBAction)SpeakButtonTap:(id)sender {
+
+    self.hudView.hidden=NO;
+    if(!_started){[self StartRecord];_started=YES;}
+
+}
+
+-(void)StartRecord{
     NSLog(@"press button");
     self.finish = NO;
-
+    
     [self.iFlySpeechEvaluator setParameter:@"16000" forKey:[IFlySpeechConstant SAMPLE_RATE]];
     [self.iFlySpeechEvaluator setParameter:@"utf-8" forKey:[IFlySpeechConstant TEXT_ENCODING]];
     [self.iFlySpeechEvaluator setParameter:@"xml" forKey:[IFlySpeechConstant ISE_RESULT_TYPE]];
     [self.iFlySpeechEvaluator setParameter:@"eva.pcm" forKey:[IFlySpeechConstant ISE_AUDIO_PATH]];
-
+    
     NSLog(@"text encoding:%@",[self.iFlySpeechEvaluator parameterForKey:[IFlySpeechConstant TEXT_ENCODING]]);
     NSLog(@"language:%@",[self.iFlySpeechEvaluator parameterForKey:[IFlySpeechConstant LANGUAGE]]);
-
-//    BOOL isUTF8=[[self.iFlySpeechEvaluator parameterForKey:[IFlySpeechConstant TEXT_ENCODING]] isEqualToString:@"utf-8"];
-//    BOOL isZhCN=[[self.iFlySpeechEvaluator parameterForKey:[IFlySpeechConstant LANGUAGE]] isEqualToString:KCLanguageZHCN];
-
-//    BOOL needAddTextBom=isUTF8&&isZhCN;
+    
+    //    BOOL isUTF8=[[self.iFlySpeechEvaluator parameterForKey:[IFlySpeechConstant TEXT_ENCODING]] isEqualToString:@"utf-8"];
+    //    BOOL isZhCN=[[self.iFlySpeechEvaluator parameterForKey:[IFlySpeechConstant LANGUAGE]] isEqualToString:KCLanguageZHCN];
+    
+    //    BOOL needAddTextBom=isUTF8&&isZhCN;
     NSMutableData *buffer = nil;
     NSStringEncoding encoding = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
-
+    
     buffer= [NSMutableData dataWithData:[self.data[@"lyric"][self.part][1] dataUsingEncoding:encoding]];
-
-
+    
+    
     [self.iFlySpeechEvaluator startListening:buffer params:nil];
-
-
-
+    
 
 }
 
@@ -289,7 +343,9 @@
         self.finish = YES;
     }
     NSLog(@"错误码：%d %@",[errorCode errorCode],[errorCode errorDesc]);
-
+    if([errorCode errorCode]!=0){
+        [KVNProgress showErrorWithStatus:[errorCode errorDesc]];
+    }
 }
 
 /*!
@@ -345,11 +401,35 @@
 -(void)onISEResultXmlParserResult:(ISEResult*)result;{
     NSLog(@"------------>score: %f",[result total_score]);
 //    NSString *scorestring =
+    NSLog(@"%@",[result toString]);
     int score = [result total_score]*[result total_score]*4;
+    
+    self.detail_str = [result toString];
+    
     self.scoretext.text = [NSString stringWithFormat:@"%d",score];
     self.scoretext.hidden = NO;
     self.goodjoblabel.hidden = NO;
+    self.detail.hidden = NO;
+    
+    if (score<60){
+        _goodjoblabel.text = @"Try Again!";
+    }else if(score<70){
+        _goodjoblabel.text = @"PASS!";
+    }else if(score<80){
+        _goodjoblabel.text = @"Come on!";
+    }else if(score<90){
+        _goodjoblabel.text = @"Very Good!";
+    }else{
+        _goodjoblabel.text = @"Excellent!";
+    }
+    
+    
     self.nextbutton.hidden = NO;
+    if([KVNProgress isVisible]){
+        [KVNProgress dismiss];
+    }
 }
+
+
 
 @end
