@@ -190,7 +190,7 @@ class ListenDataDetailViewController: UIViewController,UITableViewDelegate,UITab
         if isoral==true {
             let vc = getVC("oral") as! OralTestingViewController
             vc.audioid = data["materials"][(indexpath?.row)!]["id"].stringValue
-            vc.title = data["materials"][(indexpath?.row)!]["name"].stringValue
+            vc.mytitle = data["materials"][(indexpath?.row)!]["name"].stringValue
             navigationController?.pushViewController(vc, animated: true)
 
         }else{

@@ -45,7 +45,6 @@
 @property AVPlayer *player;
 @property int part;
 @property bool finish;
-@property NSString *mytitle;
 
 
 @property NSString *detail_str;
@@ -257,10 +256,20 @@
 
 - (IBAction)SpeakButtonTap:(id)sender {
 
-    self.hudView.hidden=NO;
-    if(!_started){[self StartRecord];_started=YES;}
+//    self.hudView.hidden=NO;
+//    if(!_started){[self StartRecord];_started=YES;}
 
 }
+- (IBAction)tapcancle:(id)sender {
+//    NSLog(@"Tap Cancle");
+//    self.hudView.hidden=YES;
+//    if(_started){
+//        _started = NO;
+//        [self.iFlySpeechEvaluator stopListening];
+//        [KVNProgress showWithStatus:@"评测中"];
+//    }
+}
+
 
 -(void)StartRecord{
     NSLog(@"press button");
@@ -384,6 +393,11 @@
         NSLog(@"%d",isLast);
 
         if(isLast || [showText containsString:@"</xml_result>"]){
+            self.hudView.hidden = true;
+            if([KVNProgress isVisible]){
+                [KVNProgress dismiss];
+            }
+            
             NSLog(@"评测结束");
             self.finish = YES;
             ISEResultXmlParser* parser=[[ISEResultXmlParser alloc] init];

@@ -10,5 +10,6 @@
 
 @interface OralTestingViewController : UIViewController
 @property NSString* audioid;
+@property NSString *mytitle;
 
 @end

@@ -46,8 +46,10 @@ class VoiceInputViewController: UIViewController ,UIGestureRecognizerDelegate{
     func long_gesture(gesture:UILongPressGestureRecognizer){
         switch gesture.state {
         case .Began:
-            isRecoarding = true
-            delegate?.voiceRecordDidBeagn()
+            if (!isRecoarding){
+                isRecoarding = true
+                delegate?.voiceRecordDidBeagn()
+            }
         case .Ended:
             if isRecoarding{
                 delegate?.voiceRecordDidEnd()
@@ -57,6 +59,12 @@ class VoiceInputViewController: UIViewController ,UIGestureRecognizerDelegate{
         default:
             break
         }
+    }
+    
+    
+    @IBAction func ButtonTap(sender: AnyObject) {
+//        isRecoarding = true
+//        delegate?.voiceRecordDidBeagn()
     }
     
     func swipDidBegain(gesture:UIPanGestureRecognizer){

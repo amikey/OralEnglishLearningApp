@@ -18,8 +18,8 @@ import SwiftyJSON
 
 class MessagerViewController: JSQMessagesViewController, AVIMClientDelegate,VoiceInputViewDelegate {
 
-    
     @IBOutlet var hud: UIView!
+    
     var toid:String!
     var toname:String! = ""
     var toavastar:String! = ""
@@ -35,7 +35,9 @@ class MessagerViewController: JSQMessagesViewController, AVIMClientDelegate,Voic
     var messages = [JSQMessage]()
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        request(.PUT, "https://learning2learn.cn/speaknow/chat/userstatus")
+        
         self.collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize(width: 35, height: 35)
         self.collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize(width: 35, height: 35)
         self.collectionView.backgroundView = UIImageView(image: UIImage(named: "main_bg"))
@@ -44,8 +46,8 @@ class MessagerViewController: JSQMessagesViewController, AVIMClientDelegate,Voic
         
         prepare_audio()
         
-        hud.hidden = false
-        
+        hud.removeFromSuperview()
+        self.view.addSubview(hud)
 
         
         KVNProgress.showWithStatus("Loading")
@@ -294,7 +296,6 @@ class MessagerViewController: JSQMessagesViewController, AVIMClientDelegate,Voic
     func cancle_record(){
         print("cancle_record")
         audioRecorder.stop()
-        KVNProgress.showErrorWithStatus("取消发送")
     }
 
 
@@ -346,7 +347,6 @@ class MessagerViewController: JSQMessagesViewController, AVIMClientDelegate,Voic
         //        hud.removeFromSuperview()
         //    }
         hud.hidden = true
-        end_record()
         cancle_record()
 
     }
