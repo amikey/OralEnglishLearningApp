@@ -126,12 +126,12 @@ class ListenDataDetailViewController: UIViewController,UITableViewDelegate,UITab
     override func viewWillDisappear(animated: Bool) {
         
         
-        if self.navigationController?.viewControllers.indexOf(self) == nil{
+        //if self.navigationController?.viewControllers.indexOf(self) == nil{
             self.navigationController?.setNavigationBarHidden(false, animated: true)
             //如果遇到崩溃把这句话放到delloc里去
             navigationController?.interactivePopGestureRecognizer?.delegate = nil
  
-        }
+        //}
 
 
     }

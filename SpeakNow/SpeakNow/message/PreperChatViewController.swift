@@ -73,7 +73,7 @@ class PreperChatViewController: UIViewController {
         
         
         let vc = getVC("MessagerViewController")  as! MessagerViewController
-        vc.senderId = inf.username
+        vc.senderId = inf.uid
         vc.senderDisplayName = inf.nickname
         vc.toid = toid
         

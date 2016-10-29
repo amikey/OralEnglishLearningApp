@@ -18,8 +18,8 @@ import SwiftyJSON
 
 class MessagerViewController: JSQMessagesViewController, AVIMClientDelegate,VoiceInputViewDelegate {
 
-    @IBOutlet var hud: UIView!
     
+    @IBOutlet var hud: UIView!
     var toid:String!
     var toname:String! = ""
     var toavastar:String! = ""
@@ -43,7 +43,10 @@ class MessagerViewController: JSQMessagesViewController, AVIMClientDelegate,Voic
         self.title = "Loading..."
         
         prepare_audio()
-        hud.removeFromSuperview()
+        
+        hud.hidden = false
+        
+
         
         KVNProgress.showWithStatus("Loading")
         myAvatar.addPicFromUrl("http://7xq7zd.com1.z0.glb.clouddn.com/" + inf.avatar)
@@ -324,22 +327,26 @@ class MessagerViewController: JSQMessagesViewController, AVIMClientDelegate,Voic
     
     
     func voiceRecordDidBeagn(){
-        if !view.subviews.contains(hud){
-            view.addSubview(hud)
-        }
+    //    if !view.subviews.contains(hud){
+    //        view.addSubview(hud)
+    //    }
+        hud.hidden = false
         start_record()
     }
     func voiceRecordDidEnd(){
-        if view.subviews.contains(hud){
-            hud.removeFromSuperview()
-        }
+    //    if view.subviews.contains(hud){
+    //        hud.removeFromSuperview()
+    //    }
+        hud.hidden = true
         end_record()
 
     }
     func voiceRecordDidCancel(){
-        if view.subviews.contains(hud){
-            hud.removeFromSuperview()
-        }
+        //    if view.subviews.contains(hud){
+        //        hud.removeFromSuperview()
+        //    }
+        hud.hidden = true
+        end_record()
         cancle_record()
 
     }

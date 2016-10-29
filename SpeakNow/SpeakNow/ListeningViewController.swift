@@ -17,7 +17,7 @@ class ListeningViewController: UIViewController,UITableViewDelegate,UITableViewD
 
     @IBOutlet weak var silder: UISlider!
     
-    @IBOutlet var speedbutton: UIBarButtonItem!
+    // @IBOutlet var speedbutton: UIBarButtonItem!
 
     @IBOutlet weak var plaubotton: UIButton!
     var id:String!
@@ -36,14 +36,19 @@ class ListeningViewController: UIViewController,UITableViewDelegate,UITableViewD
     var highlightrow:Int = 0
     
     
-
-    @IBOutlet var navtitle: UINavigationItem!
+    var speedbutton: UIBarButtonItem!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableview.estimatedRowHeight = 200;
         self.tableview.rowHeight = UITableViewAutomaticDimension;
         self.tableview.separatorStyle = .None
         self.silder.continuous = false
+        
+        self.speedbutton = UIBarButtonItem(title: "常速", style: .Plain, target: self, action:#selector(ListeningViewController.speedButtonTap(_:)))
+        self.navigationItem.rightBarButtonItem = self.speedbutton
+        
         getdata()
         
         let session = AVAudioSession.sharedInstance()
@@ -54,7 +59,8 @@ class ListeningViewController: UIViewController,UITableViewDelegate,UITableViewD
         try session.setActive(true)
         }catch{
         }
-        navtitle.title = title
+        
+        
         plaubotton.setBackgroundImage(nil, forState: .Normal)
         plaubotton.setImage(UIImage(named: "play"), forState: .Normal)
         
@@ -96,7 +102,6 @@ class ListeningViewController: UIViewController,UITableViewDelegate,UITableViewD
             self.tableview.reloadData()
             self.selectRow(0)
             self.length = CMTimeGetSeconds(self.player.currentItem!.asset.duration)
-            print(self.player.currentItem!.asset.duration.value)
 
 
         }
@@ -160,7 +165,7 @@ class ListeningViewController: UIViewController,UITableViewDelegate,UITableViewD
                 if seconds < 0{return}
                 player.seekToTime(CMTime(seconds: Double(seconds), preferredTimescale: CMTimeScale(1)))
                 self.selectRow(indexPath.row)
-                
+                temptime = indexPath.row
                 tapped = 0
             }
             
