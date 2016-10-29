@@ -620,6 +620,9 @@
                                 <rect key="frame" x="214" y="170" width="60" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="star-house"/>
+                                <connections>
+                                    <action selector="favoriteTap:" destination="gan-Sg-e74" eventType="touchUpInside" id="2no-ik-n7a"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ACu-xs-UJl">
                                 <rect key="frame" x="281" y="170" width="60" height="60"/>
@@ -706,6 +709,7 @@
                     <connections>
                         <outlet property="continueButton" destination="ixC-BU-6ns" id="p54-VR-7st"/>
                         <outlet property="download" destination="fPV-0e-tqe" id="IDj-jZ-Gpb"/>
+                        <outlet property="favoirteButton" destination="kNX-YW-saY" id="xfR-Ab-fpA"/>
                         <outlet property="favorited" destination="1Yi-GM-jQT" id="Tlp-fc-Er2"/>
                         <outlet property="introduce" destination="USU-Su-BNg" id="ULl-ZS-B0o"/>
                         <outlet property="leftimage" destination="D9Z-Xl-lyV" id="Vdq-f3-Iq4"/>
@@ -912,6 +916,26 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <segue destination="2Z5-5h-rtZ" kind="push" id="Lce-We-erx"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="aiG-fX-YHk">
+                                        <rect key="frame" x="0.0" y="274" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aiG-fX-YHk" id="118-XH-RoZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="我的收藏" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aOM-cA-BkT">
+                                                    <rect key="frame" x="14" y="11" width="155" height="24"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.52156862749999999" green="0.75686274509999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="ucA-sN-JC9" kind="push" id="znA-za-X6f"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -1206,6 +1230,54 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iKN-xW-d6H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2664.5" y="2720.5"/>
+        </scene>
+        <!--我的收藏-->
+        <scene sceneID="B7s-Pn-che">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="ucA-sN-JC9" customClass="MyFavoriteViewController" customModule="SpeakNow" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="OpS-GK-6Oa"/>
+                        <viewControllerLayoutGuide type="bottom" id="Tbc-fS-BZl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VT4-AS-P01">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7fI-FG-Ffc">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Tyj-iH-zCP">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Tyj-iH-zCP" id="w22-ee-QyO">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="ucA-sN-JC9" id="YnE-dk-HtX"/>
+                                    <outlet property="delegate" destination="ucA-sN-JC9" id="vOV-6K-ylp"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="7fI-FG-Ffc" firstAttribute="leading" secondItem="VT4-AS-P01" secondAttribute="leading" id="4Av-Qm-8Di"/>
+                            <constraint firstAttribute="trailing" secondItem="7fI-FG-Ffc" secondAttribute="trailing" id="edM-Fv-agC"/>
+                            <constraint firstAttribute="bottom" secondItem="7fI-FG-Ffc" secondAttribute="bottom" id="vie-1z-iKB"/>
+                            <constraint firstItem="7fI-FG-Ffc" firstAttribute="top" secondItem="OpS-GK-6Oa" secondAttribute="bottom" id="xkv-8g-LJ7"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="我的收藏" id="z29-ZO-e8N"/>
+                    <connections>
+                        <outlet property="tableview" destination="7fI-FG-Ffc" id="cCT-sg-G96"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pJC-NW-TJ3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3122" y="2850"/>
         </scene>
         <!--个人设置-->
         <scene sceneID="AZP-hZ-nae">

@@ -25,6 +25,11 @@ class ListenDataDetailViewController: UIViewController,UITableViewDelegate,UITab
     @IBOutlet var name: UILabel!
     @IBOutlet var introduce: UITextView!
     @IBOutlet var leftimage: UIImageView!
+    @IBOutlet var favoirteButton: UIButton!
+    
+    var data:JSON = ""
+
+    var isfavorited:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,10 +45,24 @@ class ListenDataDetailViewController: UIViewController,UITableViewDelegate,UITab
             self.progressLabel.text = "还未开始学习"
             self.continueButton.hidden = true
         }
+        
+        getfavorite()
 
     }
 
-    var data:JSON = ""
+    func getfavorite(){
+        request(.GET,api+"categories/\(listen_id)/favorite").responseJSON{
+            s in guard let vaule = s.result.value else{return}
+            let res = JSON(vaule)
+            self.isfavorited = res["favorite"].boolValue
+            if self.isfavorited{
+                self.favoirteButton.setImage(UIImage(named: "check"), forState: .Normal)
+            }else{
+                self.favoirteButton.setImage(UIImage(named: "star-house"), forState: .Normal)
+            }
+        }
+    }
+    
 
     @IBAction func continueTap(sender: AnyObject) {
         let data = NSUserDefaults.standardUserDefaults()
@@ -64,6 +83,24 @@ class ListenDataDetailViewController: UIViewController,UITableViewDelegate,UITab
             
         }
     }
+    
+    @IBAction func favoriteTap(sender: AnyObject) {
+        print(self.isfavorited)
+        if self.isfavorited{
+            request(.DELETE, api+"categories/\(listen_id)/favorite")
+            self.favoirteButton.setImage(UIImage(named: "star-house"), forState: .Normal)
+
+        }else{
+            request(.POST, api+"categories/\(listen_id)/favorite")
+//            self.favoirteButton.imageView!.image = UIImage(named: "check")
+            self.favoirteButton.setImage(UIImage(named: "check"), forState: .Normal)
+        }
+        self.isfavorited = !self.isfavorited
+
+        
+        
+    }
+    
     func getdata(){
         request(.GET,api+"categories/"+listen_id).responseJSON{
             s in guard let vaule = s.result.value else{return}
