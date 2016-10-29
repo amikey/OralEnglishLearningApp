@@ -133,7 +133,7 @@ class ListeningViewController: UIViewController,UITableViewDelegate,UITableViewD
             if let current = tableview.indexPathForSelectedRow{
                 let cell = tableview.cellForRowAtIndexPath(current)
                 if let text = cell?.viewWithTag(1) as? UILabel{
-                    text.textColor = UIColor.blackColor()
+                    text.font = UIFont.systemFontOfSize(14.0)
                 }
             }
         }else{
@@ -145,7 +145,8 @@ class ListeningViewController: UIViewController,UITableViewDelegate,UITableViewD
         if systouch{
             if let cell = tableview.cellForRowAtIndexPath(indexPath){
                 if let text = cell.viewWithTag(1) as? UILabel{
-                    text.textColor = UIColor.redColor()
+//                    text.textColor = UIColor.redColor()
+                    text.font = UIFont.boldSystemFontOfSize(14.0)
                 }
             }
         }else{
