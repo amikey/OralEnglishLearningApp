@@ -618,13 +618,6 @@
                                 <color key="textColor" red="1" green="0.99607843139999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="更新于" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R8V-pQ-O7i">
-                                <rect key="frame" x="152" y="118" width="184" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                <color key="textColor" red="1" green="0.99607843139999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="下载：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rxJ-7g-Mdd">
                                 <rect key="frame" x="152" y="141" width="38" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -693,7 +686,6 @@
                         <outlet property="name" destination="o7U-nl-g8O" id="IZQ-nW-f69"/>
                         <outlet property="progressLabel" destination="sOD-Vj-6O9" id="XlO-aU-AM7"/>
                         <outlet property="tableview" destination="xfK-5V-wKv" id="RD6-OP-ZMo"/>
-                        <outlet property="updateTime" destination="R8V-pQ-O7i" id="QB5-UJ-6Ab"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NA4-Bc-9Uc" userLabel="First Responder" sceneMemberID="firstResponder"/>

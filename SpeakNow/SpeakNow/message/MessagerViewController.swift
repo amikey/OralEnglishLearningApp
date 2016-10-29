@@ -36,7 +36,6 @@ class MessagerViewController: JSQMessagesViewController, AVIMClientDelegate,Voic
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        request(.PUT, "https://learning2learn.cn/speaknow/chat/userstatus")
         
         self.collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize(width: 35, height: 35)
         self.collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize(width: 35, height: 35)
@@ -64,7 +63,9 @@ class MessagerViewController: JSQMessagesViewController, AVIMClientDelegate,Voic
                 self.messages.append(message)
                 self.finishSendingMessage()
                 
-//                self.sendTextNessage(hello)
+                self.sendTextNessage(hello)
+                request(.PUT, "https://learning2learn.cn/speaknow/chat/userstatus")
+
             }
         }
         
@@ -77,9 +78,18 @@ class MessagerViewController: JSQMessagesViewController, AVIMClientDelegate,Voic
         if let xx = x.objectForKey("chatHistory") as? [[String]]{
                 his = xx
         }
-        his.append([toname,toid])
+        var already:Bool = false
+        for each in his{
+            if each[1] == toid{
+                already = true
+                break
+            }
+        }
         
-        x.setObject(his, forKey: "chatHistory")
+        if(!already){
+            his.append([toname,toid])
+            x.setObject(his, forKey: "chatHistory")
+        }
         
     }
 
@@ -124,6 +134,10 @@ class MessagerViewController: JSQMessagesViewController, AVIMClientDelegate,Voic
 
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
+        self.client.delegate = nil
+        self.client.closeWithCallback { (bool, error) in
+            
+        }
     }
 
     func initConversation(hander:(()->())?=nil){
@@ -132,6 +146,7 @@ class MessagerViewController: JSQMessagesViewController, AVIMClientDelegate,Voic
         self.client.openWithCallback { (success, error) in
 
             self.client.createConversationWithName(self.toid, clientIds: [self.toid], attributes: [:], options: AVIMConversationOption.Unique, callback: { (conversion, error) in
+                if error != nil{print(error?.domain);print(error.debugDescription)}
                 self.conversation = conversion
                 hander?()
             })
@@ -307,7 +322,6 @@ class MessagerViewController: JSQMessagesViewController, AVIMClientDelegate,Voic
 
 
     override func didPressAccessoryButton(sender: UIButton!) {
-        print(inputToolbar.contentView.textView.inputView)
         if(inputToolbar.contentView.textView.inputView == nil){
             let voice = VoiceInputViewController()
             voice.delegate = self

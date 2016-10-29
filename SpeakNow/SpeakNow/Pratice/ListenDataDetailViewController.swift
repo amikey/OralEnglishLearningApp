@@ -19,7 +19,6 @@ class ListenDataDetailViewController: UIViewController,UITableViewDelegate,UITab
     @IBOutlet var continueButton: UIButton!
     @IBOutlet weak var tableview: UITableView!
     
-    @IBOutlet var updateTime: UILabel!
     @IBOutlet var download: UILabel!
     @IBOutlet var favorited: UILabel!
     @IBOutlet var name: UILabel!
