@@ -93,6 +93,8 @@ class ListeningPracticeVC: UIViewController ,FlexibleTableViewDelegate,UISearchR
     func tableView(tableView: FlexibleTableView, cellForSubRowAtIndexPath indexPath: FlexibleIndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCellWithIdentifier("PracticeExpandCell") as! PracticeExpandCell
         cell.title.text = data["categories"][indexPath.row]["array"][indexPath.subRow-1]["catename"].stringValue
+        cell.detail.text = data["categories"][indexPath.row]["array"][indexPath.subRow-1]["introduce"].stringValue
+        
         cell.backgroundColor = UIColor.clearColor()
 
         cell.download.text = "\(data["categories"][indexPath.row]["array"][indexPath.subRow-1]["download"].intValue)"

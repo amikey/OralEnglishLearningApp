@@ -45,7 +45,7 @@
 @property AVPlayer *player;
 @property int part;
 @property bool finish;
-@property NSString *title;
+@property NSString *mytitle;
 
 
 @property NSString *detail_str;
@@ -100,7 +100,7 @@
 
     [self init_prossview];
 
-    self.unitlabel.text = self.title;
+    self.unitlabel.text = self.mytitle;
 
     self.part = 0;
     [self getdata];
@@ -190,6 +190,9 @@
 
     self.partlabel.text = [NSString stringWithFormat:@"Part %d",self.part+1];
 
+    if(self.part == [self.data[@"lyric"] count]){
+        [self.nextbutton setTitle:@"返回" forState:UIControlStateNormal];
+    }
 
 
 
@@ -287,6 +290,10 @@
 }
 
 - (IBAction)nextbuttonTap:(id)sender {
+    if(self.part == [self.data[@"lyric"] count]){
+        [self.navigationController popViewControllerAnimated:YES];
+        return;
+    }
     self.part += 1;
     [self reflash_screen];
 }

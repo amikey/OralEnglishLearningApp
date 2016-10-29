@@ -19,6 +19,12 @@ class ListenDataDetailViewController: UIViewController,UITableViewDelegate,UITab
     @IBOutlet var continueButton: UIButton!
     @IBOutlet weak var tableview: UITableView!
     
+    @IBOutlet var updateTime: UILabel!
+    @IBOutlet var download: UILabel!
+    @IBOutlet var favorited: UILabel!
+    @IBOutlet var name: UILabel!
+    @IBOutlet var introduce: UITextView!
+    @IBOutlet var leftimage: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,6 +70,13 @@ class ListenDataDetailViewController: UIViewController,UITableViewDelegate,UITab
             let res = JSON(vaule)
             self.data = res
             print(res)
+            self.favorited.text = "\(res["favorite"].intValue)"
+            self.download.text = "\(res["download"].intValue)"
+            self.name.text = res["name"].stringValue
+            self.introduce.text = res["introduce"].stringValue
+            if(res["image"].stringValue != ""){
+            self.leftimage.kf_setImageWithURL(NSURL(string: "http://7xq7zd.com1.z0.glb.clouddn.com/\(res["image"].stringValue)"))
+            }
             self.tableview.reloadData()
         }
     }

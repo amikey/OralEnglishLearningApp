@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import KVNProgress
 
 class mywordViweController:UITableViewController{
     
@@ -47,13 +48,32 @@ class myrecoardviewcontroller:UITableViewController{
 
 }
 
-class dictViewCOntroller:UIViewController{
+class dictViewCOntroller:UIViewController,UIWebViewDelegate{
     @IBOutlet var webview: UIWebView!
     var url:String! = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        webview.delegate = self
         title = url
         webview.loadRequest(NSURLRequest(URL: NSURL(string: "http://m.youdao.com/dict?le=eng&q="+self.url)!))
     }
+    
+    
+    func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool{
+        if (request.URLString == "http://m.youdao.com/dict?le=eng&q="+self.url){return true}
+        return false
+    }
+    func webViewDidStartLoad(webView: UIWebView){
+//        KVNProgress.showWithStatus("查询中")
+    }
+    
+    func webViewDidFinishLoad(webView: UIWebView){
+        KVNProgress.dismiss()
+    }
+    
+    func webView(webView: UIWebView, didFailLoadWithError error: NSError){
+        KVNProgress.showErrorWithStatus("查询失败")
+    }
+
 }

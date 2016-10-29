@@ -23,7 +23,7 @@ class ListeningViewController: UIViewController,UITableViewDelegate,UITableViewD
     var player:AVPlayer = AVPlayer()
     var timer:NSTimer?
     var lyric:[JSON]=[]
-    var length:Int = 0
+    var length:Double = 0
     var temptime:Int = 0
     var currentselect:Int = 0
     
@@ -78,13 +78,15 @@ class ListeningViewController: UIViewController,UITableViewDelegate,UITableViewD
             s in guard let vaule = s.result.value else{return}
             let res = JSON(vaule)
             self.lyric = res["lyric"].arrayValue
-            self.length = res["length"].intValue
+//            self.length = res["length"].intValue
             let path0 = res["path"].stringValue
             let path = NSURL(string: "http://7xq7zd.com1.z0.glb.clouddn.com/"+path0)!
             print(path)
             self.player = AVPlayer(URL: path)
             self.tableview.reloadData()
             self.selectRow(0)
+            self.length = CMTimeGetSeconds(self.player.currentItem!.asset.duration)
+            print(self.player.currentItem!.asset.duration.value)
 
 
         }
@@ -93,7 +95,7 @@ class ListeningViewController: UIViewController,UITableViewDelegate,UITableViewD
     func update(){
             let current = CMTimeGetSeconds(player.currentTime())
             let progress = Float(current)/Float(length)
-            if Int(current) > lyric[temptime][0].intValue{
+            if self.lyric.count>2 && Int(current) > lyric[temptime][0].intValue{
                 selectRow(temptime)
                 if temptime < lyric.count-1{temptime += 1}
         }
@@ -106,7 +108,7 @@ class ListeningViewController: UIViewController,UITableViewDelegate,UITableViewD
         let indexpath = NSIndexPath(forRow: row, inSection: 0)
         systouch = true
         tableView(tableview, willSelectRowAtIndexPath: indexpath)
-        tableview.selectRowAtIndexPath(indexpath, animated: true, scrollPosition: .Middle)
+        tableview.selectRowAtIndexPath(indexpath, animated: true, scrollPosition: .Top)
         tableView(tableview, didSelectRowAtIndexPath : indexpath)
         systouch = false
     }
