@@ -54,7 +54,10 @@ class Information:NSObject{
                 KVNProgress.showErrorWithStatus(res["message"]as!String)
                 return
             }
-            self.avatar = res["avatar"] as! String
+            let jres = JSON(res)
+            
+            self.avatar = jres["avatar"].stringValue
+            self.uid = jres["uid"].stringValue
 //            self.reflashHeader(res["token"] as! String)
             completionHandler?()
         }

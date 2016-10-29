@@ -8,18 +8,29 @@
 
 import UIKit
 import AudioToolbox
+import Alamofire
+import SwiftyJSON
 
 class PreperChatViewController: UIViewController {
 
     @IBOutlet weak var to: UITextField!
+    
+    var user_id:String? = nil
+    var req:Request?
     
     override func viewDidLoad() {
         UIApplication.sharedApplication().applicationSupportsShakeToEdit = true
         becomeFirstResponder()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        request(.PUT, "https://learning2learn.cn/speaknow/chat/userstatus")
+    }
+    
     override func viewDidDisappear(animated: Bool) {
         UIApplication.sharedApplication().applicationSupportsShakeToEdit = false
+        request(.DELETE, "https://learning2learn.cn/speaknow/chat/userstatus")
+
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -28,24 +39,45 @@ class PreperChatViewController: UIViewController {
     
     override func motionBegan(motion: UIEventSubtype, withEvent event: UIEvent?) {
         print("开始摇动")
-        
+        self.user_id = nil
+        self.req = request(.POST, "https://learning2learn.cn/speaknow/chat/getuser").responseJSON{
+            s in
+            guard let ss = s.result.value else{return}
+            let res = JSON(ss)
+            print(res)
+            if res["success"].boolValue{
+                self.user_id = res["user"].stringValue
+                print("可匹配id:\(self.user_id)")
+            }
+        }
+
     }
     
     override func motionCancelled(motion: UIEventSubtype, withEvent event: UIEvent?) {
+//        self.user_id = nil
+//        req?.cancel()
         print("取消摇动")
     }
     
     override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
         print("摇动停止")
-        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
-        if to.text == ""{return}
+//        req?.cancel()
+        
+        let toid:String
+        
+        if self.user_id != nil && self.user_id! != inf.uid{
+            toid = self.user_id!
+        }else{toid = to.text!}
+        
+        if toid == ""{return}
         let vc = getVC("MessagerViewController")  as! MessagerViewController
         vc.senderId = inf.username
         vc.senderDisplayName = inf.nickname
         
-        vc.toid = to.text!
-        vc.toname = to.text!
-        
+        vc.toid = toid
+//        vc.toname = to.text!
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+
         navigationController?.pushViewController(vc, animated: true)
     }
 

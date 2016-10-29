@@ -13,13 +13,16 @@ import AVOSCloud
 import AVOSCloudIM
 import KVNProgress
 import Kingfisher
+import Alamofire
+import SwiftyJSON
 
 class MessagerViewController: JSQMessagesViewController, AVIMClientDelegate,VoiceInputViewDelegate {
 
     @IBOutlet var hud: UIView!
     
     var toid:String!
-    var toname:String!
+    var toname:String! = ""
+    var toavastar:String! = ""
     var client:AVIMClient!
     var conversation:AVIMConversation!
 
@@ -27,6 +30,7 @@ class MessagerViewController: JSQMessagesViewController, AVIMClientDelegate,Voic
     var audioPlayer:AVAudioPlayer!
 
     var myAvatar = UIImageView()
+    var toAvatar = UIImageView()
     
     var messages = [JSQMessage]()
     override func viewDidLoad() {
@@ -34,20 +38,49 @@ class MessagerViewController: JSQMessagesViewController, AVIMClientDelegate,Voic
 
         self.collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize(width: 35, height: 35)
         self.collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize(width: 35, height: 35)
-        initConversation()
-        
         self.collectionView.backgroundView = UIImageView(image: UIImage(named: "main_bg"))
-
-        
-        self.title = "Talking With \(senderDisplayName)"
+        senderDisplayName = inf.nickname
+        self.title = "Loading..."
         
         prepare_audio()
         hud.removeFromSuperview()
         
+        KVNProgress.showWithStatus("Loading")
         myAvatar.addPicFromUrl("http://7xq7zd.com1.z0.glb.clouddn.com/" + inf.avatar)
+
+        load_user_info(){
+            self.toAvatar.addPicFromUrl("http://7xq7zd.com1.z0.glb.clouddn.com/" + self.toavastar)
+            self.title = "Talking With \(self.toname)"
+            self.initConversation(){
+                KVNProgress.dismiss()
+                let hello = "Hello I am \(self.senderDisplayName)"
+                let message = JSQMessage(senderId:self.senderId, senderDisplayName:self.senderDisplayName, date:NSDate(), text:hello)
+                self.messages.append(message)
+                self.finishSendingMessage()
+                
+//                self.sendTextNessage(hello)
+            }
+        }
+        
+
     }
 
 
+    func load_user_info(hander:(()->())?=nil){
+        request(.GET, api+"profile/\(toid)").responseJSON{
+            s in guard let ss = s.result.value else{print("error!!!!"); return}
+            let res = JSON(ss)
+            print(res)
+            if res["success"].boolValue{
+                self.toname = res["nickname"].stringValue
+                self.toavastar = res["avatar"].stringValue
+            }else{
+                self.toname = self.toid
+                self.toavastar = "default.jpg"
+            }
+            hander?()
+        }
+    }
     
     func prepare_audio(){
         let recordSettings = [AVSampleRateKey : NSNumber(float: Float(16000.0)),//声音采样率
@@ -76,16 +109,17 @@ class MessagerViewController: JSQMessagesViewController, AVIMClientDelegate,Voic
         super.viewDidDisappear(animated)
     }
 
-    func initConversation(){
+    func initConversation(hander:(()->())?=nil){
         self.client = AVIMClient(clientId: senderId)
+        self.client.delegate = self
         self.client.openWithCallback { (success, error) in
 
-            self.client.createConversationWithName(self.toname, clientIds: [self.toid], attributes: [:], options: AVIMConversationOption.Unique, callback: { (conversion, error) in
+            self.client.createConversationWithName(self.toid, clientIds: [self.toid], attributes: [:], options: AVIMConversationOption.Unique, callback: { (conversion, error) in
                 self.conversation = conversion
+                hander?()
             })
 
         }
-            self.client.delegate = self
     }
 
 
@@ -163,6 +197,13 @@ class MessagerViewController: JSQMessagesViewController, AVIMClientDelegate,Voic
     
     
     override func collectionView(collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageAvatarImageDataSource!{
+        let msg = messages[indexPath.item]
+        
+        if msg.senderId != senderId{
+            let img = JSQMessagesAvatarImage(avatarImage: toAvatar.image, highlightedImage: myAvatar.image, placeholderImage: myAvatar.image)
+            return img
+        }
+
         let img = JSQMessagesAvatarImage(avatarImage: myAvatar.image, highlightedImage: myAvatar.image, placeholderImage: myAvatar.image)
         return img
     }
