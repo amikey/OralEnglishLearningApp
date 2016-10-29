@@ -52,6 +52,7 @@ class MessagerViewController: JSQMessagesViewController, AVIMClientDelegate,Voic
             self.toAvatar.addPicFromUrl("http://7xq7zd.com1.z0.glb.clouddn.com/" + self.toavastar)
             self.title = "Talking With \(self.toname)"
             self.initConversation(){
+                self.recordHistory()
                 KVNProgress.dismiss()
                 let hello = "Hello I am \(self.senderDisplayName)"
                 let message = JSQMessage(senderId:self.senderId, senderDisplayName:self.senderDisplayName, date:NSDate(), text:hello)
@@ -65,6 +66,17 @@ class MessagerViewController: JSQMessagesViewController, AVIMClientDelegate,Voic
 
     }
 
+    func recordHistory(){
+        let x=NSUserDefaults.standardUserDefaults()
+        var his:[[String]] = []
+        if let xx = x.objectForKey("chatHistory") as? [[String]]{
+                his = xx
+        }
+        his.append([toname,toid])
+        
+        x.setObject(his, forKey: "chatHistory")
+        
+    }
 
     func load_user_info(hander:(()->())?=nil){
         request(.GET, api+"profile/\(toid)").responseJSON{

@@ -46,6 +46,9 @@ class MyFavoriteViewController: UIViewController,UITableViewDelegate,UITableView
         let row = indexPath.row
         let vc = getVC("selectTogo") as! ListenDataDetailViewController
         vc.isoral = data[row]["isoral"].boolValue
-        vc.lis
+        vc.listen_id = data[row]["id"].stringValue
+        self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+
 }

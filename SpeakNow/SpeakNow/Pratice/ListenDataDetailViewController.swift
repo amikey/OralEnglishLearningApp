@@ -46,6 +46,7 @@ class ListenDataDetailViewController: UIViewController,UITableViewDelegate,UITab
             self.continueButton.hidden = true
         }
         
+        
         getfavorite()
 
     }
@@ -56,7 +57,7 @@ class ListenDataDetailViewController: UIViewController,UITableViewDelegate,UITab
             let res = JSON(vaule)
             self.isfavorited = res["favorite"].boolValue
             if self.isfavorited{
-                self.favoirteButton.setImage(UIImage(named: "check"), forState: .Normal)
+                self.favoirteButton.setImage(UIImage(named: "star-house2"), forState: .Normal)
             }else{
                 self.favoirteButton.setImage(UIImage(named: "star-house"), forState: .Normal)
             }
@@ -92,8 +93,7 @@ class ListenDataDetailViewController: UIViewController,UITableViewDelegate,UITab
 
         }else{
             request(.POST, api+"categories/\(listen_id)/favorite")
-//            self.favoirteButton.imageView!.image = UIImage(named: "check")
-            self.favoirteButton.setImage(UIImage(named: "check"), forState: .Normal)
+            self.favoirteButton.setImage(UIImage(named: "star-house2"), forState: .Normal)
         }
         self.isfavorited = !self.isfavorited
 

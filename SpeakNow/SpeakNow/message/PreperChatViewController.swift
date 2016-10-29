@@ -70,12 +70,13 @@ class PreperChatViewController: UIViewController {
         }else{toid = to.text!}
         
         if toid == ""{return}
+        
+        
         let vc = getVC("MessagerViewController")  as! MessagerViewController
         vc.senderId = inf.username
         vc.senderDisplayName = inf.nickname
-        
         vc.toid = toid
-//        vc.toname = to.text!
+        
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
 
         navigationController?.pushViewController(vc, animated: true)
