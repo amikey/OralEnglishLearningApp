@@ -19,6 +19,7 @@ class ListeningViewController: UIViewController,UITableViewDelegate,UITableViewD
     
     @IBOutlet var speedbutton: UIBarButtonItem!
 
+    @IBOutlet weak var plaubotton: UIButton!
     var id:String!
     var player:AVPlayer = AVPlayer()
     var timer:NSTimer?
@@ -31,13 +32,18 @@ class ListeningViewController: UIViewController,UITableViewDelegate,UITableViewD
     
     var tapline:Int = 0
     var tapped:Int = 0
+    
+    var highlightrow:Int = 0
+    
+    
 
     @IBOutlet var navtitle: UINavigationItem!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableview.estimatedRowHeight = 200;
         self.tableview.rowHeight = UITableViewAutomaticDimension;
-        tableview.separatorStyle = .None
+        self.tableview.separatorStyle = .None
+        self.silder.continuous = false
         getdata()
         
         let session = AVAudioSession.sharedInstance()
@@ -47,10 +53,16 @@ class ListeningViewController: UIViewController,UITableViewDelegate,UITableViewD
         try session.overrideOutputAudioPort(AVAudioSessionPortOverride.None)
         try session.setActive(true)
         }catch{
-            print("!!!!!!")
         }
-        
         navtitle.title = title
+        plaubotton.setBackgroundImage(nil, forState: .Normal)
+        plaubotton.setImage(UIImage(named: "play"), forState: .Normal)
+        
+        
+       // plaubotton.setImage(#imageLiteral(resourceName: "play"), forState: .Normal)
+        
+        //plaubotton.setImage(UIImage(named: #imageLiteral(resourceName: "play")), forState: .Normal)
+        
     }
 
     override func viewWillDisappear(animated: Bool) {
@@ -63,7 +75,6 @@ class ListeningViewController: UIViewController,UITableViewDelegate,UITableViewD
         timer?.fire()
         player.play()
 
-        print("playing")
     }
 
     func stop(){
@@ -78,7 +89,6 @@ class ListeningViewController: UIViewController,UITableViewDelegate,UITableViewD
             s in guard let vaule = s.result.value else{return}
             let res = JSON(vaule)
             self.lyric = res["lyric"].arrayValue
-//            self.length = res["length"].intValue
             let path0 = res["path"].stringValue
             let path = NSURL(string: "http://7xq7zd.com1.z0.glb.clouddn.com/"+path0)!
             print(path)
@@ -97,7 +107,9 @@ class ListeningViewController: UIViewController,UITableViewDelegate,UITableViewD
             let progress = Float(current)/Float(length)
             if self.lyric.count>2 && Int(current) > lyric[temptime][0].intValue{
                 selectRow(temptime)
-                if temptime < lyric.count-1{temptime += 1}
+                if temptime < lyric.count-1{
+                    temptime += 1
+                }
         }
         self.silder.value = progress
     }
@@ -107,10 +119,19 @@ class ListeningViewController: UIViewController,UITableViewDelegate,UITableViewD
         print(row)
         let indexpath = NSIndexPath(forRow: row, inSection: 0)
         systouch = true
-        tableView(tableview, willSelectRowAtIndexPath: indexpath)
+        self.highlightrow = row
         tableview.selectRowAtIndexPath(indexpath, animated: true, scrollPosition: .Top)
-        tableView(tableview, didSelectRowAtIndexPath : indexpath)
+        tableview.reloadData()
         systouch = false
+    }
+    
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        let text = cell.viewWithTag(1) as! UILabel
+        if indexPath.row == self.highlightrow{
+            text.font = UIFont.boldSystemFontOfSize(14.0)
+        }else{
+            text.font = UIFont.systemFontOfSize(14.0)
+        }
     }
 
 
@@ -128,59 +149,28 @@ class ListeningViewController: UIViewController,UITableViewDelegate,UITableViewD
         return cell
     }
 
-    func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        if systouch{
-            if let current = tableview.indexPathForSelectedRow{
-                let cell = tableview.cellForRowAtIndexPath(current)
-                if let text = cell?.viewWithTag(1) as? UILabel{
-                    text.font = UIFont.systemFontOfSize(14.0)
-                }
-            }
-        }else{
-        }
-        return indexPath
-    }
+
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if systouch{
-            if let cell = tableview.cellForRowAtIndexPath(indexPath){
-                if let text = cell.viewWithTag(1) as? UILabel{
-//                    text.textColor = UIColor.redColor()
-                    text.font = UIFont.boldSystemFontOfSize(14.0)
-                }
-            }
-        }else{
-            print("\(indexPath.row) \(tapped) \(tapline)")
-            if tapline == indexPath.row{
-                tapped += 1
-                if tapped>=2 {
-                    print("move to here");
-                    let seconds = Float(indexPath.row - 1)/Float(lyric.count) * Float(length)
-                    if seconds < 0{return}
-                    player.seekToTime(CMTime(seconds: Double(seconds), preferredTimescale: CMTimeScale(1)))
-
-                    tapped = 0
-                }
+        if tapline == indexPath.row{
+            tapped += 1
+            if tapped>=2 {
+                print("move to here");
+                let seconds = self.lyric[indexPath.row][0].intValue
+                if seconds < 0{return}
+                player.seekToTime(CMTime(seconds: Double(seconds), preferredTimescale: CMTimeScale(1)))
+                self.selectRow(indexPath.row)
                 
-            }else{
-                tapline = indexPath.row
-                tapped = 1
+                tapped = 0
             }
+            
+        }else{
+            tapline = indexPath.row
+            tapped = 1
         }
+
     }
     
-    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-//        let seconds = silder.value * Float(length)
-
-//        for i in 0 ..< lyric.count{
-//            if Int(seconds) > lyric[i][0].intValue{
-//                if indexPath.row != i{
-//                    if let x = cell.viewWithTag(1) as? UILabel{x.textColor = UIColor.blackColor()}
-//                    return
-//                }
-//            }
-//        }
-    }
 
     @IBAction func silder_move(sender: AnyObject) {
         let seconds = silder.value * Float(length)
@@ -209,8 +199,10 @@ class ListeningViewController: UIViewController,UITableViewDelegate,UITableViewD
     @IBAction func playClick(sender: AnyObject) {
         if player.rate != 0.0{
             stop()
+            self.plaubotton.setImage(UIImage(named: "play"), forState: .Normal)
         }else{
             start()
+            self.plaubotton.setImage(UIImage(named: "stop"), forState: .Normal)
         }
     }
     
